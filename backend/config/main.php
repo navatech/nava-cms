@@ -5,16 +5,43 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
+$baseUrl = str_replace('/web', '', (new \yii\web\Request)->getBaseUrl());
 
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'language'   => 'en',
+    'timezone'   => 'Asia/Ho_Chi_Minh',
+    'modules' => [
+	    'user'     => [
+		    'class'    => 'dektrium\user\Module',
+		    'modelMap' => [
+			    'User'      => 'common\models\User',
+			    'LoginForm' => 'navatech\role\models\LoginForm',
+		    ],
+	    ],
+	    'gridview' => [
+		    'class' => '\kartik\grid\Module',
+	    ],
+	    'language' => [
+		    'class'    => '\navatech\language\Module',
+		    /*TODO uncommented if you want to custom view*/
+		    //'viewPath' => '@app/vendor/navatech/yii2-multi-language/src/views',
+		    /*TODO uncommented if you want to change suffix of translated table / model.
+			should be one word, lowercase only.*/
+		    //'suffix' => 'translate',
+	    ],
+	    /*'menu' => [
+		    'class' => 'infoweb\menu\Module',
+		    'enablePrivateMenuItems' => true,
+	    ],*/
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+            'baseUrl'             => $baseUrl,
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -37,14 +64,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
+        'view' => [
+	        'theme' => [
+		        'pathMap' => [
+			        '@dektrium/user/views' => '@app/views/user'
+		        ],
+	        ],
         ],
-        */
+        'urlManager' => [
+	        'enablePrettyUrl' => true,
+	        'showScriptName' => false,
+        ],
     ],
     'params' => $params,
 ];
