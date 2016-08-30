@@ -1,10 +1,11 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
+use common\models\MenuItem;
 use Yii;
-use app\models\Menu;
-use app\models\search\MenuSearch;
+use common\models\Menu;
+use common\models\search\MenuSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -83,12 +84,13 @@ class MenuController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+		$menu_items = MenuItem::findAll(['menu_id'=>$id]);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+	            'menu_items'=>$menu_items
             ]);
         }
     }

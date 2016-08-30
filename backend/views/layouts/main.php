@@ -22,7 +22,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="sidebar-visible menu-pin">
+<body class="fixed-header dashboard  windows desktop pace-done sidebar-visible menu-pin">
 <?php $this->beginBody() ?>
 <?= Sidebar::widget() ?>
 <!-- START PAGE-CONTAINER -->

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -31,7 +31,7 @@ class Menu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
+            [['name'], 'required'],
             [['max_level', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];

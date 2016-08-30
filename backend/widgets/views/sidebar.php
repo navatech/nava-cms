@@ -16,7 +16,16 @@
 	<div class="sidebar-menu">
 		<!-- BEGIN SIDEBAR MENU ITEMS-->
 		<ul class="menu-items">
-			<li class="m-t-30 ">
+			<?php foreach($menu_items as $menu_item):?>
+				<li class="m-t-30 ">
+					<a href="#" class="detailed">
+						<span class="title"><?= $menu_item->name?></span>
+						<!--<span class="details">12 New Updates</span>-->
+					</a>
+					<span class="bg-success icon-thumbnail"><i class="<?php $menu_item->icon?>"></i></span>
+				</li>
+			<?php endforeach;?>
+			<!--<li class="m-t-30 ">
 				<a href="index.html" class="detailed">
 					<span class="title">Dashboard</span>
 					<span class="details">12 New Updates</span>
@@ -291,7 +300,7 @@
 						</ul>
 					</li>
 				</ul>
-			</li>
+			</li>-->
 		</ul>
 		<div class="clearfix"></div>
 	</div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -16,6 +16,7 @@ use Yii;
  * @property string $url
  * @property integer $position
  * @property integer $active
+ * @property string $icon
  * @property string $created_at
  * @property string $updated_at
  *
@@ -40,8 +41,7 @@ class MenuItem extends \yii\db\ActiveRecord
         return [
             [['menu_id', 'parent_id', 'entity_id', 'url', 'created_at', 'updated_at'], 'required'],
             [['menu_id', 'parent_id', 'entity_id', 'level', 'position', 'active', 'created_at', 'updated_at'], 'integer'],
-            [['entity'], 'string'],
-            [['url'], 'string', 'max' => 255],
+            [['url','entity','icon'], 'string', 'max' => 255],
             [['menu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['menu_id' => 'id']],
         ];
     }

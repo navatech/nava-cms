@@ -45,7 +45,7 @@ use yii\helpers\Url;
 			<div class="dropdown pull-right">
 				<button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="thumbnail-wrapper d32 circular inline m-t-5">
-                <img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
+                <img src="<?= Yii::$app->request->BaseUrl ;?>/img/profiles/avatar.jpg" alt=""  width="32" height="32">
             </span>
 				</button>
 				<ul class="dropdown-menu profile-dropdown" role="menu">

@@ -28,7 +28,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
     'plugins/pace/pace.min.js',
-    'plugins/jquery/jquery-1.11.1.min.js',
+   // 'plugins/jquery/jquery-1.11.1.min.js',
     'plugins/modernizr.custom.js',
     'plugins/jquery-ui/jquery-ui.min.js',
     'plugins/boostrapv3/js/bootstrap.min.js',
@@ -38,8 +38,8 @@ class AppAsset extends AssetBundle
     'plugins/jquery-ios-list/jquery.ioslist.min.js',
     'plugins/jquery-actual/jquery.actual.min.js',
     'plugins/jquery-scrollbar/jquery.scrollbar.min.js',
-    'assets/plugins/bootstrap-select2/select2.min.js',
-    'assets/plugins/classie/classie.js',
+    'plugins/bootstrap-select2/select2.min.js',
+    'plugins/classie/classie.js',
     'plugins/switchery/js/switchery.min.js',
     'plugins/nvd3/lib/d3.v3.js',
     'plugins/nvd3/nv.d3.min.js',
@@ -52,13 +52,13 @@ class AppAsset extends AssetBundle
     'plugins/mapplic/js/hammer.js',
     'plugins/mapplic/js/jquery.mousewheel.js',
     'plugins/mapplic/js/mapplic.js',
-    'plugins/rickshaw/rickshaw.min.js',
+    //'plugins/rickshaw/rickshaw.min.js',
     'plugins/jquery-metrojs/MetroJs.min.js',
     'plugins/jquery-sparkline/jquery.sparkline.min.js',
     'plugins/skycons/skycons.js',
     'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
     'pages/js/pages.min.js',
-    'js/dashboard.js',
+    //'js/dashboard.js',
     'js/scripts.js',
     ];
     public $depends = [
