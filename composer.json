@@ -20,8 +20,8 @@
         "yiisoft/yii2-swiftmailer": "*",
         "navatech/yii2-user-role": "@dev",
         "navatech/yii2-multi-language": "@dev",
-        "infoweb-internet-solutions/yii2-cms-menu": "*",
-        "kartik-v/yii2-sortable": "@dev"
+        "kartik-v/yii2-sortable": "@dev",
+        "navatech/yii2-setting": "@dev"
     },
     "require-dev": {
         "codeception/base": "^2.2.3",

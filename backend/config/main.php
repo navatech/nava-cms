@@ -33,10 +33,16 @@ return [
 			should be one word, lowercase only.*/
 		    //'suffix' => 'translate',
 	    ],
-	    /*'menu' => [
-		    'class' => 'infoweb\menu\Module',
-		    'enablePrivateMenuItems' => true,
-	    ],*/
+	    'setting'  => [
+		    'class'               => 'navatech\setting\Module',
+		    'controllerNamespace' => 'navatech\setting\controllers',
+	    ],
+	    'gridview' => [
+		    'class' => '\kartik\grid\Module',
+	    ],
+	    'roxymce'  => [
+		    'class' => '\navatech\roxymce\Module',
+	    ],
     ],
     'components' => [
         'request' => [
@@ -47,6 +53,9 @@ return [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+        ],
+        'setting' => [
+	        'class' => 'navatech\setting\Setting',
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend

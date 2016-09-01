@@ -1,6 +1,8 @@
 <?php
 namespace backend\controllers;
 
+use navatech\setting\models\Setting;
+use navatech\setting\Module;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -22,7 +24,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','setting'],
                         'allow' => true,
                     ],
                     [
@@ -95,4 +97,9 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+	public function actionSetting() {
+
+		return  $this->render('setting');
+	}
 }
