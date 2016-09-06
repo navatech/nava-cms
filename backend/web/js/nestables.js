@@ -9,7 +9,7 @@
     'use strict';
 
     $(document).ready(function() {
-        var updateOutput = function(e) {
+       /* var updateOutput = function(e) {
             var list = e.length ? e : $(e.target),
                 output = list.data('output');
             if (window.JSON) {
@@ -17,7 +17,7 @@
             } else {
                 output.html('JSON browser support required for this demo.');
             }
-        };
+        };*/
         $('#basic_example').nestable();
         $('#drag_handler_example').nestable();
         // activate Nestable for list 1
@@ -33,8 +33,8 @@
             .on('change', updateOutput);
 
         // output initial serialised data
-        updateOutput($('#nestable').data('output', $('#nestable-output')));
-        updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+       /* updateOutput($('#nestable').data('output', $('#nestable-output')));
+        updateOutput($('#nestable2').data('output', $('#nestable2-output')));*/
 
         $('#nestable-menu').on('click', function(e) {
             var target = $(e.target),

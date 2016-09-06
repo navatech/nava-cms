@@ -9,21 +9,14 @@ use Yii;
  *
  * @property integer $id
  * @property integer $menu_id
+ * @property string $icon
  * @property string $parent_id
- * @property string $entity
- * @property string $entity_id
  * @property integer $level
  * @property string $url
- * @property integer $position
- * @property integer $active
- * @property string $icon
- * @property string $created_at
- * @property string $updated_at
- *
- * @property Menu $menu
- * @property MenuItemLang[] $menuItemLangs
+ * @property integer $sort_order
+ * @property integer $status
  */
-class MenuItem extends \yii\db\ActiveRecord
+class MenuItem extends Model
 {
     /**
      * @inheritdoc
@@ -39,10 +32,9 @@ class MenuItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['menu_id', 'parent_id', 'entity_id', 'url', 'created_at', 'updated_at'], 'required'],
-            [['menu_id', 'parent_id', 'entity_id', 'level', 'position', 'active', 'created_at', 'updated_at'], 'integer'],
-            [['url','entity','icon'], 'string', 'max' => 255],
-            [['menu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['menu_id' => 'id']],
+            [['menu_id', 'icon', 'parent_id', 'url'], 'required'],
+            [['menu_id', 'parent_id', 'level', 'sort_order', 'status'], 'integer'],
+            [['icon', 'url'], 'string', 'max' => 255],
         ];
     }
 
@@ -54,31 +46,20 @@ class MenuItem extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'menu_id' => 'Menu ID',
+            'icon' => 'Icon',
             'parent_id' => 'Parent ID',
-            'entity' => 'Entity',
-            'entity_id' => 'Entity ID',
             'level' => 'Level',
             'url' => 'Url',
-            'position' => 'Position',
-            'active' => 'Active',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'sort_order' => 'Sort Order',
+            'status' => 'Status',
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMenu()
-    {
-        return $this->hasOne(Menu::className(), ['id' => 'menu_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMenuItemLangs()
-    {
-        return $this->hasMany(MenuItemLang::className(), ['menu_item_id' => 'id']);
-    }
+	public function behaviors($attributes = null) {
+		$attributes = [
+			'name',
+		];
+		$behaviors  = parent::behaviors($attributes);
+		return $behaviors;
+	}
 }

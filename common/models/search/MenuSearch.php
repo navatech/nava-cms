@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use common\models\Menu;
 
 /**
- * MenuSearch represents the model behind the search form of `app\models\Menu`.
+ * MenuSearch represents the model behind the search form of `common\models\Menu`.
  */
 class MenuSearch extends Menu
 {
@@ -18,7 +18,7 @@ class MenuSearch extends Menu
     public function rules()
     {
         return [
-            [['id', 'max_level', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'max_level'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -61,8 +61,6 @@ class MenuSearch extends Menu
         $query->andFilterWhere([
             'id' => $this->id,
             'max_level' => $this->max_level,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

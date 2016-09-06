@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use common\models\MenuItem;
 
 /**
- * MenuItemSearch represents the model behind the search form of `app\models\MenuItem`.
+ * MenuItemSearch represents the model behind the search form of `common\models\MenuItem`.
  */
 class MenuItemSearch extends MenuItem
 {
@@ -18,8 +18,8 @@ class MenuItemSearch extends MenuItem
     public function rules()
     {
         return [
-            [['id', 'menu_id', 'parent_id', 'entity_id', 'level', 'position', 'active', 'created_at', 'updated_at'], 'integer'],
-            [['entity', 'url'], 'safe'],
+            [['id', 'menu_id', 'parent_id', 'level', 'sort_order', 'status'], 'integer'],
+            [['icon', 'url'], 'safe'],
         ];
     }
 
@@ -62,15 +62,12 @@ class MenuItemSearch extends MenuItem
             'id' => $this->id,
             'menu_id' => $this->menu_id,
             'parent_id' => $this->parent_id,
-            'entity_id' => $this->entity_id,
             'level' => $this->level,
-            'position' => $this->position,
-            'active' => $this->active,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'sort_order' => $this->sort_order,
+            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'entity', $this->entity])
+        $query->andFilterWhere(['like', 'icon', $this->icon])
             ->andFilterWhere(['like', 'url', $this->url]);
 
         return $dataProvider;

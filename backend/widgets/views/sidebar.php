@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Url;
+?>
 <!-- BEGIN SIDEBPANEL-->
 <nav class="page-sidebar" data-pages="sidebar">
 	<!-- BEGIN SIDEBAR MENU HEADER-->
@@ -18,11 +21,11 @@
 		<ul class="menu-items">
 			<?php foreach($menu_items as $menu_item):?>
 				<li class="m-t-30 ">
-					<a href="#" class="detailed">
+					<a href="<?= Url::to(['/'.$menu_item->url]);?>" class="detailed">
 						<span class="title"><?= $menu_item->name?></span>
 						<!--<span class="details">12 New Updates</span>-->
 					</a>
-					<span class="bg-success icon-thumbnail"><i class="<?php $menu_item->icon?>"></i></span>
+					<span class="bg-success icon-thumbnail"><i class="<?= $menu_item->icon?>"></i></span>
 				</li>
 			<?php endforeach;?>
 			<!--<li class="m-t-30 ">

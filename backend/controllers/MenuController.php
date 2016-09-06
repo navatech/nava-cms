@@ -84,12 +84,13 @@ class MenuController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-		$menu_items = MenuItem::findAll(['menu_id'=>$id]);
+	    $menu_items = MenuItem::findAll(['menu_id'=>$id]);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+            	'model'=>$model,
 	            'menu_items'=>$menu_items
             ]);
         }
@@ -123,5 +124,4 @@ class MenuController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }

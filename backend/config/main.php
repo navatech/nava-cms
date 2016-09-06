@@ -31,7 +31,7 @@ return [
 		    //'viewPath' => '@app/vendor/navatech/yii2-multi-language/src/views',
 		    /*TODO uncommented if you want to change suffix of translated table / model.
 			should be one word, lowercase only.*/
-		    //'suffix' => 'translate',
+		    'suffix' => 'lang',
 	    ],
 	    'setting'  => [
 		    'class'               => 'navatech\setting\Module',
@@ -76,7 +76,8 @@ return [
         'view' => [
 	        'theme' => [
 		        'pathMap' => [
-			        '@dektrium/user/views' => '@app/views/user'
+			        '@dektrium/user/views' => '@app/views/user',
+			        '@navatech/setting/src/views' => '@app/views/setting'
 		        ],
 	        ],
         ],
@@ -84,6 +85,7 @@ return [
 	        'enablePrettyUrl' => true,
 	        'showScriptName' => false,
         ],
+
     ],
     'params' => $params,
 ];

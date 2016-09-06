@@ -10,6 +10,7 @@
 namespace backend\widgets;
 
 use common\widgets\Widget;
+use navatech\setting\models\Setting as Settingm;
 
 class Setting extends Widget {
 
@@ -17,6 +18,7 @@ class Setting extends Widget {
 	 * {@inheritDoc}
 	 */
 	public function run() {
-		return $this->render("setting");
+		$settings = Settingm::findAll(['parent_id' => 0]);
+		return $this->render("setting", ['settings'=>$settings]);
 	}
 }

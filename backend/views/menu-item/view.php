@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\MenuItem */
+/* @var $model common\models\MenuItem */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Menu Items', 'url' => ['index']];
@@ -30,15 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'menu_id',
+            'icon',
             'parent_id',
-            'entity',
-            'entity_id',
             'level',
             'url:url',
-            'position',
-            'active',
-            'created_at',
-            'updated_at',
+            'sort_order',
+            'status',
         ],
     ]) ?>
 

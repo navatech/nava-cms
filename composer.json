@@ -20,7 +20,6 @@
         "yiisoft/yii2-swiftmailer": "*",
         "navatech/yii2-user-role": "@dev",
         "navatech/yii2-multi-language": "@dev",
-        "kartik-v/yii2-sortable": "@dev",
         "navatech/yii2-setting": "@dev"
     },
     "require-dev": {

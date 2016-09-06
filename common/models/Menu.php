@@ -10,12 +10,8 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property integer $max_level
- * @property string $created_at
- * @property string $updated_at
- *
- * @property MenuItem[] $menuItems
  */
-class Menu extends \yii\db\ActiveRecord
+class Menu extends Model
 {
     /**
      * @inheritdoc
@@ -31,8 +27,8 @@ class Menu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['max_level', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'max_level'], 'required'],
+            [['max_level'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -46,16 +42,6 @@ class Menu extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'max_level' => 'Max Level',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMenuItems()
-    {
-        return $this->hasMany(MenuItem::className(), ['menu_id' => 'id']);
     }
 }

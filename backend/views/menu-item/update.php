@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\MenuItem */
+/* @var $model common\models\MenuItem */
 
 $this->title = 'Update Menu Item: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Menu Items', 'url' => ['index']];
