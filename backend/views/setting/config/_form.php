@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $model Setting */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<?php Yii::$app->layout = 'setting'; ?>
 <div class="content sm-gutter">
 	<div class="container-fluid padding-25 sm-padding-10">
 		<div class="setting-form">

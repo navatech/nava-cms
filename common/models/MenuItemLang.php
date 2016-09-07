@@ -47,4 +47,11 @@ class MenuItemLang extends Model
         ];
     }
 
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getMenuItem() {
+		return $this->hasOne(MenuItem::className(), ['id' => 'menu_item_id']);
+	}
+
 }

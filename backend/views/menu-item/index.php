@@ -28,9 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
 					'icon',
 					'parent_id',
 					'level',
-					// 'url:url',
-					// 'sort_order',
-					// 'status',
+					'url:url',
+					'sort_order',
+					'status',
 					['class' => 'yii\grid\ActionColumn'],
 				],
 			]); ?>

@@ -13,6 +13,7 @@ use yii\web\View;
 
 $this->title                   = 'Settings';
 $this->params['breadcrumbs'][] = $this->title;
+ Yii::$app->layout = 'setting';
 ?>
 <div class="content sm-gutter">
 	<div class="container-fluid padding-25 sm-padding-10">

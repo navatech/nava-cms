@@ -45,6 +45,14 @@ class MenuController extends Controller
         ]);
     }
 
+	public function actionSetting()
+	{
+		$model = Menu::findAll(['status'=>1]);
+		return $this->render('setting', [
+			'model'=>$model,
+		]);
+	}
+
     /**
      * Displays a single Menu model.
      * @param integer $id
@@ -124,4 +132,5 @@ class MenuController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

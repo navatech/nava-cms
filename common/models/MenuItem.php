@@ -62,4 +62,21 @@ class MenuItem extends Model
 		$behaviors  = parent::behaviors($attributes);
 		return $behaviors;
 	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getMenu() {
+		return $this->hasOne(Menu::className(), ['id' => 'menu_id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getMenuItemLangs() {
+		return $this->hasMany(MenuItemLang::className(), ['menu_item_id' => 'id']);
+	}
+
+
+
 }

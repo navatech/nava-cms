@@ -36,6 +36,7 @@ return [
 	    'setting'  => [
 		    'class'               => 'navatech\setting\Module',
 		    'controllerNamespace' => 'navatech\setting\controllers',
+		    'viewPath' => '@app/views/setting'
 	    ],
 	    'gridview' => [
 		    'class' => '\kartik\grid\Module',
@@ -77,7 +78,7 @@ return [
 	        'theme' => [
 		        'pathMap' => [
 			        '@dektrium/user/views' => '@app/views/user',
-			        '@navatech/setting/src/views' => '@app/views/setting'
+			        '@navatech/setting/src/views' => '@app/views/setting',
 		        ],
 	        ],
         ],

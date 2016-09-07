@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property integer $max_level
+ * @property integer $status
  */
 class Menu extends Model
 {
@@ -27,8 +27,8 @@ class Menu extends Model
     public function rules()
     {
         return [
-            [['name', 'max_level'], 'required'],
-            [['max_level'], 'integer'],
+            [['name'], 'required'],
+            [['status'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -41,7 +41,14 @@ class Menu extends Model
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'max_level' => 'Max Level',
+            'status' => 'Status',
         ];
     }
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getMenuItem() {
+		return $this->hasMany(MenuItem::className(), ['menu_id' => 'id']);
+	}
 }

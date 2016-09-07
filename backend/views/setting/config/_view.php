@@ -11,7 +11,7 @@
 use navatech\setting\models\Setting;
 
 ?>
-
+<?php Yii::$app->layout = 'setting'; ?>
 <div class="panel panel-info">
 	<div class="panel-body">
 		<form class="form-inline">

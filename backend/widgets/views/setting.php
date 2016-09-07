@@ -15,7 +15,7 @@ use yii\helpers\Url;
 		</li>
 		<?php endforeach;?>
 		<li class="">
-			<a href="#">
+			<a href="<?= Url::to(['/menu/setting'])?>">
 				<span class="title"><i class="fa fa-fw fa-list-alt"></i> <?= Translate::x_setting(Translate::menu());?></span>
 			</a>
 		</li>

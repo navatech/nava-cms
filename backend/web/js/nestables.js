@@ -9,15 +9,15 @@
     'use strict';
 
     $(document).ready(function() {
-       /* var updateOutput = function(e) {
+       var updateOutput = function(e) {
             var list = e.length ? e : $(e.target),
                 output = list.data('output');
             if (window.JSON) {
-                output.html(window.JSON.stringify(list.nestable('serialize'))); //, null, 2));
+                output.html(window.JSON.stringify(list.nestable('serialize')));
             } else {
                 output.html('JSON browser support required for this demo.');
             }
-        };*/
+        };
         $('#basic_example').nestable();
         $('#drag_handler_example').nestable();
         // activate Nestable for list 1
@@ -28,13 +28,35 @@
 
         // activate Nestable for list 2
         $('#nestable2').nestable({
-                group: 1
+                group: 1,
+            dragStop: function(e) {
+                var list = this;
+                var el = this.dragEl.children(this.options.itemNodeName).first();
+                el[0].parentNode.removeChild(el[0]);
+                this.placeEl.replaceWith(el);
+
+                this.dragEl.remove();
+
+                var $parents = $(el[0]).parents('.' + list.options.itemClass);
+                var $parent = null;
+                if ($parents.length > 0) $parent = $parents[0];
+                list.options.onDragFinished(el[0], $parent);
+                this.el.trigger('change');
+                if (this.hasNewRoot) {
+                    this.dragRootEl.trigger('change');
+                }
+                this.reset();
+            },
             })
-            .on('change', updateOutput);
+            .on('change', updateOutput).on('_mouseStop', function(event, noPropagation) {
+            $.ui.sortable.prototype._mouseStop.apply(this, arguments);
+            var ret = this.serialize({startDepthCount: 0});
+            console.log(ret);
+        });
 
         // output initial serialised data
-       /* updateOutput($('#nestable').data('output', $('#nestable-output')));
-        updateOutput($('#nestable2').data('output', $('#nestable2-output')));*/
+        updateOutput($('#nestable').data('output', $('#nestable-output')));
+        updateOutput($('#nestable2').data('output', $('#nestable2-output')));
 
         $('#nestable-menu').on('click', function(e) {
             var target = $(e.target),
