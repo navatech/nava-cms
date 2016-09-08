@@ -19,7 +19,7 @@ class Widget extends \yii\bootstrap\Widget {
 	 *
 	 * @return string
 	 */
-	public static function isActive($controller, $action = null, $params = null) {
+	public static function isActive($controller, $action = null, $params = null, $text = 'active') {
 		$string = '';
 		if (!is_array($controller)) {
 			$controller = [$controller];
@@ -33,7 +33,7 @@ class Widget extends \yii\bootstrap\Widget {
 		if (in_array(Yii::$app->controller->id, $controller)) {
 			if ($action == null || ($action != null && in_array(Yii::$app->controller->action->id, $action))) {
 				if ($params == null || in_array($params, array_chunk(Yii::$app->controller->actionParams, 1, true))) {
-					$string = 'active';
+					$string = $text;
 				}
 			}
 		}

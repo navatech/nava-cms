@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle {
 		'plugins/jquery-metrojs/MetroJs.css',
 		'plugins/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.css',
 		'plugins/jquery-nestable/jquery.nestable.css',
+		'plugins/switchery/css/switchery.min.css',
 		'pages/css/pages-icons.css',
 		'pages/css/pages.css',
 		'css/style.css',
@@ -65,9 +66,11 @@ class AppAsset extends AssetBundle {
 		'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
 		'plugins/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.js',
 		'plugins/jquery-nestable/jquery.nestable.js',
+		'plugins/switchery/js/switchery.min.js',
 		'pages/js/pages.min.js',
-		'js/nestables.js',
+		//'js/nestables.js',
 		'js/scripts.js',
+
 	];
 
 	public $jsOptions = [

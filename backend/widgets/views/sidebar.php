@@ -1,4 +1,5 @@
 <?php
+use backend\widgets\Sidebar;
 use yii\helpers\Url;
 ?>
 <!-- BEGIN SIDEBPANEL-->
@@ -19,13 +20,13 @@ use yii\helpers\Url;
 	<div class="sidebar-menu">
 		<!-- BEGIN SIDEBAR MENU ITEMS-->
 		<ul class="menu-items">
-			<?php foreach($menu_items as $menu_item):?>
-				<li class="m-t-30 ">
+			<?php foreach($menu_items as $key=>$menu_item):?>
+				<li class="<?= ($key==0)?'m-t-30':''?> ">
 					<a href="<?= Url::to(['/'.$menu_item->url]);?>" class="detailed">
 						<span class="title"><?= $menu_item->name?></span>
 						<!--<span class="details">12 New Updates</span>-->
 					</a>
-					<span class="bg-success icon-thumbnail"><i class="<?= $menu_item->icon?>"></i></span>
+					<span class=" <?= Sidebar::isActive(substr($menu_item->url,0,strpos($menu_item->url, '/')),str_replace('/','',substr($menu_item->url,strpos($menu_item->url, '/'))),null,'bg-success') ?> icon-thumbnail"><i class="<?= $menu_item->icon?>"></i></span>
 				</li>
 			<?php endforeach;?>
 			<!--<li class="m-t-30 ">

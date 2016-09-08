@@ -28,9 +28,9 @@ class MenuItemLang extends Model
     public function rules()
     {
         return [
-            [['id', 'menu_item_id', 'language', 'name'], 'required'],
-            [['id', 'menu_item_id', 'name'], 'integer'],
-            [['language'], 'string', 'max' => 255],
+            [['menu_item_id', 'language'], 'required'],
+            [['id', 'menu_item_id', ], 'integer'],
+            [['name', 'language'], 'string', 'max' => 255],
         ];
     }
 

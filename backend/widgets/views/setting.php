@@ -1,4 +1,5 @@
 <?php
+use backend\widgets\Setting;
 use navatech\language\Translate;
 use yii\helpers\Url;
 
@@ -8,13 +9,13 @@ use yii\helpers\Url;
 	<p class="menu-title">Setting</p>
 	<ul class="main-menu">
 		<?php foreach($settings as $key => $setting):?>
-		<li class="<?= ($key == 0)?'active':''?>">
+		<li class="<?= Setting::isActive('setting',$setting->name)?>">
 			<a href="<?= Url::to(['/setting/'.$setting->name])?>">
 				<span class="title"><i class="fa fa-info-circle"></i><?= $setting->name.' '.Translate::setting(); ?> </span>
 			</a>
 		</li>
 		<?php endforeach;?>
-		<li class="">
+		<li class="<?= Setting::isActive('menu','setting')?>">
 			<a href="<?= Url::to(['/menu/setting'])?>">
 				<span class="title"><i class="fa fa-fw fa-list-alt"></i> <?= Translate::x_setting(Translate::menu());?></span>
 			</a>

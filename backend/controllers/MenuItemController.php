@@ -115,7 +115,7 @@ class MenuItemController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = MenuItem::findOne($id)) !== null) {
+        if (($model = MenuItem::findOneTranslated($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

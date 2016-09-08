@@ -32,9 +32,16 @@ class MenuItem extends Model
     public function rules()
     {
         return [
-            [['menu_id', 'icon', 'parent_id', 'url'], 'required'],
+            [['menu_id', 'icon', 'url'], 'required'],
             [['menu_id', 'parent_id', 'level', 'sort_order', 'status'], 'integer'],
             [['icon', 'url'], 'string', 'max' => 255],
+	        [
+		        [
+			        'name',
+			        'name_' . Yii::$app->language,
+		        ],
+		        'safe',
+	        ],
         ];
     }
 
@@ -77,6 +84,14 @@ class MenuItem extends Model
 		return $this->hasMany(MenuItemLang::className(), ['menu_item_id' => 'id']);
 	}
 
+	public static function getAllmenuitem() {
+		$menuitems     = MenuItem::findAll(['status'=>1]);
+		$response = [];
+		foreach ($menuitems as $menuitem) {
+			$response[$menuitem->id] = $menuitem->name;
+		}
+		return $response;
+	}
 
 
 }
