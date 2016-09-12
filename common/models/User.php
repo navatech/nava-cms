@@ -1,6 +1,6 @@
 <?php
 namespace common\models;
-
+use navatech\role\models\Role;
 use yii\helpers\ArrayHelper;
 
 /**

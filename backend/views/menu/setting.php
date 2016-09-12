@@ -26,8 +26,7 @@
 						<div class="cf ">
 							<div class="row">
 								<div class="col-sm-8">
-									<div class="dd" id="nestable">
-									</div>
+									<div id="nestable2-output"></div>
 									<div class="dd" id="nestable2">
 										<ol class="dd-list">
 											<?php
@@ -38,10 +37,8 @@
 													<div class="dd3-content">
 														<div class="col-sm-3">
 															<div class="btn-group">
-																<button type="button" class="btn btn-primary">
-																	<i class="<?= $menu_item->icon ?>"></i>
-																</button>
-																<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-toggle="dropdown">
+																<button type="button" class="btn btn-primary iconpicker-component"><i class="<?= $menu_item->icon ?>"></i></button>
+																<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown">
 																	<span class="caret"></span>
 																	<span class="sr-only">Toggle Dropdown</span>
 																</button>
@@ -50,6 +47,9 @@
 														</div>
 														<div class="col-sm-6">
 															<?= $menu_item->name ?>
+														</div>
+														<div class="col-sm-3">
+															<?= $menu->status?>
 														</div>
 													</div>
 												</li>
@@ -65,4 +65,41 @@
 		<?php endforeach; ?>
 	</div>
 </div>
+<script>
+	var updateOutput = function(e) {
+		var list = e.length ? e : $(e.target),
+		    output = list.data('output');
+		if (window.JSON) {
+			output.html(window.JSON.stringify(list.nestable('serialize')));
+		} else {
+			output.html('JSON browser support required for this demo.');
+		}
+	};
+	updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+	$('#nestable2').nestable({
+		group: 1,
+		dragStop: function(e) {
+			var list = this;
+			var el = this.dragEl.children(this.options.itemNodeName).first();
+			el[0].parentNode.removeChild(el[0]);
+			this.placeEl.replaceWith(el);
 
+			this.dragEl.remove();
+
+			var $parents = $(el[0]).parents('.' + list.options.itemClass);
+			var $parent = null;
+			if ($parents.length > 0) $parent = $parents[0];
+			list.options.onDragFinished(el[0], $parent);
+			this.el.trigger('change');
+			if (this.hasNewRoot) {
+				this.dragRootEl.trigger('change');
+			}
+			this.reset();
+		},
+	})
+		.on('change', updateOutput).on('_mouseStop', function(event, noPropagation) {
+		$.ui.sortable.prototype._mouseStop.apply(this, arguments);
+		var ret = this.serialize({startDepthCount: 0});
+		console.log(ret);
+	});
+</script>

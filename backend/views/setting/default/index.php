@@ -15,11 +15,13 @@ AwesomeBootstrapCheckboxAsset::register($this);
 $this->title                   = $title;
 $this->params['breadcrumbs'][] = $this->title;
 $items                         = [];
+Yii::$app->layout = 'setting';
 if (Yii::$app->session->hasFlash('alert')) {
 	echo Alert::widget(Yii::$app->session->getFlash('alert'));
 }
 if (YII_DEBUG):
 	?>
+
 <div class="content sm-gutter">
 	<div class="container-fluid padding-25 sm-padding-10">
 	<div class="col-sm-offset-9 col-sm-3">

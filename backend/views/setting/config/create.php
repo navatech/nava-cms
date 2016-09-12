@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = [
 ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php Yii::$app->layout = 'setting'; ?>
 <div class="setting-create">
 
 	<h1><?= Html::encode($this->title) ?></h1>

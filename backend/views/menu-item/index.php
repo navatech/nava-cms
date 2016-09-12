@@ -8,32 +8,29 @@ use yii\grid\GridView;
 $this->title                   = 'Menu Items';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content sm-gutter">
-	<div class="container-fluid padding-25 sm-padding-10">
-		<div class="menu-item-index">
 
-			<h1><?= Html::encode($this->title) ?></h1>
-			<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<div class="menu-item-index">
 
-			<p>
-				<?= Html::a('Create Menu Item', ['create'], ['class' => 'btn btn-success']) ?>
-			</p>
-			<?= GridView::widget([
-				'dataProvider' => $dataProvider,
-				'filterModel'  => $searchModel,
-				'columns'      => [
-					['class' => 'yii\grid\SerialColumn'],
-					'id',
-					'menu_id',
-					'icon',
-					'parent_id',
-					'level',
-					'url:url',
-					'sort_order',
-					'status',
-					['class' => 'yii\grid\ActionColumn'],
-				],
-			]); ?>
-		</div>
-	</div>
+	<h1><?= Html::encode($this->title) ?></h1>
+	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+	<p>
+		<?= Html::a('Create Menu Item', ['create'], ['class' => 'btn btn-success']) ?>
+	</p>
+	<?= GridView::widget([
+		'dataProvider' => $dataProvider,
+		'filterModel'  => $searchModel,
+		'columns'      => [
+			['class' => 'yii\grid\SerialColumn'],
+			'id',
+			'menu_id',
+			'icon',
+			'parent_id',
+			'level',
+			'url:url',
+			'sort_order',
+			'status',
+			['class' => 'yii\grid\ActionColumn'],
+		],
+	]); ?>
 </div>

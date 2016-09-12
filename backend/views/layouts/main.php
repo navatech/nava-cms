@@ -30,7 +30,11 @@ AppAsset::register($this);
     <?= NavBar::widget() ?>
     <!-- START PAGE CONTENT WRAPPER -->
     <div class="page-content-wrapper ">
-        <?= $content ?>
+        <div class="content sm-gutter">
+            <div class="container-fluid padding-25 sm-padding-10">
+                 <?= $content ?>
+            </div>
+        </div>
         <!-- START COPYRIGHT -->
         <!-- START CONTAINER FLUID -->
         <!-- START CONTAINER FLUID -->

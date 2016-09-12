@@ -18,8 +18,15 @@ return [
 	    'user'     => [
 		    'class'    => 'dektrium\user\Module',
 		    'modelMap' => [
-			    'User'      => 'common\models\User',
+			    'User'      => 'navatech\role\models\User',
 			    'LoginForm' => 'navatech\role\models\LoginForm',
+		    ],
+	    ],
+	    'role'  => [
+		    'class'               => 'navatech\role\Module',
+		    'controllers'         => [ //namespaces of controllers
+			    'app\controllers',
+			    'navatech\role\controllers',
 		    ],
 	    ],
 	    'gridview' => [
@@ -79,6 +86,7 @@ return [
 		        'pathMap' => [
 			        '@dektrium/user/views' => '@app/views/user',
 			        '@navatech/setting/src/views' => '@app/views/setting',
+			        //'@navatech/multi-language/src/views' => '@app/views/language',
 		        ],
 	        ],
         ],

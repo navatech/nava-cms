@@ -37,6 +37,8 @@ class MenuItem extends Model
             [['icon', 'url'], 'string', 'max' => 255],
 	        [
 		        [
+			        'icon',
+			        'url',
 			        'name',
 			        'name_' . Yii::$app->language,
 		        ],

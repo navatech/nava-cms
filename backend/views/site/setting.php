@@ -10,4 +10,3 @@
 ?>
 
 <?php Yii::$app->layout = 'setting'; ?>
-

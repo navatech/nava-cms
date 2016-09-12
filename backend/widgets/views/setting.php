@@ -17,17 +17,22 @@ use yii\helpers\Url;
 		<?php endforeach;?>
 		<li class="<?= Setting::isActive('menu','setting')?>">
 			<a href="<?= Url::to(['/menu/setting'])?>">
-				<span class="title"><i class="fa fa-fw fa-list-alt"></i> <?= Translate::x_setting(Translate::menu());?></span>
+				<span class="title"><i class="fa fa-fw fa-list-alt"></i> <?= Translate::x_setting('Menu');?></span>
 			</a>
 		</li>
-		<li class="">
-			<a href="#">
+		<li class="<?= Setting::isActive('language','index')?>">
+			<a href="<?= Url::to(['/language/index'])?>">
+				<span class="title"><i class="fa fa-language"></i> <?= Translate::x_setting(Translate::language());?></span>
+			</a>
+		</li>
+		<li class="<?= Setting::isActive('language','phrase')?>">
+			<a href="<?= Url::to(['/language/phrase'])?>">
 				<span class="title"><i class="fa fa-globe"></i> <?= Translate::x_setting(Translate::translate());?></span>
 			</a>
 		</li>
 		<li class="">
 			<a href="#">
-				<span class="title"><i class="fa fa-envelope"></i> <?= Translate::x_setting(Translate::email());?></span>
+				<span class="title"><i class="fa fa-envelope"></i> <?= Translate::x_setting('Email');?></span>
 			</a>
 		</li>
 		<li class="">
