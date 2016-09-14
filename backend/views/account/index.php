@@ -1,5 +1,5 @@
 <?php
-use app\controllers\AccountController;
+use backend\controllers\AccountController;
 use common\models\User;
 use navatech\language\Translate;
 use navatech\role\helpers\RoleChecker;

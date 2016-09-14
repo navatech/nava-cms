@@ -19,6 +19,7 @@ use yii\web\View;
 $this->title                   = Translate::list_x(Translate::phrase());
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php Yii::$app->layout = 'setting'; ?>
 <div class="page-header">
 	<h1><?= Translate::phrase() ?>
 		<small><i class="ace-icon fa fa-angle-double-right"></i> <?= Translate::list_x(Translate::phrase()) ?></small>

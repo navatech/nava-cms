@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use navatech\language\Translate;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -47,8 +48,8 @@ class Menu extends Model
 	{
 		return [
 			'id' => 'ID',
-			'name' => 'Name',
-			'status' => 'Status',
+			'name' => Translate::name(),
+			'status' => Translate::status(),
 		];
 	}
 

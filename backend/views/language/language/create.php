@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = [
 ];
 $this->params['breadcrumbs'][] = Translate::create();
 ?>
+<?php Yii::$app->layout = 'setting'; ?>
 <div class="page-header">
 	<h1><?= Translate::language() ?>
 		<small>

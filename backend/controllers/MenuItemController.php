@@ -5,7 +5,6 @@ namespace backend\controllers;
 use Yii;
 use common\models\MenuItem;
 use common\models\search\MenuItemSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -85,7 +84,9 @@ class MenuItemController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+	        return $this->render('update', [
+		        'model' => $model,
+	        ]);
         } else {
             return $this->render('update', [
                 'model' => $model,

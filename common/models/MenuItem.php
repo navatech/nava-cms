@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use navatech\language\Translate;
 use Yii;
 
 /**
@@ -54,13 +55,13 @@ class MenuItem extends Model
     {
         return [
             'id' => 'ID',
-            'menu_id' => 'Menu ID',
+            'menu_id' => 'Menu',
             'icon' => 'Icon',
-            'parent_id' => 'Parent ID',
-            'level' => 'Level',
+            'parent_id' => Translate::menu_parent(),
+            'level' => Translate::level(),
             'url' => 'Url',
-            'sort_order' => 'Sort Order',
-            'status' => 'Status',
+            'sort_order' => Translate::sort_order(),
+            'status' => Translate::status(),
         ];
     }
 

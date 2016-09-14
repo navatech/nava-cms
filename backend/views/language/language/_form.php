@@ -13,6 +13,7 @@ use yii\widgets\ActiveForm;
 		'class' => 'language-form',
 	],
 ]); ?>
+<?php Yii::$app->layout = 'setting'; ?>
 <div class="project-form">
 	<div class="col-md-6 col-md-offset-3">
 
@@ -35,8 +36,6 @@ use yii\widgets\ActiveForm;
 			<i class="ace-icon fa fa-check bigger-110"></i>
 			<?= Translate::save() ?>
 		</button>
-
-		&nbsp; &nbsp; &nbsp;
 		<button class="btn btn-back" type="reset">
 			<i class="ace-icon fa fa-arrow-left bigger-110"></i>
 			<?= Translate::back() ?>

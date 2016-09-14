@@ -85,8 +85,8 @@ return [
 	        'theme' => [
 		        'pathMap' => [
 			        '@dektrium/user/views' => '@app/views/user',
-			        '@navatech/setting/src/views' => '@app/views/setting',
-			        //'@navatech/multi-language/src/views' => '@app/views/language',
+			        '@vendor/navatech/yii2-setting/src/views' => '@app/views/setting',
+			        '@vendor/navatech/yii2-multi-language/src/views' => '@app/views/language',
 		        ],
 	        ],
         ],

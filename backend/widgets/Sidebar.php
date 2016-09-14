@@ -19,7 +19,7 @@ class Sidebar extends Widget {
 	 * {@inheritDoc}
 	 */
 	public function run() {
-		$menu_items = MenuItem::find()->where(['menu_id' => 1])->orderBy(['sort_order' => SORT_ASC])->all();
+		$menu_items = MenuItem::find()->where(['menu_id' => 1, 'status'=>1])->orderBy(['sort_order' => SORT_ASC])->all();
 		return $this->render("sidebar",[
 			'menu_items'=>$menu_items
 		]);

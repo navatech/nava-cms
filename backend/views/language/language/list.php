@@ -19,6 +19,7 @@ use yii\web\View;
 /* @var $dataProvider ActiveDataProvider */
 $this->params['breadcrumbs'][] = Translate::languages();
 ?>
+<?php Yii::$app->layout = 'setting'; ?>
 <div class="page-header">
 	<h1><?= Translate::language() ?>
 		<small><i class="ace-icon fa fa-angle-double-right"></i> <?= Translate::list_x([Translate::language()]) ?>

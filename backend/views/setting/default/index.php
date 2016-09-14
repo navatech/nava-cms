@@ -15,15 +15,13 @@ AwesomeBootstrapCheckboxAsset::register($this);
 $this->title                   = $title;
 $this->params['breadcrumbs'][] = $this->title;
 $items                         = [];
-Yii::$app->layout = 'setting';
-if (Yii::$app->session->hasFlash('alert')) {
+Yii::$app->layout              = 'setting';
+if(Yii::$app->session->hasFlash('alert')) {
 	echo Alert::widget(Yii::$app->session->getFlash('alert'));
 }
-if (YII_DEBUG):
+if(YII_DEBUG):
 	?>
 
-<div class="content sm-gutter">
-	<div class="container-fluid padding-25 sm-padding-10">
 	<div class="col-sm-offset-9 col-sm-3">
 		<div class="form-inline pull-right">
 			<?= Html::a(Yii::t('setting', 'Setting'), ['config/index'], [
@@ -32,8 +30,6 @@ if (YII_DEBUG):
 			]) ?>
 		</div>
 	</div>
-		</div>
-</div>
 <?php endif; ?>
 <?= TabsX::widget([
 	'items'        => Setting::getItems($code),

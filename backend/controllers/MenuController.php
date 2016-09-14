@@ -6,7 +6,6 @@ use common\models\MenuItem;
 use Yii;
 use common\models\Menu;
 use common\models\search\MenuSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 

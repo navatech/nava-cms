@@ -20,7 +20,9 @@
         "yiisoft/yii2-swiftmailer": "*",
         "navatech/yii2-user-role": "@dev",
         "navatech/yii2-multi-language": "@dev",
-        "navatech/yii2-setting": "@dev"
+        "navatech/yii2-setting": "@dev",
+        "kartik-v/yii2-widget-switchinput": "^1.3",
+        "sjaakp/yii2-symbol-picker": "*"
     },
     "require-dev": {
         "codeception/base": "^2.2.3",
