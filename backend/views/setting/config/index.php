@@ -89,7 +89,7 @@ Yii::$app->layout              = 'setting';
 				],
 				'filterInputOptions'  => ['placeholder' => 'Type'],
 				'value'               => function (Setting $data) {
-					return Setting::TYPE[$data->type];
+					return '';//Setting::TYPE[$data->type];
 				},
 				'refreshGrid'         => true,
 				'editableOptions'     => [

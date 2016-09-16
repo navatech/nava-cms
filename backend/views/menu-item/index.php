@@ -1,4 +1,5 @@
 <?php
+use common\models\MenuItem;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -22,9 +23,21 @@ $this->params['breadcrumbs'][] = $this->title;
 		'filterModel'  => $searchModel,
 		'columns'      => [
 			['class' => 'yii\grid\SerialColumn'],
-			'id',
-			'menu_id',
-			'icon',
+			/*[
+				'attribute' => 'menu_id',
+				'value'     => function(MenuItem $data) {
+					return $data->menu_id != null ? $data->getCityByID($data->city_id) : '';
+				},
+				'filter'    => $searchModel->getCity(),
+			],*/
+			[
+				'attribute' => 'icon',
+				'value'     => function(MenuItem $data) {
+					return '<i class="fa fa-'.$data->icon.'"></i>';
+				},
+				'filter'    => false,
+				'format'    => 'html',
+			],
 			'parent_id',
 			'level',
 			'url:url',

@@ -14,6 +14,9 @@ return [
     'bootstrap' => ['log'],
     'language'   => 'en',
     'timezone'   => 'Asia/Ho_Chi_Minh',
+    'controllerMap' => [
+	    'email' => '\yarcode\email\commands\EmailCommand',
+    ],
     'modules' => [
 	    'user'     => [
 		    'class'    => 'dektrium\user\Module',
@@ -50,6 +53,9 @@ return [
 	    ],
 	    'roxymce'  => [
 		    'class' => '\navatech\roxymce\Module',
+	    ],
+	    'mailer'   => [
+		    'class' => '\yarcode\email\backend\Module',
 	    ],
     ],
     'components' => [
@@ -93,6 +99,15 @@ return [
         'urlManager' => [
 	        'enablePrettyUrl' => true,
 	        'showScriptName' => false,
+        ],
+        'emailManager' => [
+	        'class' => '\yarcode\email\EmailManager',
+	        'defaultTransport' => 'yiiMailer',
+	        'transports' => [
+		        'yiiMailer' => [
+			        'class' => '\yarcode\email\transports\YiiMailer',
+		        ],
+	        ],
         ],
 
     ],

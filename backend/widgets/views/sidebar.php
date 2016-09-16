@@ -9,7 +9,6 @@ use yii\helpers\Url;
 		<a href="<?= Yii::$app->request->BaseUrl;?>">
 			<img src="<?= Yii::$app->request->BaseUrl ;?>/img/logo_white.png" alt="logo" class="brand"  width="78" height="22">
 		</a>
-
 		<div class="sidebar-header-controls">
 			<button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
 			</button>

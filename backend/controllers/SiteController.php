@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\components\Controller;
 use navatech\setting\models\Setting;
 use navatech\setting\Module;
 use Yii;

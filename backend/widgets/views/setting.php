@@ -6,15 +6,20 @@ use yii\helpers\Url;
 ?>
 <!-- START SECONDARY SIDEBAR MENU-->
 <nav class="secondary-sidebar padding-30">
-	<p class="menu-title">Setting</p>
+	<p class="menu-title"><?= Translate::setting()?></p>
 	<ul class="main-menu">
 		<?php foreach($settings as $key => $setting):?>
-		<li class="<?= Setting::isActive('setting',$setting->name)?>">
-			<a href="<?= Url::to(['/setting/'.$setting->name])?>">
-				<span class="title"><i class="fa fa-info-circle"></i><?= $setting->name.' '.Translate::setting(); ?> </span>
+		<li class="<?= Setting::isActive('setting',$setting->code)?>">
+			<a href="<?= Url::to(['/setting/'.$setting->code])?>">
+				<span class="title"><i class="fa fa-cog"></i><?= $setting->name.' '.Translate::setting(); ?> </span>
 			</a>
 		</li>
 		<?php endforeach;?>
+		<li class="<?= Setting::isActive('email-template','setting')?>">
+			<a href="<?= Url::to(['/email-template/setting'])?>">
+				<span class="title"><i class="fa fa-envelope"></i> <?= Translate::x_setting('Email Template');?></span>
+			</a>
+		</li>
 		<li class="<?= Setting::isActive('menu','setting')?>">
 			<a href="<?= Url::to(['/menu/setting'])?>">
 				<span class="title"><i class="fa fa-fw fa-list-alt"></i> <?= Translate::x_setting('Menu');?></span>
@@ -28,16 +33,6 @@ use yii\helpers\Url;
 		<li class="<?= Setting::isActive('language','phrase')?>">
 			<a href="<?= Url::to(['/language/phrase'])?>">
 				<span class="title"><i class="fa fa-globe"></i> <?= Translate::x_setting(Translate::translate());?></span>
-			</a>
-		</li>
-		<li class="">
-			<a href="#">
-				<span class="title"><i class="fa fa-envelope"></i> <?= Translate::x_setting('Email');?></span>
-			</a>
-		</li>
-		<li class="">
-			<a href="#">
-				<span class="title"><i class="fa fa-envelope-o"></i> <?= Translate::x_setting(Translate::email_template());?></span>
 			</a>
 		</li>
 	</ul>

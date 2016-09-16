@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\components\Controller;
 use Yii;
 use common\models\MenuItem;
 use common\models\search\MenuItemSearch;

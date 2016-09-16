@@ -3,7 +3,6 @@
     "description": "Yii 2 Advanced Project Template",
     "keywords": ["yii2", "framework", "advanced", "project template"],
     "homepage": "http://www.yiiframework.com/",
-    "type": "project",
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/yiisoft/yii2/issues?state=open",
@@ -18,11 +17,14 @@
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
+        "navatech/yii2-roxymce" : "@dev",
         "navatech/yii2-user-role": "@dev",
         "navatech/yii2-multi-language": "@dev",
         "navatech/yii2-setting": "@dev",
         "kartik-v/yii2-widget-switchinput": "^1.3",
-        "sjaakp/yii2-symbol-picker": "*"
+        "sjaakp/yii2-symbol-picker": "*",
+        "yarcode/yii2-email-manager" : "0.2.0",
+        "yarcode/yii2-mailgun-mailer": "0.2.0"
     },
     "require-dev": {
         "codeception/base": "^2.2.3",

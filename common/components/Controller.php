@@ -7,7 +7,7 @@
  * @date    9/12/2016
  * @time    4:33 PM
  */
-namespace backend\controllers;
+namespace common\components;
 
 use common\models\User;
 use navatech\language\components\MultiLanguageController;

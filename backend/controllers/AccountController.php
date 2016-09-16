@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\components\Controller;
 use common\models\search\UserSearch;
 use navatech\language\Translate;
 use navatech\role\filters\RoleFilter;

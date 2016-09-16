@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\components\Controller;
 use common\models\MenuItem;
 use Yii;
 use common\models\Menu;
