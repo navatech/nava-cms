@@ -37,7 +37,7 @@ use yii\bootstrap\ActiveForm;
 												<?php
 												foreach($menu->menuItem as $menu_item):
 													?>
-													<li class="dd-item dd3-item" data-id="<?= $menu_item->id ?>" data-icon="<?= $menu_item->icon ?>" data-url="<?= $menu_item->url ?>" data-level="<?= $menu_item->level ?>" data-parent_id="<?= $menu_item->parent_id ?>" data-sort_order="<?= $menu_item->sort_order ?>" data-status="<?= $menu_item->status ?>">
+													<li class="dd-item dd3-item" data-id="<?= $menu_item->id ?>" data-icon="<?= $menu_item->icon ?>"  data-level="<?= $menu_item->level ?>" data-parent_id="<?= $menu_item->parent_id ?>" data-sort_order="<?= $menu_item->sort_order ?>" data-status="<?= $menu_item->status ?>">
 														<div class="dd-handle dd3-handle"></div>
 														<div class="dd3-content">
 															<div class="col-sm-3">
