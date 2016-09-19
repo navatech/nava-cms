@@ -5,4 +5,4 @@ IndexIgnore */*
 # follow symbolic links
 Options FollowSymlinks
 RewriteEngine on
-RewriteRule ^(.+)?$ frontend/web/$1
+RewriteRule ^(.+)?$ web/$1

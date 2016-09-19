@@ -7,6 +7,7 @@ $params = array_merge(
 );
 $baseUrl = str_replace('/web', '', (new \yii\web\Request)->getBaseUrl());
 
+
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
