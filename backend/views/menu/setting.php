@@ -18,65 +18,75 @@ use yii\helpers\Url;
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs nav-tabs-fillup" data-init-reponsive-tabs="dropdownfx">
 		<?php foreach($model as $key => $menu): ?>
-			<li class="<?= ($key == 0) ? 'active' : '' ?>">
-				<a data-toggle="tab" href="#menu-<?= $menu->id ?>"><span><?= $menu->name ?></span></a>
-			</li>
+			<?php if(!empty($menu->menuItem)): ?>
+				<li class="<?= ($key == 0) ? 'active' : '' ?>">
+					<a data-toggle="tab" href="#menu-<?= $menu->id ?>"><span><?= $menu->name ?></span></a>
+				</li>
+			<?php endif; ?>
 		<?php endforeach; ?>
 	</ul>
 	<div class="tab-content">
 		<?php foreach($model as $key => $menu): ?>
-			<div class="tab-pane slide-left <?= ($key == 0) ? 'active' : '' ?>" id="menu-<?= $menu->id ?>">
-				<div class="row column-seperation">
-					<div class="col-sm-12">
-						<div class="cf ">
-							<div class="row">
-								<div class="col-sm-12">
-									<input type="hidden" name="menujson" id="nestable2-output">
-									<div class="dd" id="nestable">
-									</div>
-									<div class="dd" id="nestable2">
-										<ol class="dd-list">
-											<?php
-											foreach($menu->menuItem as $menu_item):
-												?>
-												<li class="dd-item dd3-item" data-id="<?= $menu_item->id ?>" data-icon="<?= $menu_item->icon ?>" data-status="<?= $menu_item->status ?>">
-													<div class="dd-handle dd3-handle"></div>
-													<div class="dd3-content">
-														<div class="col-sm-3">
-															<div class="btn-group">
-																<button type="button" class="btn btn-primary iconpicker-component">
-																	<i class=" fa fa-<?= $menu_item->icon ?>"></i></button>
-																<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown">
-																	<span class="caret"></span>
-																	<span class="sr-only">Toggle Dropdown</span>
-																</button>
-																<div class="dropdown-menu"></div>
+			<?php if(!empty($menu->menuItem)): ?>
+				<div class="tab-pane slide-left <?= ($key == 0) ? 'active' : '' ?>" id="menu-<?= $menu->id ?>">
+					<div class="row column-seperation">
+						<div class="col-sm-12">
+							<div class="cf ">
+								<div class="row">
+									<div class="col-sm-12">
+										<input type="hidden" name="menujson" id="nestable2-output">
+										<div class="dd" id="nestable">
+										</div>
+										<div class="dd" id="nestable2">
+											<form class="menuitem-form">
+												<ol class="dd-list">
+													<?php
+													foreach($menu->menuItem as $menu_item):
+													?>
+														<li class="dd-item dd3-item" data-id="<?= $menu_item->id ?>" data-icon="<?= $menu_item->icon ?>" data-status="<?= $menu_item->status ?>">
+															<div class="dd-handle dd3-handle"></div>
+															<div class="dd3-content">
+																<div class="col-sm-3">
+																	<div class="btn-group">
+																		<button type="button" class="btn btn-primary iconpicker-component">
+																			<i class=" fa fa-<?= $menu_item->icon ?>"></i>
+																		</button>
+																		<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown">
+																			<span class="caret"></span>
+																			<span class="sr-only">Toggle Dropdown</span>
+																		</button>
+																		<div class="dropdown-menu"></div>
+																	</div>
+																</div>
+																<div class="col-sm-6">
+																	<?= $menu_item->name ?>
+																</div>
+																<input type="hidden" value="<?= $menu_item->id;?>" name="MenuItem[<?= $menu_item->id?>][id]">
+																<input type="hidden" value="<?= $menu_item->parent_id;?>" name="MenuItem[<?= $menu_item->id?>][parent_id]">
+																<input type="hidden" class="icon-menu" value="<?= $menu_item->icon;?>" name="MenuItem[<?= $menu_item->id?>][icon]">
+																<div class="col-sm-3">
+																	<?= SwitchInput::widget([
+																		'name'  => 'MenuItem['.$menu_item->id.'][status]',
+																		'value' => true,
+																	]); ?>
+																</div>
 															</div>
-														</div>
-														<div class="col-sm-6">
-															<?= $menu_item->name ?>
-														</div>
-														<div class="col-sm-3">
-															<?= SwitchInput::widget([
-																'name'  => 'status',
-																'value' => true,
-															]); ?>
-														</div>
-													</div>
-												</li>
-											<?php endforeach; ?>
-										</ol>
+														</li>
+													<?php endforeach; ?>
+												</ol>
+											</form>
+										</div>
 									</div>
-								</div>
 
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-success btn-save"><?= Translate::save();?></button>
+							<div class="form-group">
+								<button type="submit" class="btn btn-success btn-save"><?= Translate::save(); ?></button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
 	<script>
@@ -117,7 +127,6 @@ use yii\helpers\Url;
 		});
 
 		updateOutput($('#nestable2').data('output', $('#nestable2-output')));
-
 		$('.icp-dd').each(function() {
 			var $this = $(this);
 			$('.icp-dd').iconpicker({
@@ -127,17 +136,20 @@ use yii\helpers\Url;
 
 		$('.icp').on('iconpickerSelected', function(e) {
 			$(this).parent().find('.iconpicker-component').html($('.iconpicker-selected').html());
+			$(this).closest('.dd-item').attr('data-icon', e.iconpickerValue);
 			$('#menuitem-icon').val(e.iconpickerValue);
+			$(this).closest('.dd-item').find('.icon-menu').val(e.iconpickerValue);
+			updateOutput($('#nestable2').data('output', $('#nestable2-output')));
 		});
 
-		$(document).on('click','.btn-save',function() {
+		$(document).on('click', '.btn-save', function() {
 			$.ajax({
-				type: 'POST',
+				type   : 'POST',
 				cache  : false,
-				url: '<?= Url::to(['/menu/setting'])?>',
-				data: "menujson = "+$('.menujson').text(),
+				url    : '<?= Url::to(['/menu/setting'])?>',
+				data   : $('.menuitem-form').serializeArray(),
 				success: function(response) {
-					console.log(response);
+					location.reload();
 				}
 			});
 			return false;

@@ -48,9 +48,24 @@ class MenuController extends Controller
 	public function actionSetting()
 	{
 		$model = Menu::findAll(['status'=>1]);
-		return $this->render('setting', [
-			'model'=>$model,
-		]);
+
+		if(isset($_POST["MenuItem"])){
+			foreach($_POST["MenuItem"] as $menuitem){
+				$item = MenuItem::findOne($menuitem['id']);
+				$item->icon = $menuitem['icon'];
+				$item->parent_id = $menuitem['parent_id'];
+				$item->status = $menuitem['status'];
+				$item->save();
+
+			}
+			Yii::$app->end();
+		}else{
+			return $this->render('setting', [
+				'model'=>$model,
+			]);
+		}
+
+
 	}
 
     /**
