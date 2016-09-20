@@ -41,7 +41,7 @@ class User extends \navatech\role\models\User {
 
 	public function getAllRole($id = null) {
 		if ($id == null) {
-			$role = Role::find()->where('id != 2')->andWhere('id!=3')->all();
+			$role = Role::find()->all();
 			$name = ArrayHelper::map($role, 'id', 'name');
 			return $name;
 		} else {

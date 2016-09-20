@@ -17,7 +17,7 @@ use yii\helpers\Html;
 
 	<?= $form->field($model, 'email', ['labelOptions' => ['class' => 'control-label col-sm-3']])->textInput(['maxlength' => true]) ?>
 
-		<?= $form->field($model, 'role_id', ['labelOptions' => ['class' => 'control-label col-sm-3']])->dropDownList($model->getAllRole($id = null)) ?>
+		<?= $form->field($model, 'role_id', ['labelOptions' => ['class' => 'control-label col-sm-3']])->dropDownList($model->getAllRole(null)) ?>
 
 	<div class="form-group  col-sm-4">
 		<?= Html::submitButton($model->isNewRecord ? Translate::create() : Translate::update(), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -1,5 +1,6 @@
 <?php
 use kartik\widgets\Select2;
+use navatech\language\Translate;
 use navatech\setting\models\Setting;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -69,7 +70,7 @@ Example:
 		'value' => $model->isNewRecord ? 1 : $model->sort_order,
 	]) ?>
 	<div class="form-group">
-		<?= Html::submitButton($model->isNewRecord ? Yii::t('setting', 'Create') : Yii::t('setting', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		<?= Html::submitButton($model->isNewRecord ? Translate::create() : Translate::update(), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 	</div>
 	<?php ActiveForm::end(); ?>
 </div>

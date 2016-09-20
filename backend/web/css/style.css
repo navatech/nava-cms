@@ -67,3 +67,9 @@
     height: 50px;
     width: 40px;
 }
+.icon-thumbnail {
+    float: left;
+}
+body.menu-pin .page-sidebar .menu-items .icon-thumbnail {
+    transform: translate3d(5px, 0px, 0);
+}
