@@ -77,6 +77,7 @@ class AppAsset extends AssetBundle {
 	    //'plugins/bootstrap-timepicker/bootstrap-timepicker.min.js',
 		'pages/js/pages.min.js',
 	    //'js/form_elements.js',
+		'js/demo.js',
 	    'js/scripts.js',
 	];
 

@@ -38,7 +38,7 @@ use yii\helpers\Url;
 										<div class="dd" id="nestable">
 										</div>
 										<div class="dd" id="nestable2">
-											<form class="menuitem-form">
+											<?php $form = ActiveForm::begin(['class'=>'menuitem-form'])?>
 												<ol class="dd-list">
 													<?php
 													foreach($menu->menuItem as $menu_item):
@@ -61,20 +61,17 @@ use yii\helpers\Url;
 																<div class="col-sm-6">
 																	<?= $menu_item->name ?>
 																</div>
-																<input type="hidden" value="<?= $menu_item->id;?>" name="MenuItem[<?= $menu_item->id?>][id]">
-																<input type="hidden" value="<?= $menu_item->parent_id;?>" name="MenuItem[<?= $menu_item->id?>][parent_id]">
-																<input type="hidden" class="icon-menu" value="<?= $menu_item->icon;?>" name="MenuItem[<?= $menu_item->id?>][icon]">
+																<?= $form->field($menu_item, 'id')->hiddenInput()->label(false);?>
+																<?= $form->field($menu_item, 'parent_id')->hiddenInput()->label(false);?>
+																<?= $form->field($menu_item, 'icon')->hiddenInput(['class'=>'icon-menu'])->label(false);?>
 																<div class="col-sm-3">
-																	<?= SwitchInput::widget([
-																		'name'  => 'MenuItem['.$menu_item->id.'][status]',
-																		'value' => true,
-																	]); ?>
+																	<?= $form->field($menu_item, 'status')->widget(SwitchInput::classname(), [])->label(false);?>
 																</div>
 															</div>
 														</li>
 													<?php endforeach; ?>
 												</ol>
-											</form>
+											<?php ActiveForm::end(); ?>
 										</div>
 									</div>
 
@@ -149,7 +146,8 @@ use yii\helpers\Url;
 				url    : '<?= Url::to(['/menu/setting'])?>',
 				data   : $('.menuitem-form').serializeArray(),
 				success: function(response) {
-					location.reload();
+					//location.reload();
+					//console.log(response);
 				}
 			});
 			return false;

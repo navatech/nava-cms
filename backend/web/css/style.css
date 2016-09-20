@@ -73,3 +73,6 @@
 body.menu-pin .page-sidebar .menu-items .icon-thumbnail {
     transform: translate3d(5px, 0px, 0);
 }
+.tabs-above.tab-align-left.tab-bordered.tabs-krajee {
+    padding-left: 20px;
+}

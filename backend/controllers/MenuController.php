@@ -54,7 +54,7 @@ class MenuController extends Controller
 				$item = MenuItem::findOne($menuitem['id']);
 				$item->icon = $menuitem['icon'];
 				$item->parent_id = $menuitem['parent_id'];
-				$item->status = $menuitem['status'];
+				$item->status = (isset($menuitem['status']))?$menuitem['status']:$item->status;
 				$item->save();
 
 			}
