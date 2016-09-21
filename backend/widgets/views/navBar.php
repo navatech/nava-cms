@@ -56,7 +56,7 @@ use yii\helpers\Url;
 					<li><a href="#"><i class="pg-signals"></i> Help</a>
 					</li>-->
 					<li class="bg-master-lighter">
-						<a href="<?= Url::to(['/user/logout']) ?>" class="clearfix">
+						<a href="<?= Url::to(['/user/logout']) ?>" class="clearfix" data-method='post'>
 							<span class="pull-left"><?= Translate::logout()?></span>
 							<span class="pull-right"><i class="pg-power"></i></span>
 						</a>

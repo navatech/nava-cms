@@ -38,7 +38,7 @@ use yii\helpers\Url;
 										<div class="dd" id="nestable">
 										</div>
 										<div class="dd" id="nestable2">
-											<?php $form = ActiveForm::begin(['class'=>'menuitem-form'])?>
+											<form class="menuitem-form">
 												<ol class="dd-list">
 													<?php
 													foreach($menu->menuItem as $menu_item):
@@ -55,23 +55,30 @@ use yii\helpers\Url;
 																			<span class="caret"></span>
 																			<span class="sr-only">Toggle Dropdown</span>
 																		</button>
-																		<div class="dropdown-menu"></div>
+																		<div class="dropdown-menu iconpicker-container"></div>
 																	</div>
 																</div>
 																<div class="col-sm-6">
 																	<?= $menu_item->name ?>
 																</div>
-																<?= $form->field($menu_item, 'id')->hiddenInput()->label(false);?>
-																<?= $form->field($menu_item, 'parent_id')->hiddenInput()->label(false);?>
-																<?= $form->field($menu_item, 'icon')->hiddenInput(['class'=>'icon-menu'])->label(false);?>
 																<div class="col-sm-3">
-																	<?= $form->field($menu_item, 'status')->widget(SwitchInput::classname(), [])->label(false);?>
+																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][id]" value="<?=$menu_item->id?>">
+																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][parent_id]" value="<?=$menu_item->parent_id?>">
+																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][icon]" value="<?=$menu_item->icon?>" class="icon-menu">
+																	<?=  SwitchInput::widget([
+																		'name'=>'MenuItem['.$menu_item->id.'][status]',
+																		'inlineLabel' => false,
+																		'options'=>[
+																			'class'=>'menu-status',
+																		],
+																		'value'=>$menu_item->status,
+																	]);?>
 																</div>
 															</div>
 														</li>
 													<?php endforeach; ?>
 												</ol>
-											<?php ActiveForm::end(); ?>
+											</form>
 										</div>
 									</div>
 
@@ -115,6 +122,7 @@ use yii\helpers\Url;
 					this.dragRootEl.trigger('change');
 				}
 				this.reset();
+
 			},
 		})
 			.on('change', updateOutput).on('_mouseStop', function(event, noPropagation) {
@@ -124,10 +132,11 @@ use yii\helpers\Url;
 		});
 
 		updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
 		$('.icp-dd').each(function() {
 			var $this = $(this);
 			$('.icp-dd').iconpicker({
-				container: $(' ~ .dropdown-menu:first', $this)
+				container: $this.next()
 			});
 		});
 
@@ -146,11 +155,19 @@ use yii\helpers\Url;
 				url    : '<?= Url::to(['/menu/setting'])?>',
 				data   : $('.menuitem-form').serializeArray(),
 				success: function(response) {
-					//location.reload();
-					//console.log(response);
+					location.reload();
 				}
 			});
 			return false;
+		});
+
+		$('.menu-status').on('switchChange.bootstrapSwitch', function(event, state) {
+			if(state == true){
+				status = 1;
+			}else{
+				status = 0
+			}
+			$(this).val(status);
 		});
 
 	</script>

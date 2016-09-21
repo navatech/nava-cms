@@ -57,7 +57,7 @@ class Menu extends Model
 	 * @return \yii\db\ActiveQuery
 	 */
 	public function getMenuItem() {
-		return $this->hasMany(MenuItem::className(), ['menu_id' => 'id']);
+		return $this->hasMany(MenuItem::className(), ['menu_id' => 'id'])->orderBy(['sort_order' => SORT_ASC]);
 	}
 
 	public function getAllmenu(){

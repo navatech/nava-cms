@@ -50,11 +50,14 @@ class MenuController extends Controller
 		$model = Menu::findAll(['status'=>1]);
 
 		if(isset($_POST["MenuItem"])){
+			$i = 0;
 			foreach($_POST["MenuItem"] as $menuitem){
+				$i++;
 				$item = MenuItem::findOne($menuitem['id']);
 				$item->icon = $menuitem['icon'];
 				$item->parent_id = $menuitem['parent_id'];
-				$item->status = (isset($menuitem['status']))?$menuitem['status']:$item->status;
+				$item->sort_order = $i;
+				$item->status = (isset($menuitem['status']))?$menuitem['status']:0;
 				$item->save();
 
 			}
@@ -64,8 +67,6 @@ class MenuController extends Controller
 				'model'=>$model,
 			]);
 		}
-
-
 	}
 
     /**
