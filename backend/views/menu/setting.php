@@ -42,16 +42,16 @@ use yii\helpers\Url;
 												<ol class="dd-list">
 													<?php
 													foreach($menu->menuItem as $menu_item):
-													?>
+														?>
 														<li class="dd-item dd3-item" data-id="<?= $menu_item->id ?>" data-icon="<?= $menu_item->icon ?>" data-status="<?= $menu_item->status ?>">
 															<div class="dd-handle dd3-handle"></div>
 															<div class="dd3-content">
 																<div class="col-sm-3">
 																	<div class="btn-group">
 																		<button type="button" class="btn btn-primary iconpicker-component">
-																			<i class=" fa fa-<?= $menu_item->icon ?>"></i>
+																			<i class=" fa <?= $menu_item->icon ?>"></i>
 																		</button>
-																		<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown">
+																		<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="<?= $menu_item->icon ?>" data-toggle="dropdown">
 																			<span class="caret"></span>
 																			<span class="sr-only">Toggle Dropdown</span>
 																		</button>
@@ -62,17 +62,17 @@ use yii\helpers\Url;
 																	<?= $menu_item->name ?>
 																</div>
 																<div class="col-sm-3">
-																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][id]" value="<?=$menu_item->id?>">
-																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][parent_id]" value="<?=$menu_item->parent_id?>">
-																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][icon]" value="<?=$menu_item->icon?>" class="icon-menu">
-																	<?=  SwitchInput::widget([
-																		'name'=>'MenuItem['.$menu_item->id.'][status]',
+																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][id]" value="<?= $menu_item->id ?>">
+																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][parent_id]" value="<?= $menu_item->parent_id ?>">
+																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][icon]" value="<?= $menu_item->icon ?>" class="icon-menu">
+																	<?= SwitchInput::widget([
+																		'name'        => 'MenuItem[' . $menu_item->id . '][status]',
 																		'inlineLabel' => false,
-																		'options'=>[
-																			'class'=>'menu-status',
+																		'options'     => [
+																			'class' => 'menu-status',
 																		],
-																		'value'=>$menu_item->status,
-																	]);?>
+																		'value'       => $menu_item->status,
+																	]); ?>
 																</div>
 															</div>
 														</li>
@@ -133,10 +133,17 @@ use yii\helpers\Url;
 
 		updateOutput($('#nestable2').data('output', $('#nestable2-output')));
 
-		$('.icp-dd').each(function() {
+		$('.icp-dd').iconpicker({});
+		$('.icp').on('iconpickerSelected', function(e) {
+			$('.lead .picker-target').get(0).className = 'picker-target fa-3x ' +
+				e.iconpickerInstance.options.iconBaseClass + ' ' +
+				//e.iconpickerInstance.options.fullClassFormatter(e.iconpickerValue);
+				$(this).closest('.dd-item').find('.icon-menu').val(e.iconpickerValue);
+		});
+		/*$('.icp-dd').each(function() {
 			var $this = $(this);
 			$('.icp-dd').iconpicker({
-				container: $this.next()
+				container: $(' ~ .dropdown-menu:first', $this)
 			});
 		});
 
@@ -146,7 +153,7 @@ use yii\helpers\Url;
 			$('#menuitem-icon').val(e.iconpickerValue);
 			$(this).closest('.dd-item').find('.icon-menu').val(e.iconpickerValue);
 			updateOutput($('#nestable2').data('output', $('#nestable2-output')));
-		});
+		});*/
 
 		$(document).on('click', '.btn-save', function() {
 			$.ajax({
@@ -162,9 +169,9 @@ use yii\helpers\Url;
 		});
 
 		$('.menu-status').on('switchChange.bootstrapSwitch', function(event, state) {
-			if(state == true){
+			if(state == true) {
 				status = 1;
-			}else{
+			} else {
 				status = 0
 			}
 			$(this).val(status);

@@ -25,7 +25,7 @@ use yii\helpers\Url;
 						<span class="title"><?= $menu_item->name?></span>
 						<!--<span class="details">12 New Updates</span>-->
 					</a>
-					<span class=" <?= Sidebar::isActive(substr($menu_item->url,0,strpos($menu_item->url, '/')),str_replace('/','',substr($menu_item->url,strpos($menu_item->url, '/'))),null,'bg-success') ?> icon-thumbnail"><i class="<?= 'fa fa-'.$menu_item->icon?>"></i></span>
+					<span class=" <?= Sidebar::isActive(substr($menu_item->url,0,strpos($menu_item->url, '/')),str_replace('/','',substr($menu_item->url,strpos($menu_item->url, '/'))),null,'bg-success') ?> icon-thumbnail"><i class="<?= 'fa '.$menu_item->icon?>"></i></span>
 				</li>
 			<?php endforeach;?>
 		</ul>
