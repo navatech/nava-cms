@@ -7,6 +7,7 @@
  * @date    9/7/2016
  * @time    5:03 PM
  */
+use common\models\MenuItem;
 use kartik\widgets\SwitchInput;
 use navatech\language\Translate;
 use yii\bootstrap\ActiveForm;
@@ -34,58 +35,19 @@ use yii\helpers\Url;
 							<div class="cf ">
 								<div class="row">
 									<div class="col-sm-12">
-										<input type="hidden" name="menujson" id="nestable2-output">
-										<div class="dd" id="nestable">
-										</div>
 										<div class="dd" id="nestable2">
-											<form class="menuitem-form">
+											<form class="menuitem-form" action="<?= Url::to(['/menu/setting'])?>" method="post">
 												<ol class="dd-list">
-													<?php
-													foreach($menu->menuItem as $menu_item):
-														?>
-														<li class="dd-item dd3-item" data-id="<?= $menu_item->id ?>" data-icon="<?= $menu_item->icon ?>" data-status="<?= $menu_item->status ?>">
-															<div class="dd-handle dd3-handle"></div>
-															<div class="dd3-content">
-																<div class="col-sm-3">
-																	<div class="btn-group">
-																		<button type="button" class="btn btn-primary iconpicker-component">
-																			<i class=" fa <?= $menu_item->icon ?>"></i>
-																		</button>
-																		<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="<?= $menu_item->icon ?>" data-toggle="dropdown">
-																			<span class="caret"></span>
-																			<span class="sr-only">Toggle Dropdown</span>
-																		</button>
-																		<div class="dropdown-menu iconpicker-container"></div>
-																	</div>
-																</div>
-																<div class="col-sm-6">
-																	<?= $menu_item->name ?>
-																</div>
-																<div class="col-sm-3">
-																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][id]" value="<?= $menu_item->id ?>">
-																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][parent_id]" value="<?= $menu_item->parent_id ?>">
-																	<input type="hidden" name="MenuItem[<?= $menu_item->id ?>][icon]" value="<?= $menu_item->icon ?>" class="icon-menu">
-																	<?= SwitchInput::widget([
-																		'name'        => 'MenuItem[' . $menu_item->id . '][status]',
-																		'inlineLabel' => false,
-																		'options'     => [
-																			'class' => 'menu-status',
-																		],
-																		'value'       => $menu_item->status,
-																	]); ?>
-																</div>
-															</div>
-														</li>
-													<?php endforeach; ?>
+													<?= MenuItem::getMenuItem($menu->id);?>
 												</ol>
+												<div class="form-group">
+													<button type="submit" class="btn btn-success btn-save"><?= Translate::save(); ?></button>
+												</div>
 											</form>
 										</div>
 									</div>
 
 								</div>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-success btn-save"><?= Translate::save(); ?></button>
 							</div>
 						</div>
 					</div>
@@ -94,66 +56,32 @@ use yii\helpers\Url;
 		<?php endforeach; ?>
 	</div>
 	<script>
-		var updateOutput = function(e) {
-			var list   = e.length ? e : $(e.target),
-			    output = list.data('output');
-			if(window.JSON) {
-				output.html(window.JSON.stringify(list.nestable('serialize')));
-			} else {
-				output.html('JSON browser support required for this demo.');
-			}
-		};
 		$('#nestable2').nestable({
+			maxDepth : 3,
 			group   : 1,
-			dragStop: function(e) {
-				var list = this;
-				var el   = this.dragEl.children(this.options.itemNodeName).first();
-				el[0].parentNode.removeChild(el[0]);
-				this.placeEl.replaceWith(el);
-				this.dragEl.remove();
-				var $parents = $(el[0]).parents('.' + list.options.itemClass);
-				var $parent  = null;
-				if($parents.length > 0) {
-					$parent = $parents[0];
-				}
-				list.options.onDragFinished(el[0], $parent);
-				this.el.trigger('change');
-				if(this.hasNewRoot) {
-					this.dragRootEl.trigger('change');
-				}
-				this.reset();
-
-			},
-		})
-			.on('change', updateOutput).on('_mouseStop', function(event, noPropagation) {
-			$.ui.sortable.prototype._mouseStop.apply(this, arguments);
-			var ret = this.serialize({startDepthCount: 0});
-			console.log(ret);
 		});
 
-		updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+		$('#nestable2').on('change', function(e) {
+			$( ".dd-item.dd3-item" ).each(function( index ) {
+				var parent_id = 0;
+				if(($(this).closest('ol')).parent().attr('data-id') != ''){
+					parent_id = ($(this).closest('ol')).parent().attr('data-id');
+				}
 
-		$('.icp-dd').iconpicker({});
+				$(this).find('.parent-menu').val(parent_id);
+			});
+
+		});
+
+		$('.icp-dd').iconpicker({
+			searchInFooter: true,
+		});
 		$('.icp').on('iconpickerSelected', function(e) {
 			$('.lead .picker-target').get(0).className = 'picker-target fa-3x ' +
 				e.iconpickerInstance.options.iconBaseClass + ' ' +
 				//e.iconpickerInstance.options.fullClassFormatter(e.iconpickerValue);
 				$(this).closest('.dd-item').find('.icon-menu').val(e.iconpickerValue);
 		});
-		/*$('.icp-dd').each(function() {
-			var $this = $(this);
-			$('.icp-dd').iconpicker({
-				container: $(' ~ .dropdown-menu:first', $this)
-			});
-		});
-
-		$('.icp').on('iconpickerSelected', function(e) {
-			$(this).parent().find('.iconpicker-component').html($('.iconpicker-selected').html());
-			$(this).closest('.dd-item').attr('data-icon', e.iconpickerValue);
-			$('#menuitem-icon').val(e.iconpickerValue);
-			$(this).closest('.dd-item').find('.icon-menu').val(e.iconpickerValue);
-			updateOutput($('#nestable2').data('output', $('#nestable2-output')));
-		});*/
 
 		$(document).on('click', '.btn-save', function() {
 			$.ajax({

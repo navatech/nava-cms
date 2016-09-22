@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use kartik\widgets\SwitchInput;
 use navatech\language\Translate;
 use Yii;
 
@@ -94,6 +95,80 @@ class MenuItem extends Model
 			$response[$menuitem->id] = $menuitem->name;
 		}
 		return $response;
+	}
+
+	public static function getMenuItem($menu_id) {
+		$menuitems     = MenuItem::find()->where([
+			'parent_id' => 0,
+			'menu_id' => $menu_id
+		])->all();
+		$response = [];
+		$html = '';
+		foreach ($menuitems as $menuitem) {
+			$response[]         = $menuitem;
+			$html.='<li class="dd-item dd3-item" data-id="'.$menuitem->id.'">';
+			$html.='<div class="dd-handle dd3-handle"></div><div class="dd3-content"><div class="col-sm-3"><div class="btn-group">';
+			$html.='<button type="button" class="btn btn-primary iconpicker-component"><i class="fa'.$menuitem->icon.'"></i></button>';
+			$html.='<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="'.$menuitem->icon .'" data-toggle="dropdown">';
+			$html.='<span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button><div class="dropdown-menu iconpicker-container"></div>';
+			$html.='</div></div><div class="col-sm-6">'.$menuitem->name.'</div><div class="col-sm-3">';
+			$html.='<input type="hidden" name="MenuItem['.$menuitem->id.'][id]" value="'.$menuitem->id .'">';
+			$html.='<input type="hidden" name="MenuItem['.$menuitem->id .'][parent_id]" value="'. $menuitem->parent_id .'" class="parent-menu">';
+			$html.='<input type="hidden" name="MenuItem['.$menuitem->id .'][icon]" value="'. $menuitem->icon .'" class="icon-menu">';
+			$html.= SwitchInput::widget([
+				'name'        => 'MenuItem[' . $menuitem->id . '][status]',
+				'inlineLabel' => false,
+				'options'     => [
+					'class' => 'menu-status',
+				],
+				'value'       => $menuitem->status,
+			]);
+			$html.='</div></div>';
+			$children           = $menuitem->find()->where([
+				'parent_id' => $menuitem->id,
+				'menu_id' => $menu_id
+			])->all();
+			if ($children) {
+				$html.= self::getChildrenMenu($children, $response, 1, $menuitem->menu_id);
+			}
+			$html.='</li>';
+
+		}
+		return $html;
+	}
+
+	public function getChildrenMenu($models, $response, $level, $menu_id) {
+		$html = '<ol class="dd-list">';
+		foreach ($models as $menuitem) {
+			$html.='<li class="dd-item dd3-item" data-id="'.$menuitem->id.'">';
+			$html.='<div class="dd-handle dd3-handle"></div><div class="dd3-content"><div class="col-sm-3"><div class="btn-group">';
+			$html.='<button type="button" class="btn btn-primary iconpicker-component"><i class="fa'.$menuitem->icon.'"></i></button>';
+			$html.='<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="'.$menuitem->icon .'" data-toggle="dropdown">';
+			$html.='<span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button><div class="dropdown-menu iconpicker-container"></div>';
+			$html.='</div></div><div class="col-sm-6">'.$menuitem->name.'</div><div class="col-sm-3">';
+			$html.='<input type="hidden" name="MenuItem['.$menuitem->id.'][id]" value="'.$menuitem->id .'">';
+			$html.='<input type="hidden" name="MenuItem['.$menuitem->id .'][parent_id]" value="'. $menuitem->parent_id .'" class="parent-menu">';
+			$html.='<input type="hidden" name="MenuItem['.$menuitem->id .'][icon]" value="'. $menuitem->icon .'" class="icon-menu">';
+			$html.= SwitchInput::widget([
+				'name'        => 'MenuItem[' . $menuitem->id . '][status]',
+				'inlineLabel' => false,
+				'options'     => [
+					'class' => 'menu-status',
+				],
+				'value'       => $menuitem->status,
+			]);
+			$html.='</div></div>';
+			$children             = $menuitem->find()->where([
+				'parent_id' => $menuitem->id,
+				'menu_id' => $menu_id
+			])->all();
+			if ($children) {
+				$response['children'] = self::getChildrenMenu($children, $response, $level + 1,$menu_id);
+			}
+			$html.='</li></ol>';
+
+		}
+		return $html;
 	}
 
 
