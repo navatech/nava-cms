@@ -82,3 +82,6 @@ body.menu-pin .page-sidebar .menu-items .icon-thumbnail {
 .tabs-above.tab-align-left.tab-bordered.tabs-krajee {
     padding-left: 20px;
 }
+li.active .icon-thumbnail{
+    background-color: #10cfbd;
+}

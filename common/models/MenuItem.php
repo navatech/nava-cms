@@ -12,6 +12,7 @@ use Yii;
  * @property integer $id
  * @property integer $menu_id
  * @property string $icon
+ * @property string name
  * @property string $parent_id
  * @property integer $level
  * @property string $url

@@ -1,40 +1,38 @@
 <?php
-use backend\widgets\Setting;
+/**
+ * @var array $settingItems
+ */
 use navatech\language\Translate;
-use yii\helpers\Url;
+use yii\widgets\Menu;
 
 ?>
-<!-- START SECONDARY SIDEBAR MENU-->
 <nav class="secondary-sidebar padding-30">
-	<p class="menu-title"><?= Translate::setting()?></p>
-	<ul class="main-menu">
-		<?php foreach($settings as $key => $setting):?>
-		<li class="<?= Setting::isActive('setting',$setting->code)?>">
-			<a href="<?= Url::to(['/setting/'.$setting->code])?>">
-				<span class="title"><i class="fa fa-cog"></i><?= $setting->name.' '.Translate::setting(); ?> </span>
-			</a>
-		</li>
-		<?php endforeach;?>
-		<li class="<?= Setting::isActive('email-template','setting')?>">
-			<a href="<?= Url::to(['/email-template/setting'])?>">
-				<span class="title"><i class="fa fa-envelope"></i> <?= Translate::x_setting('Email Template');?></span>
-			</a>
-		</li>
-		<li class="<?= Setting::isActive('menu','setting')?>">
-			<a href="<?= Url::to(['/menu/setting'])?>">
-				<span class="title"><i class="fa fa-fw fa-list-alt"></i> <?= Translate::x_setting('Menu');?></span>
-			</a>
-		</li>
-		<li class="<?= Setting::isActive('language','index')?>">
-			<a href="<?= Url::to(['/language/index'])?>">
-				<span class="title"><i class="fa fa-language"></i> <?= Translate::x_setting(Translate::language());?></span>
-			</a>
-		</li>
-		<li class="<?= Setting::isActive('language','phrase')?>">
-			<a href="<?= Url::to(['/language/phrase'])?>">
-				<span class="title"><i class="fa fa-globe"></i> <?= Translate::x_setting(Translate::translate());?></span>
-			</a>
-		</li>
-	</ul>
+	<p class="menu-title"><?= Translate::setting() ?></p>
+	<?= Menu::widget([
+		'options' => [
+			'class' => 'main-menu',
+		],
+		'items'   => \yii\helpers\ArrayHelper::merge($settingItems, [
+			[
+				'label'  => '<i class="fa fa-envelope"></i> ' . Translate::x_setting('Email Template'),
+				'url'    => ['/email-template/setting'],
+				'encode' => false,
+			],
+			[
+				'label'  => '<i class="fa fa-fw fa-list-alt"></i> ' . Translate::x_setting('Menu'),
+				'url'    => ['/menu/setting'],
+				'encode' => false,
+			],
+			[
+				'label'  => '<i class="fa fa-language"></i> ' . Translate::x_setting(Translate::language()),
+				'url'    => ['/language/index/list'],
+				'encode' => false,
+			],
+			[
+				'label'  => '<i class="fa fa-globe"></i> ' . Translate::x_setting(Translate::translate()),
+				'url'    => ['/language/phrase/index'],
+				'encode' => false,
+			],
+		]),
+	]) ?>
 </nav>
-<!-- END SECONDARY SIDEBAR MENU -->

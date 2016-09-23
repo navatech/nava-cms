@@ -10,7 +10,8 @@
 namespace backend\widgets;
 
 use common\widgets\Widget;
-use navatech\setting\models\Setting as Settingm;
+use navatech\language\Translate;
+use navatech\setting\models\Setting as SettingModel;
 
 class Setting extends Widget {
 
@@ -18,7 +19,18 @@ class Setting extends Widget {
 	 * {@inheritDoc}
 	 */
 	public function run() {
-		$settings = Settingm::findAll(['parent_id' => 0]);
-		return $this->render("setting", ['settings'=>$settings]);
+		$settings     = SettingModel::findAll([
+			'parent_id' => 0,
+			'type'      => SettingModel::TYPE_ACTION,
+		]);
+		$settingItems = [];
+		foreach ($settings as $setting) {
+			$settingItems[] = [
+				'label'  => '<i class="fa fa-cog"></i> ' . $setting->name . ' ' . Translate::setting(),
+				'url'    => ['/setting/default/' . $setting->code],
+				'encode' => false,
+			];
+		}
+		return $this->render("setting", ['settingItems' => $settingItems]);
 	}
 }
