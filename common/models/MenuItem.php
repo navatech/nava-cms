@@ -124,12 +124,12 @@ class MenuItem extends Model
 				'value'       => $menuitem->status,
 			]);
 			$html.='</div></div>';
-			$children           = $menuitem->find()->where([
+			$children           = MenuItem::find()->where([
 				'parent_id' => $menuitem->id,
 				'menu_id' => $menu_id
 			])->all();
 			if ($children) {
-				$html.= self::getChildrenMenu($children, $response, 1, $menuitem->menu_id);
+				$html.= self::getChildrenMenu($children,$menuitem->menu_id);
 			}
 			$html.='</li>';
 
@@ -137,7 +137,7 @@ class MenuItem extends Model
 		return $html;
 	}
 
-	public function getChildrenMenu($models, $response, $level, $menu_id) {
+	public function getChildrenMenu($models, $menu_id) {
 		$html = '<ol class="dd-list">';
 		foreach ($models as $menuitem) {
 			$html.='<li class="dd-item dd3-item" data-id="'.$menuitem->id.'">';
@@ -158,16 +158,17 @@ class MenuItem extends Model
 				'value'       => $menuitem->status,
 			]);
 			$html.='</div></div>';
-			$children             = $menuitem->find()->where([
+			$children             = MenuItem::find()->where([
 				'parent_id' => $menuitem->id,
 				'menu_id' => $menu_id
 			])->all();
 			if ($children) {
-				$response['children'] = self::getChildrenMenu($children, $response, $level + 1,$menu_id);
+				$html.= self::getChildrenMenu($children,$menu_id);
 			}
-			$html.='</li></ol>';
+			$html.='</li>';
 
 		}
+		$html.='</ol>';
 		return $html;
 	}
 

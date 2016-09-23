@@ -59,13 +59,14 @@ use yii\helpers\Url;
 		$('#nestable2').nestable({
 			maxDepth : 3,
 			group   : 1,
-		});
-
-		$('#nestable2').on('change', function(e) {
+		}).on('change', function(e) {
 			$( ".dd-item.dd3-item" ).each(function( index ) {
+				var parent = ($(this).closest('ol')).parent().attr('data-id');
 				var parent_id = 0;
-				if(($(this).closest('ol')).parent().attr('data-id') != ''){
+				if(typeof parent != "undefined" && parent != ''){
 					parent_id = ($(this).closest('ol')).parent().attr('data-id');
+				}else{
+					parent_id = 0;
 				}
 
 				$(this).find('.parent-menu').val(parent_id);
