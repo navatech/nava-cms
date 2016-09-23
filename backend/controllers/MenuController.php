@@ -48,7 +48,6 @@ class MenuController extends Controller
 	public function actionSetting()
 	{
 		$model = Menu::findAll(['status'=>1]);
-
 		if(isset($_POST["MenuItem"])){
 			$i = 0;
 			foreach($_POST["MenuItem"] as $menuitem){
@@ -59,9 +58,10 @@ class MenuController extends Controller
 				$item->sort_order = $i;
 				$item->status = (isset($menuitem['status']))?$menuitem['status']:0;
 				$item->save();
-
 			}
-			Yii::$app->end();
+			return $this->render('setting', [
+				'model'=>$model,
+			]);
 		}else{
 			return $this->render('setting', [
 				'model'=>$model,

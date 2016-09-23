@@ -36,14 +36,14 @@ use yii\helpers\Url;
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="dd" id="nestable2">
-											<form class="menuitem-form" action="<?= Url::to(['/menu/setting'])?>" method="post">
+											<?php $form = ActiveForm::begin(['class'=>"menuitem-form"]); ?>
 												<ol class="dd-list">
 													<?= MenuItem::getMenuItem($menu->id);?>
 												</ol>
 												<div class="form-group">
 													<button type="submit" class="btn btn-success btn-save"><?= Translate::save(); ?></button>
 												</div>
-											</form>
+											<?php ActiveForm::end(); ?>
 										</div>
 									</div>
 
@@ -57,7 +57,7 @@ use yii\helpers\Url;
 	</div>
 	<script>
 		$('#nestable2').nestable({
-			maxDepth : 3,
+			//maxDepth : 3,
 			group   : 1,
 		}).on('change', function(e) {
 			$( ".dd-item.dd3-item" ).each(function( index ) {
@@ -84,18 +84,18 @@ use yii\helpers\Url;
 				$(this).closest('.dd-item').find('.icon-menu').val(e.iconpickerValue);
 		});
 
-		$(document).on('click', '.btn-save', function() {
+		/*$(document).on('click', '.btn-save', function() {
 			$.ajax({
 				type   : 'POST',
 				cache  : false,
-				url    : '<?= Url::to(['/menu/setting'])?>',
+				url    : '',
 				data   : $('.menuitem-form').serializeArray(),
 				success: function(response) {
 					location.reload();
 				}
 			});
 			return false;
-		});
+		});*/
 
 		$('.menu-status').on('switchChange.bootstrapSwitch', function(event, state) {
 			if(state == true) {
