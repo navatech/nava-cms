@@ -15,7 +15,7 @@ class AppAsset extends AssetBundle {
 
 	public $css       = [
 		'plugins/pace/pace-theme-flash.css',
-		'plugins/boostrapv3/css/bootstrap.css',
+/*		'plugins/boostrapv3/css/bootstrap.css',*/
 		'plugins/font-awesome/css/font-awesome.css',
 		'plugins/jquery-scrollbar/jquery.scrollbar.css',
 		'plugins/bootstrap-select2/select2.css',
@@ -30,14 +30,22 @@ class AppAsset extends AssetBundle {
 		'plugins/switchery/css/switchery.min.css',
 		'pages/css/pages-icons.css',
 		'pages/css/pages.css',
+		'pages/css/themes/simple.css',
+		//'pages/css/themes/abstract.css',
+		//'pages/css/themes/vibes.css',
+		//'pages/css/themes/unlax.css',
+		//'pages/css/themes/retro.css',
+		//'pages/css/themes/corporate.css',
+		//'pages/css/themes/calendar.css',
 		'css/style.css',
+
 	];
 
 	public $js        = [
 		'plugins/pace/pace.min.js',
 		'plugins/modernizr.custom.js',
 		//'plugins/jquery-ui/jquery-ui.min.js',
-		'plugins/boostrapv3/js/bootstrap.js',
+		//'plugins/boostrapv3/js/bootstrap.js',
 		//'plugins/jquery/jquery-easy.js',
 		//'plugins/jquery-unveil/jquery.unveil.min.js',
 		//'plugins/jquery-bez/jquery.bez.min.js',
@@ -88,5 +96,6 @@ class AppAsset extends AssetBundle {
 	public $depends   = [
 		'yii\web\YiiAsset',
 		'yii\bootstrap\BootstrapAsset',
+		'yii\bootstrap\BootstrapPluginAsset',
 	];
 }

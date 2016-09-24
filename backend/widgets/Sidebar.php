@@ -21,6 +21,7 @@ class Sidebar extends Widget {
 		/**@var MenuItem[] $models */
 		$models     = MenuItem::find()->where([
 			'menu_id' => 1,
+			'parent_id'=>0,
 			'status'  => 1,
 		])->orderBy(['sort_order' => SORT_ASC])->all();
 		$menu_items = self::menu($models);

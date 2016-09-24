@@ -97,7 +97,7 @@ class MenuItem extends Model
 		}
 		return $response;
 	}
-
+	
 	public static function getMenuItem($menu_id) {
 		$menuitems     = MenuItem::find()->where([
 			'parent_id' => 0,
