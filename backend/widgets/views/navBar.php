@@ -66,7 +66,7 @@ use yii\helpers\Url;
             </span>
 				</button>
 				<ul class="dropdown-menu profile-dropdown" role="menu">
-					<li><a href="<?= Url::to(['/user/']) ?>"><i class="pg-settings_small"></i><?= Translate::setting() ?></a></li>
+					<li><a href="<?= Url::to(['/account/update/','id'=>Yii::$app->user->identity->id]) ?>"><i class="pg-settings_small"></i><?= Translate::setting() ?></a></li>
 					<li class="bg-master-lighter">
 						<a href="<?= Url::to(['/user/logout']) ?>" class="clearfix" data-method='post'>
 							<span class="pull-left"><?= Translate::logout() ?></span>

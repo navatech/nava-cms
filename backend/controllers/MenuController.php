@@ -4,6 +4,8 @@ namespace backend\controllers;
 
 use common\components\Controller;
 use common\models\MenuItem;
+use navatech\language\Translate;
+use navatech\role\filters\RoleFilter;
 use Yii;
 use common\models\Menu;
 use common\models\search\MenuSearch;
@@ -18,17 +20,28 @@ class MenuController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+	public function behaviors() {
+		return [
+			'verbs' => [
+				'class'   => VerbFilter::className(),
+				'actions' => [
+					'delete' => ['POST'],
+				],
+			],
+			'role'  => [
+				'class'   => RoleFilter::className(),
+				'name'    => Translate::menu(),
+				'actions' => [
+					'index'  => Translate::lists(),
+					'view'   => Translate::view(),
+					'create' => Translate::create(),
+					'update' => Translate::update(),
+					'delete' => Translate::delete(),
+					'setting'=> Translate::setting(),
+				],
+			],
+		];
+	}
 
     /**
      * Lists all Menu models.

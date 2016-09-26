@@ -27,11 +27,11 @@ class AccountController extends Controller {
 				'class'   => RoleFilter::className(),
 				'name'    => Translate::user(),
 				'actions' => [
-					'index'  => 'Danh sách',
-					'view'   => 'Chi tiết',
-					'create' => 'Thêm mới',
-					'update' => 'Cập nhật',
-					'delete' => 'Xóa',
+					'index'  => Translate::lists(),
+					'view'   => Translate::view(),
+					'create' => Translate::create(),
+					'update' => Translate::update(),
+					'delete' => Translate::delete(),
 				],
 			],
 		];
