@@ -381,9 +381,9 @@ body.rtl [class*="col-"] {
     width: 65%;
 }
 .page-sidebar .sidebar-menu .menu-items > li {
-    display: block;
-    padding: 0;
     clear: right;
+    display: block;
+    padding: 0 0 0 10px;
 }
 .page-sidebar .sidebar-menu .menu-items > li:after,
 .page-sidebar .sidebar-menu .menu-items > li:before {
@@ -500,7 +500,7 @@ body.rtl [class*="col-"] {
 }
 .page-sidebar .sidebar-menu .menu-items > li ul.sub-menu > li {
     background: none;
-    padding: 0px 20px 0 40px;
+    padding: 0px 20px 0 10px;
     margin-top: 1px;
 }
 .page-sidebar .sidebar-menu .menu-items > li ul.sub-menu > li:hover > .icon-thumbnail {
