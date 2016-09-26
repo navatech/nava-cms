@@ -30,7 +30,7 @@ class AppAsset extends AssetBundle {
 		'plugins/switchery/css/switchery.min.css',
 		'pages/css/pages-icons.css',
 		'pages/css/pages.css',
-		'pages/css/themes/simple.css',
+		'pages/css/themes/cms.css',
 		//'pages/css/themes/abstract.css',
 		//'pages/css/themes/vibes.css',
 		//'pages/css/themes/unlax.css',

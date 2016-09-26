@@ -12,7 +12,8 @@ use yii\widgets\Menu;
 			<img src="<?= Yii::$app->request->baseUrl; ?>/img/logo_white.png" alt="logo" class="brand" width="78" height="22">
 		</a>
 		<div class="sidebar-header-controls">
-			<button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
+			<button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar">
+				<i class="fa fa-angle-right "></i>
 			</button>
 		</div>
 	</div>

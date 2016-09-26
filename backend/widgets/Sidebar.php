@@ -38,15 +38,22 @@ class Sidebar extends Widget {
 	public static function menu($models) {
 		$menu_items = [];
 		foreach ($models as $key => $model) {
+			$items = self::menu(MenuItem::find()->where([
+				'parent_id' => $model->id,
+				'status'    => 1,
+			])->orderBy(['sort_order' => SORT_ASC])->all());
+
+			if(empty($items)){
+				$template = '<a href="{url}"> {label} </a><span class="icon-thumbnail"><i class="fa ' . $model->icon . '"></i></span>';
+			}else{
+				$template = '<a href="javascript:void(0)"> {label} <span class=" arrow"></span></a><span class="icon-thumbnail"><i class="fa ' . $model->icon . '"></i></span>';
+			}
 			$menu_items[] = [
 				'label'    => '<span class="title">' . $model->name . '</span>',
 				'encode'   => false,
-				'template' => '<a href="{url}" class="detailed">{label}</a><span class="icon-thumbnail"><i class="fa ' . $model->icon . '"></i></span>',
+				'template' => $template,
 				'url'      => ['/' . $model->url],
-				'items'    => self::menu(MenuItem::find()->where([
-					'parent_id' => $model->id,
-					'status'    => 1,
-				])->orderBy(['sort_order' => SORT_ASC])->all()),
+				'items'    => $items,
 			];
 		}
 		return $menu_items;
