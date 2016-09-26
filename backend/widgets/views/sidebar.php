@@ -31,6 +31,16 @@ use yii\widgets\Menu;
 </nav>
 
 <script>
+	$(document).ready(function() {
+		if($('body').hasClass('config-page')){
+			$('.sidebar-menu a').each(function() {
+				if($(this).attr('href') == '/backend/site/setting'){
+					$(this).parent().addClass('active');
+				}
+			})
+		}
+		$('.sidebar-menu .sub-menu li.active').parent().closest('li').addClass('active');
+	})
 	$(document).on('click', '.sidebar-menu a', function(e) {
 		if ($(this).parent().children('.sub-menu') === false) {
 			return;

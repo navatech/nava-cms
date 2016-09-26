@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="fixed-header dashboard  windows desktop pace-done sidebar-visible menu-pin">
+<body class="fixed-header dashboard  windows desktop pace-done sidebar-visible menu-pin config-page">
 <?php $this->beginBody() ?>
 <?= Sidebar::widget() ?>
 <!-- START PAGE-CONTAINER -->
@@ -44,7 +44,7 @@ AppAsset::register($this);
     <!-- END PAGE CONTENT WRAPPER -->
 </div>
 <!-- END PAGE CONTAINER -->
-<div class="quickview-wrapper  builder hidden-sm hidden-xs" id="builder">
+<!--<div class="quickview-wrapper  builder hidden-sm hidden-xs" id="builder">
     <div class="p-l-30 p-r-30 ">
         <a class="builder-close quickview-toggle pg-close" data-toggle="quickview" data-toggle-element="#builder" href="#"></a>
         <a class="builder-toggle" data-toggle="quickview" data-toggle-element="#builder"><i class="pg pg-theme"></i></a>
@@ -236,7 +236,7 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <?php $this->endBody() ?>
 </body>
 </html>
