@@ -39,7 +39,6 @@ class MenuItemController extends Controller
 					'create' => Translate::create(),
 					'update' => Translate::update(),
 					'delete' => Translate::delete(),
-					'setting'=> Translate::setting(),
 				],
 			],
 		];
@@ -120,7 +119,6 @@ class MenuItemController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
