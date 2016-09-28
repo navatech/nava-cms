@@ -2,6 +2,8 @@
 namespace backend\controllers;
 
 use common\components\Controller;
+use navatech\language\Translate;
+use navatech\role\filters\RoleFilter;
 use navatech\setting\models\Setting;
 use navatech\setting\Module;
 use Yii;
@@ -14,34 +16,29 @@ use common\models\LoginForm;
  */
 class SiteController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error','setting'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function behaviors() {
+		return [
+			'verbs' => [
+				'class'   => VerbFilter::className(),
+				'actions' => [
+					'delete' => ['POST'],
+				],
+			],
+			'role'  => [
+				'class'   => RoleFilter::className(),
+				'name'    => Translate::site(),
+				'actions' => [
+					'login'  => Translate::login(),
+					'logout'   => Translate::logout(),
+					'about' => Translate::about(),
+					'setting'=> Translate::setting(),
+				],
+			],
+		];
+	}
 
     /**
      * @inheritdoc
@@ -101,5 +98,8 @@ class SiteController extends Controller
 	public function actionSetting() {
 
 		return  $this->render('setting');
+	}
+	public function actionAbout() {
+		return  $this->render('about');
 	}
 }

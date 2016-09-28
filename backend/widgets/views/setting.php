@@ -3,6 +3,7 @@
  * @var array $settingItems
  */
 use navatech\language\Translate;
+use navatech\role\helpers\RoleChecker;
 use yii\widgets\Menu;
 
 ?>
@@ -33,6 +34,11 @@ use yii\widgets\Menu;
 				'url'    => ['/language/phrase/index'],
 				'encode' => false,
 			],
+            [
+                'label'  => '<i class="fa fa-info-circle"></i> ' . Translate::about(),
+                'url'    => ['/site/about'],
+                'encode' => false,
+            ],
 		]),
 	]) ?>
 </nav>

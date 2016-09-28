@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'icon',
 				'value'     => function(MenuItem $data) {
-					return '<i class="fa fa-'.$data->icon.'"></i>';
+					return '<i class="fa '.$data->icon.'"></i>';
 				},
 				'filter'    => false,
 				'format'    => 'html',
