@@ -22,7 +22,7 @@ if(Yii::$app->session->hasFlash('alert')) {
 if(YII_DEBUG):
 	?>
 
-	<div class="col-sm-offset-9 col-sm-3">
+	<div class="col-sm-offset-9 col-sm-3 config-button">
 		<div class="form-inline pull-right">
 			<?= Html::a(Yii::t('setting', 'Setting'), ['config/index'], [
 				'class' => 'btn btn-primary',
