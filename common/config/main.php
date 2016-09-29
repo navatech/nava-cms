@@ -1,17 +1,16 @@
 <?php
 return [
 	'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+	'language'   => 'en',
+	'timezone'   => 'Asia/Ho_Chi_Minh',
 	'components' => [
 		'cache'        => [
 			'class' => 'yii\caching\FileCache',
 		],
 		'user'         => [
+			'class'           => '\yii\web\User',
 			'identityClass'   => 'common\models\User',
 			'enableAutoLogin' => true,
-			'identityCookie'  => [
-				'name'     => '_identity-backend',
-				'httpOnly' => true,
-			],
 		],
 		'setting'      => [
 			'class' => 'navatech\setting\Setting',
@@ -29,8 +28,27 @@ return [
 				],
 			],
 		],
+		'log'          => [
+			'traceLevel' => YII_DEBUG ? 3 : 0,
+			'targets'    => [
+				[
+					'class'  => 'yii\log\FileTarget',
+					'levels' => [
+						'error',
+						'warning',
+					],
+				],
+			],
+		],
 	],
 	'modules'    => [
+		'user'        => [
+			'class'    => 'dektrium\user\Module',
+			'modelMap' => [
+				'User'      => 'navatech\role\models\User',
+				'LoginForm' => 'navatech\role\models\LoginForm',
+			],
+		],
 		'datecontrol' => [
 			'class'           => 'kartik\datecontrol\Module',
 			'displaySettings' => [

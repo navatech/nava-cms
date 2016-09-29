@@ -6,15 +6,9 @@ return [
 	'basePath'            => dirname(__DIR__),
 	'controllerNamespace' => 'backend\controllers',
 	'bootstrap'           => ['log'],
-	'language'            => 'en',
-	'timezone'            => 'Asia/Ho_Chi_Minh',
 	'modules'             => [
 		'user'     => [
-			'class'    => 'dektrium\user\Module',
-			'modelMap' => [
-				'User'      => 'navatech\role\models\User',
-				'LoginForm' => 'navatech\role\models\LoginForm',
-			],
+			'as backend' => 'dektrium\user\filters\BackendFilter',
 		],
 		'role'     => [
 			'class'       => 'navatech\role\Module',
@@ -33,7 +27,6 @@ return [
 		'setting'  => [
 			'class'               => 'navatech\setting\Module',
 			'controllerNamespace' => 'navatech\setting\controllers',
-			'viewPath'            => '@app/views/setting',
 		],
 		'roxymce'  => [
 			'class' => '\navatech\roxymce\Module',
@@ -50,22 +43,18 @@ return [
 		'session'      => [
 			'name' => 'advanced-backend',
 		],
-		'log'          => [
-			'traceLevel' => YII_DEBUG ? 3 : 0,
-			'targets'    => [
-				[
-					'class'  => 'yii\log\FileTarget',
-					'levels' => [
-						'error',
-						'warning',
-					],
-				],
+		'user'         => [
+			'identityCookie' => [
+				'name'     => '_identity-backend',
+				'httpOnly' => true,
 			],
+			'loginUrl'       => ['user/login'],
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
 		],
 		'view'         => [
+			'class' => '\common\web\View',
 			'theme' => [
 				'pathMap' => [
 					'@dektrium/user/views'                           => '@app/views/user',

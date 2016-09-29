@@ -2,9 +2,7 @@
 namespace backend\controllers;
 
 use common\components\Controller;
-use navatech\language\Translate;
 use yarcode\email\models\Message;
-use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 
@@ -30,11 +28,10 @@ class MessageController extends Controller {
 	 */
 	public function actionHistory() {
 		$dataProvider = new ActiveDataProvider([
-			'query' => Message::find()->where(['status'=>'1']),
+			'query' => Message::find()->where(['status' => '1']),
 		]);
 		return $this->render('history', [
-			'dataProvider'  => $dataProvider,
+			'dataProvider' => $dataProvider,
 		]);
 	}
-
 }

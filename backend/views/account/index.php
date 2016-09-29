@@ -3,11 +3,13 @@ use backend\controllers\AccountController;
 use common\models\User;
 use navatech\language\Translate;
 use navatech\role\helpers\RoleChecker;
-use yii\helpers\Html;
+use navatech\role\models\Role;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\UserSearch */
+/* @var $searchModel common\models\search\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $this->title                   = Translate::user();
 $this->params['breadcrumbs'][] = $this->title;
@@ -15,8 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-index">
 
 	<h1><?= Html::encode($this->title) ?></h1>
-	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
 	<p>
 		<?= Html::a(Translate::create_x(Translate::user()), ['create'], ['class' => 'btn btn-success']) ?>
 	</p>
@@ -36,18 +36,18 @@ $this->params['breadcrumbs'][] = $this->title;
 			// 'flags',
 			[
 				'attribute' => 'role_id',
-				'value'     => function(User $data) {
-					return $data->getAllRole($data->role_id)->name;
+				'value'     => function (User $data) {
+					return $data->role->name;
 				},
-				'filter'    => $searchModel->getAllRole(),
+				'filter'    => ArrayHelper::map(Role::find()->all(), 'id', 'name'),
 			],
 			[
 				'class'          => 'yii\grid\ActionColumn',
-					'visibleButtons' => [
-						'view'   => RoleChecker::isAuth(AccountController::className(), 'view'),
-						'update' => RoleChecker::isAuth(AccountController::className(), 'update'),
-						'delete' => RoleChecker::isAuth(AccountController::className(), 'delete'),
-					],
+				'visibleButtons' => [
+					'view'   => RoleChecker::isAuth(AccountController::className(), 'view'),
+					'update' => RoleChecker::isAuth(AccountController::className(), 'update'),
+					'delete' => RoleChecker::isAuth(AccountController::className(), 'delete'),
+				],
 			],
 		],
 	]); ?>

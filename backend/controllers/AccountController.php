@@ -3,12 +3,12 @@ namespace backend\controllers;
 
 use common\components\Controller;
 use common\models\search\UserSearch;
+use common\models\User;
 use navatech\language\Translate;
 use navatech\role\filters\RoleFilter;
 use Yii;
-use common\models\User;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 class AccountController extends Controller {
 

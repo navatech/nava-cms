@@ -2,11 +2,8 @@
 namespace backend\controllers;
 
 use common\components\Controller;
-use navatech\language\Translate;
-use yarcode\email\models\Message;
 use yarcode\email\models\Template;
 use Yii;
-use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 
 class EmailTemplateController extends Controller {
@@ -17,7 +14,7 @@ class EmailTemplateController extends Controller {
 	public function behaviors() {
 		return [
 			'verbs' => [
-				'class'   => VerbFilter::className(),
+				'class' => VerbFilter::className(),
 				'actions' => [
 					'delete' => ['POST'],
 				],
@@ -30,18 +27,19 @@ class EmailTemplateController extends Controller {
 	 * @return mixed
 	 */
 	public function actionSetting() {
-		$model = Template::findAll(['language'=>'en-US']);
-		if(isset($_POST["Template"])){
+		$model = Template::findAll(['language' => 'en-US']);
+		if (isset($_POST["Template"])) {
 			$template = Template::find($_POST["Template"]["id"])->one();
 			if ($template->load(Yii::$app->request->post()) && $template->save()) {
-				return $this->redirect(['setting', 'model'  => $model]);
+				return $this->redirect([
+					'setting',
+					'model' => $model,
+				]);
 			}
-		}else{
+		} else {
 			return $this->render('setting', [
-				'model'  => $model,
+				'model' => $model,
 			]);
 		}
-
 	}
-	
 }

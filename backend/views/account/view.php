@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'email:email',
 			[
 				'attribute' => 'role_id',
-				'value'     => $model->getAllRole($model->role_id)->name,
+				'value'     => $model->role->name,
 			],
 		],
 	]) ?>

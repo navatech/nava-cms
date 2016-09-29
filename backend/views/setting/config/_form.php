@@ -1,6 +1,6 @@
 <?php
+use insolita\iconpicker\Iconpicker;
 use kartik\widgets\Select2;
-use navatech\language\Translate;
 use navatech\setting\models\Setting;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -9,7 +9,6 @@ use yii\widgets\ActiveForm;
 /* @var $model Setting */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<?php Yii::$app->layout = 'setting'; ?>
 
 <div class="setting-form">
 
@@ -27,11 +26,31 @@ use yii\widgets\ActiveForm;
 		'maxlength'   => true,
 		'placeholder' => Yii::t('setting', 'Code key of setting'),
 	]) ?>
-
-	<?= $form->field($model, 'name')->textInput([
-		'maxlength'   => true,
-		'placeholder' => Yii::t('setting', 'Name of setting'),
-	]) ?>
+	<?= $form->beginField($model, 'name') ?>
+	<?= Html::activeLabel($model, 'name', ['class' => 'control-label']) ?>
+	<?php if (in_array($model->type, [
+		Setting::TYPE_GROUP,
+		Setting::TYPE_ACTION,
+	])): ?>
+		<div class="input-group">
+	    <span class="input-group-btn icon">
+		    <?= Iconpicker::widget([
+			    'model'         => $model,
+			    'attribute'     => 'icon',
+			    'pickerOptions' => ['class' => 'btn btn-default'],
+			    'clientOptions' => [
+				    'placement' => 'bottom',
+				    'search'    => false,
+			    ],
+		    ]) ?>
+	    </span>
+			<?= Html::activeTextInput($model, 'name', ['class' => 'form-control']) ?>
+		</div>
+	<?php else : ?>
+		<?= Html::activeTextInput($model, 'name', ['class' => 'form-control']) ?>
+	<?php endif; ?>
+	<?= Html::error($model, 'name', ['class' => 'help-block']) ?>
+	<?= $form->endField() ?>
 
 	<?= $form->field($model, 'desc')->textarea(['rows' => 6]) ?>
 
@@ -50,10 +69,10 @@ Example:
  - String: 1,2,3 or A,bcd,ef
  - Json: {"0" : "abc", "1" : "def"}
  - Callback: app\models\Setting::getItems()',
-	]) ?>
+	]); ?>
 	<div class="store" style="display: <?= in_array($model->type, [
-		'file',
-		'url',
+		Setting::TYPE_FILE_URL,
+		Setting::TYPE_FILE_PATH,
 	]) ? 'block' : 'none' ?>;">
 		<?= $form->field($model, 'store_dir')->textInput([
 			'maxlength'   => true,
@@ -70,18 +89,26 @@ Example:
 		'value' => $model->isNewRecord ? 1 : $model->sort_order,
 	]) ?>
 	<div class="form-group">
-		<?= Html::submitButton($model->isNewRecord ? Translate::create() : Translate::update(), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		<?= Html::submitButton($model->isNewRecord ? Yii::t('setting', 'Create') : Yii::t('setting', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 	</div>
 	<?php ActiveForm::end(); ?>
 </div>
-
 <script>
-	$(document).on("change", "#setting-type", function() {
+	$(document).on("change", "#setting-type", function () {
 		var th = $(this);
-		if(th.val() == 'file' || th.val() == 'url') {
+		if (th.val() == 'file_path' || th.val() == 'file_url') {
 			$(".store").slideDown();
 		} else {
 			$(".store").slideUp();
+		}
+		if (th.val() == 'group' || th.val() == 'action') {
+			$(".input-group-btn.icon").fadeIn('normal', function () {
+				$(this).parent().addClass("input-group");
+			});
+		} else {
+			$(".input-group-btn.icon").fadeOut('normal', function () {
+				$(this).parent().removeClass("input-group");
+			});
 		}
 	});
 </script>
