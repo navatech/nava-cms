@@ -10,5 +10,7 @@
 ?>
 <?php Yii::$app->layout = 'setting'; ?>
 <div class="about-page text-center">
-	<img src="<?= Yii::$app->request->BaseUrl?>/img/about.png">
+	<a href="http://navatech.vn" target="_blank">
+		<img src="<?= Yii::$app->request->BaseUrl?>/img/about.png">
+	</a>
 </div>

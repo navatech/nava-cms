@@ -40,7 +40,7 @@ use yii\helpers\Url;
 	<div class=" pull-left sm-table hidden-xs hidden-sm">
 		<div class="header-inner">
 			<div class="brand inline">
-				<img src="<?= Yii::$app->setting->get('general_logo') ?>" alt="logo">
+				<img src="<?= Yii::$app->setting->get('general_logo') ?>" alt="logo" height="22">
 			</div>
 			<!-- START NOTIFICATION LIST -->
 			<ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">

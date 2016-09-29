@@ -9,7 +9,7 @@ use yii\widgets\Menu;
 <nav class="page-sidebar" data-pages="sidebar">
 	<div class="sidebar-header">
 		<a href="<?= Yii::$app->request->baseUrl; ?>">
-			<img src="<?= Yii::$app->setting->get('general_logo') ?>" alt="logo" class="brand" width="78" height="22">
+			<img src="<?= Yii::$app->setting->get('general_logo') ?>" alt="logo" class="brand"  height="22">
 		</a>
 		<div class="sidebar-header-controls">
 			<button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar">
