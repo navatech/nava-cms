@@ -15,9 +15,9 @@ use yii\helpers\Url;
 
 ?>
 <?php Yii::$app->layout = 'setting'; ?>
-<div class="panel panel-transparent ">
+<div class="tabs-above tab-align-left tab-bordered tabs-krajee">
 	<!-- Nav tabs -->
-	<ul class="nav nav-tabs nav-tabs-fillup" data-init-reponsive-tabs="dropdownfx">
+	<ul class="nav nav-tabs nav nav-tabs hidden-print" data-init-reponsive-tabs="dropdownfx">
 		<?php foreach($model as $key => $menu): ?>
 			<?php if(!empty($menu->menuItem)): ?>
 				<li class="<?= ($key == 0) ? 'active' : '' ?>">
@@ -26,10 +26,10 @@ use yii\helpers\Url;
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</ul>
-	<div class="tab-content">
+	<div class="tab-content printable">
 		<?php foreach($model as $key => $menu): ?>
 			<?php if(!empty($menu->menuItem)): ?>
-				<div class="tab-pane slide-left <?= ($key == 0) ? 'active' : '' ?>" id="menu-<?= $menu->id ?>">
+				<div class="tab-pane fade in <?= ($key == 0) ? 'active' : '' ?>" id="menu-<?= $menu->id ?>">
 					<div class="row column-seperation">
 						<div class="col-sm-12">
 							<div class="cf ">

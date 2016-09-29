@@ -14,32 +14,34 @@ use yii\widgets\ActiveForm;
 	],
 ]); ?>
 <?php Yii::$app->layout = 'setting'; ?>
-<div class="project-form">
-	<div class="col-md-6 col-md-offset-3">
+<div class="language-content">
+	<div class="project-form">
+		<div class="col-md-6 col-md-offset-3">
 
-		<?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+			<?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-		<?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
+			<?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
 
-		<?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
+			<?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?>
 
-		<?= $form->field($model, 'status')->dropDownList([
-			0 => Translate::not_in_use(),
-			1 => Translate::in_use(),
-		], ['prompt' => Translate::choose_status()]) ?>
+			<?= $form->field($model, 'status')->dropDownList([
+				0 => Translate::not_in_use(),
+				1 => Translate::in_use(),
+			], ['prompt' => Translate::choose_status()]) ?>
 
+		</div>
 	</div>
-</div>
-<div class="clearfix form-actions">
-	<div class="col-md-offset-3 col-md-6">
-		<button class="btn btn-info" type="submit">
-			<i class="ace-icon fa fa-check bigger-110"></i>
-			<?= Translate::save() ?>
-		</button>
-		<button class="btn btn-back" type="reset">
-			<i class="ace-icon fa fa-arrow-left bigger-110"></i>
-			<?= Translate::back() ?>
-		</button>
+	<div class="clearfix form-actions">
+		<div class="col-md-offset-3 col-md-6">
+			<button class="btn btn-info" type="submit">
+				<i class="ace-icon fa fa-check bigger-110"></i>
+				<?= Translate::save() ?>
+			</button>
+			<button class="btn btn-back" type="reset">
+				<i class="ace-icon fa fa-arrow-left bigger-110"></i>
+				<?= Translate::back() ?>
+			</button>
+		</div>
 	</div>
 </div>
 <?php ActiveForm::end(); ?>

@@ -20,13 +20,13 @@ use yii\web\View;
 $this->params['breadcrumbs'][] = Translate::languages();
 ?>
 <?php Yii::$app->layout = 'setting'; ?>
-<div class="page-header">
-	<h1><?= Translate::language() ?>
-		<small><i class="ace-icon fa fa-angle-double-right"></i> <?= Translate::list_x([Translate::language()]) ?>
-		</small>
-	</h1>
-</div>
-<div class="row">
+<div class="language-content">
+	<div class="page-header">
+		<h1><?= Translate::language() ?>
+			<small><i class="ace-icon fa fa-angle-double-right"></i> <?= Translate::list_x([Translate::language()]) ?>
+			</small>
+		</h1>
+	</div>
 	<div class="col-xs-12">
 		<div class="row">
 			<div class="space-6"></div>
@@ -71,6 +71,7 @@ $this->params['breadcrumbs'][] = Translate::languages();
 		</div>
 	</div>
 </div>
+
 <script>
 	<?php if(Yii::$app->getSession()->hasFlash('message')):?>
 	alert('<?=Yii::$app->getSession()->getFlash('message')?>');

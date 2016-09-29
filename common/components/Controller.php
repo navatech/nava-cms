@@ -24,10 +24,13 @@ class Controller extends MultiLanguageController {
 		$this->identity = Yii::$app->getUser()->getIdentity();
 	}
 
-	/*public function beforeAction($action) {
+	public function beforeAction($action) {
+		if (Yii::$app->setting->get('web_active') == 'no' && Yii::$app->controller->action->id != 'maintain') {
+			$this->redirect(Url::to(['/site/maintain']));
+		}
 		if (Yii::$app->user->isGuest) {
 			$this->redirect(Url::to(['user/login']));
 		}
 		return parent::beforeAction($action);
-	}*/
+	}
 }

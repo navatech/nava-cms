@@ -20,25 +20,26 @@ $this->title                   = Translate::list_x(Translate::phrase());
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php Yii::$app->layout = 'setting'; ?>
-<div class="page-header">
-	<h1><?= Translate::phrase() ?>
-		<small><i class="ace-icon fa fa-angle-double-right"></i> <?= Translate::list_x(Translate::phrase()) ?></small>
-	</h1>
-</div>
-<div class="row">
-	<div class="col-xs-12">
-		<div class="row">
-			<div class="space-6"></div>
-			<?= GridView::widget([
-				'id'           => 'phrase',
-				'dataProvider' => $dataProvider,
-				'filterModel'  => $searchModel,
-				'responsive'   => true,
-				'hover'        => true,
-				'pjax'         => true,
-				'export'       => false,
-				'columns'      => $searchModel->phraseColumns(),
-			]); ?>
-		</div>
+<div class="language-content">
+	<div class="page-header">
+		<h1><?= Translate::phrase() ?>
+			<small><i class="ace-icon fa fa-angle-double-right"></i> <?= Translate::list_x(Translate::phrase()) ?>
+			</small>
+		</h1>
 	</div>
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="space-6"></div>
+				<?= GridView::widget([
+					'id'           => 'phrase',
+					'dataProvider' => $dataProvider,
+					'filterModel'  => $searchModel,
+					'responsive'   => true,
+					'hover'        => true,
+					'pjax'         => true,
+					'export'       => false,
+					'columns'      => $searchModel->phraseColumns(),
+				]); ?>
+			</div>
+		</div>
 </div>
