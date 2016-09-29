@@ -7,7 +7,7 @@
  * @date    9/12/2016
  * @time    4:33 PM
  */
-namespace common\components;
+namespace common\swiftmailer;
 
 use Yii;
 
