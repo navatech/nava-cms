@@ -10,27 +10,29 @@
 namespace common\components;
 
 use common\models\User;
-use navatech\language\components\MultiLanguageController;
 use Yii;
 use yii\helpers\Url;
 
-class Controller extends MultiLanguageController {
+class Controller extends \yii\web\Controller {
 
 	/**@var User */
-	public $identity;
+	public $user;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function init() {
 		parent::init();
-		$this->identity = Yii::$app->getUser()->getIdentity();
+		$this->user = Yii::$app->getUser()->getIdentity();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function beforeAction($action) {
 		if (Yii::$app->setting->get('web_active') == 'no' && Yii::$app->controller->action->id != 'maintain') {
 			$this->redirect(Url::to(['/site/maintain']));
 		}
-//		if (Yii::$app->user->isGuest) {
-//			$this->redirect(Url::to(['user/login']));
-//		}
 		return parent::beforeAction($action);
 	}
 }

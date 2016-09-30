@@ -9,13 +9,10 @@
  */
 namespace backend\widgets;
 
-use backend\controllers\MenuController;
-use common\models\Menu;
 use common\models\MenuItem;
 use common\widgets\Widget;
 use navatech\role\helpers\RoleChecker;
 use Yii;
-use yii\helpers\Url;
 
 class Sidebar extends Widget {
 
@@ -25,9 +22,9 @@ class Sidebar extends Widget {
 	public function run() {
 		/**@var MenuItem[] $models */
 		$models     = MenuItem::find()->where([
-			'menu_id' => 1,
-			'parent_id'=>0,
-			'status'  => 1,
+			'menu_id'   => 1,
+			'parent_id' => 0,
+			'status'    => 1,
 		])->orderBy(['sort_order' => SORT_ASC])->all();
 		$menu_items = self::menu($models);
 		return $this->render("sidebar", [
@@ -47,20 +44,19 @@ class Sidebar extends Widget {
 				'parent_id' => $model->id,
 				'status'    => 1,
 			])->orderBy(['sort_order' => SORT_ASC])->all());
-
-			if(empty($items)){
+			if (empty($items)) {
 				$template = '<a href="{url}"> {label} </a><span class="icon-thumbnail"><i class="fa ' . $model->icon . '"></i></span>';
-			}else{
+			} else {
 				$template = '<a href="javascript:void(0)"> {label} <span class=" arrow"></span></a><span class="icon-thumbnail"><i class="fa ' . $model->icon . '"></i></span>';
 			}
-			$route = Yii::$app->createController($model->url);
+			$route        = Yii::$app->createController($model->url);
 			$menu_items[] = [
 				'label'    => '<span class="title">' . $model->name . '</span>',
 				'encode'   => false,
 				'template' => $template,
 				'url'      => ['/' . $model->url],
 				'items'    => $items,
-				'visible'  => RoleChecker::isAuth(get_class($route[0]), str_replace('/','',substr($model->url,strpos($model->url, '/')))),
+				'visible'  => RoleChecker::isAuth(get_class($route[0]), str_replace('/', '', substr($model->url, strpos($model->url, '/')))),
 			];
 		}
 		return $menu_items;

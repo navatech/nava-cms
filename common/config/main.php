@@ -4,22 +4,22 @@ return [
 	'language'   => 'en',
 	'timezone'   => 'Asia/Ho_Chi_Minh',
 	'components' => [
-		'cache'        => [
+		'multiLanguage' => [
+			'class' => '\navatech\language\Component',
+		],
+		'cache'         => [
 			'class' => 'yii\caching\FileCache',
 		],
-		'user'         => [
+		'user'          => [
 			'class'           => '\yii\web\User',
 			'identityClass'   => 'common\models\User',
 			'enableAutoLogin' => true,
 		],
-		'setting'      => [
-			'class' => 'navatech\setting\Setting',
-		],
-		'mailer'       => [
+		'mailer'        => [
 			'class'            => 'common\swiftmailer\Mailer',
 			'useFileTransport' => false,
 		],
-		'emailManager' => [
+		'emailManager'  => [
 			'class'            => '\yarcode\email\EmailManager',
 			'defaultTransport' => 'yiiMailer',
 			'transports'       => [
@@ -28,7 +28,7 @@ return [
 				],
 			],
 		],
-		'log'          => [
+		'log'           => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
 			'targets'    => [
 				[

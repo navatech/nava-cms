@@ -5,7 +5,10 @@ return [
 	'id'                  => 'app-backend',
 	'basePath'            => dirname(__DIR__),
 	'controllerNamespace' => 'backend\controllers',
-	'bootstrap'           => ['log'],
+	'bootstrap'           => [
+		'log',
+		'multiLanguage',
+	],
 	'modules'             => [
 		'user'     => [
 			'as backend' => 'dektrium\user\filters\BackendFilter',
@@ -66,6 +69,9 @@ return [
 		'urlManager'   => [
 			'enablePrettyUrl' => true,
 			'showScriptName'  => false,
+		],
+		'setting'      => [
+			'class' => 'navatech\setting\Setting',
 		],
 	],
 	'params'              => $params,
