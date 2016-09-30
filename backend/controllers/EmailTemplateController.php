@@ -14,7 +14,7 @@ class EmailTemplateController extends Controller {
 	public function behaviors() {
 		return [
 			'verbs' => [
-				'class' => VerbFilter::className(),
+				'class'   => VerbFilter::className(),
 				'actions' => [
 					'delete' => ['POST'],
 				],
@@ -27,18 +27,18 @@ class EmailTemplateController extends Controller {
 	 * @return mixed
 	 */
 	public function actionSetting() {
-		$model = Template::findAll(['language' => 'en-US']);
+		$models = Template::findAll(['language' => 'en-US']);
 		if (isset($_POST["Template"])) {
-			$template = Template::find($_POST["Template"]["id"])->one();
+			$template = Template::findOne($_POST["Template"]["id"]);
 			if ($template->load(Yii::$app->request->post()) && $template->save()) {
 				return $this->redirect([
 					'setting',
-					'model' => $model,
+					'model' => $models,
 				]);
 			}
 		} else {
 			return $this->render('setting', [
-				'model' => $model,
+				'models' => $models,
 			]);
 		}
 	}

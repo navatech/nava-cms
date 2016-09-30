@@ -12,7 +12,10 @@ return [
 		],
 	],
 	'components'          => [
-		'log' => [
+		'setting' => [
+			'class' => 'navatech\setting\Setting',
+		],
+		'log'     => [
 			'targets' => [
 				[
 					'class'  => 'yii\log\FileTarget',
@@ -52,7 +55,7 @@ return [
 			'transport' => [
 				'mail' => [
 					'class'  => '\common\transports\Mail',
-					'enable' => true,
+					'enable' => false,
 				],
 			],
 		],

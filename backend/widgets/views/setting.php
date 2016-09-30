@@ -14,22 +14,22 @@ use yii\widgets\Menu;
 		],
 		'items'   => \yii\helpers\ArrayHelper::merge($settingItems, [
 			[
-				'label'  => '<i class="fa fa-envelope"></i> ' . Translate::x_setting('Email Template'),
+				'label'  => '<i class="fa fa-envelope"></i> ' . Translate::email_template(),
 				'url'    => ['/email-template/setting'],
 				'encode' => false,
 			],
 			[
-				'label'  => '<i class="fa fa-fw fa-list-alt"></i> ' . Translate::x_setting('Menu'),
+				'label'  => '<i class="fa fa-fw fa-list-alt"></i> ' . Translate::menu(),
 				'url'    => ['/menu/setting'],
 				'encode' => false,
 			],
 			[
-				'label'  => '<i class="fa fa-language"></i> ' . Translate::x_setting(Translate::language()),
+				'label'  => '<i class="fa fa-language"></i> ' . Translate::language(),
 				'url'    => ['/language/index/list'],
 				'encode' => false,
 			],
 			[
-				'label'  => '<i class="fa fa-globe"></i> ' . Translate::x_setting(Translate::translate()),
+				'label'  => '<i class="fa fa-globe"></i> ' . Translate::translate(),
 				'url'    => ['/language/phrase/index'],
 				'encode' => false,
 			],

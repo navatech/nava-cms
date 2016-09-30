@@ -56,24 +56,22 @@ class MenuController extends Controller {
 	}
 
 	public function actionSetting() {
-		$model = Menu::findAll(['status' => 1]);
+		$models = Menu::findAll(['status' => 1]);
 		if (isset($_POST["MenuItem"])) {
-			$i = 0;
-			foreach ($_POST["MenuItem"] as $menuitem) {
-				$i ++;
-				$item             = MenuItem::findOne($menuitem['id']);
-				$item->icon       = $menuitem['icon'];
-				$item->parent_id  = $menuitem['parent_id'];
-				$item->sort_order = $i;
-				$item->status     = (isset($menuitem['status'])) ? $menuitem['status'] : 0;
+			foreach ($_POST["MenuItem"] as $key => $menuItem) {
+				$item             = MenuItem::findOne($menuItem['id']);
+				$item->icon       = $menuItem['icon'];
+				$item->parent_id  = $menuItem['parent_id'];
+				$item->sort_order = $key + 1;
+				$item->status     = (isset($menuItem['status'])) ? $menuItem['status'] : 0;
 				$item->save();
 			}
 			return $this->render('setting', [
-				'model' => $model,
+				'models' => $models,
 			]);
 		} else {
 			return $this->render('setting', [
-				'model' => $model,
+				'models' => $models,
 			]);
 		}
 	}

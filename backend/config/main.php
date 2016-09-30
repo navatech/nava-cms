@@ -25,10 +25,12 @@ return [
 		],
 		'language' => [
 			'class'  => '\navatech\language\Module',
+			'layout' => '@backend/views/layouts/setting',
 			'suffix' => 'lang',
 		],
 		'setting'  => [
 			'class'               => 'navatech\setting\Module',
+			'layout'              => '@backend/views/layouts/setting',
 			'controllerNamespace' => 'navatech\setting\controllers',
 		],
 		'roxymce'  => [
@@ -36,6 +38,30 @@ return [
 		],
 		'mailer'   => [
 			'class' => '\yarcode\email\backend\Module',
+		],
+		'backup'   => [
+			'class'     => '\navatech\backup\Module',
+			'backup'    => [
+				'db'     => [
+					'enable' => true,
+					'data'   => [
+						'db',
+					],
+				],
+				'folder' => [
+					'enable' => false,
+					'data'   => [
+						'@app/web/uploads',
+						'@backend/web/uploads',
+					],
+				],
+			],
+			'transport' => [
+				'mail' => [
+					'class'  => '\common\transports\Mail',
+					'enable' => false,
+				],
+			],
 		],
 	],
 	'components'          => [
@@ -60,9 +86,7 @@ return [
 			'class' => '\common\web\View',
 			'theme' => [
 				'pathMap' => [
-					'@dektrium/user/views'                           => '@app/views/user',
-					'@vendor/navatech/yii2-setting/src/views'        => '@app/views/setting',
-					'@vendor/navatech/yii2-multi-language/src/views' => '@app/views/language',
+					'@dektrium/user/views' => '@app/views/user',
 				],
 			],
 		],

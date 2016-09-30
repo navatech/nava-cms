@@ -1,54 +1,60 @@
 <?php
-
 namespace common\models;
 
 use navatech\language\Translate;
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "menu".
  *
  * @property integer $id
- * @property string $name
+ * @property string  $name
  * @property integer $status
  */
-class Menu extends Model
-{
+class Menu extends Model {
+
 	/**
 	 * @inheritdoc
 	 */
-	public static function tableName()
-	{
+	public static function tableName() {
 		return 'menu';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return [
-			[['name'], 'required'],
-			[['status'], 'integer'],
-			[['name'], 'string', 'max' => 255],
+			[
+				['name'],
+				'required',
+			],
+			[
+				['status'],
+				'integer',
+			],
+			[
+				['name'],
+				'string',
+				'max' => 255,
+			],
 			[
 				[
 					'name',
-					'name_' . Yii::$app->language
+					'name_' . Yii::$app->language,
 				],
-				'safe']
+				'safe',
+			],
 		];
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
-	{
+	public function attributeLabels() {
 		return [
-			'id' => 'ID',
-			'name' => Translate::name(),
+			'id'     => 'ID',
+			'name'   => Translate::name(),
 			'status' => Translate::status(),
 		];
 	}
@@ -58,14 +64,5 @@ class Menu extends Model
 	 */
 	public function getMenuItem() {
 		return $this->hasMany(MenuItem::className(), ['menu_id' => 'id'])->orderBy(['sort_order' => SORT_ASC]);
-	}
-
-	public function getAllmenu(){
-		$menus = Menu::findAll(['status'=>1]);
-		$array     = [];
-		foreach ($menus as $menu) {
-			$array[$menu->id] = $menu->name;
-		}
-		return $array;
 	}
 }

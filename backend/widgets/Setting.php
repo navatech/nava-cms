@@ -25,8 +25,9 @@ class Setting extends Widget {
 		]);
 		$settingItems = [];
 		foreach ($settings as $setting) {
+			$translateCode  = $setting->code;
 			$settingItems[] = [
-				'label'  => '<i class="glyphicon  '.$setting->icon.'"></i> ' . $setting->name . ' ' . Translate::setting(),
+				'label'  => '<i class="glyphicon  ' . $setting->icon . '"></i> ' . Translate::$translateCode(),
 				'url'    => ['/setting/default/' . $setting->code],
 				'encode' => false,
 			];

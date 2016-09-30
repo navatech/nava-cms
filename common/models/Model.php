@@ -8,11 +8,13 @@
  * @time    11:28 AM
  */
 namespace common\models;
-use navatech\language\components\MultiLanguageBehavior;
-use navatech\language\components\MultiLanguageQuery;
-use yii\db\ActiveRecord;
 
-class Model extends ActiveRecord{
+use navatech\language\components\LanguageBehavior;
+use navatech\language\db\ActiveRecord;
+use navatech\language\db\LanguageQuery;
+
+class Model extends ActiveRecord {
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -20,7 +22,7 @@ class Model extends ActiveRecord{
 		if ($attributes != null) {
 			return [
 				'ml' => [
-					'class'      => MultiLanguageBehavior::className(),
+					'class'      => LanguageBehavior::className(),
 					'attributes' => $attributes,
 				],
 			];
@@ -32,15 +34,16 @@ class Model extends ActiveRecord{
 	 * {@inheritDoc}
 	 */
 	public static function find() {
-		return new MultiLanguageQuery(get_called_class());
+		return new LanguageQuery(get_called_class());
 	}
 
 	/**
-	 * @param $condition
-	 *
-	 * @return array|null|ActiveRecord
+	 * {@inheritDoc}
 	 */
 	public static function findOneTranslated($condition) {
-		return is_array($condition) ? self::find()->where($condition)->translate()->one() : self::find()->where(['id' => $condition])->translate()->one();
+		return is_array($condition) ? self::find()->where($condition)->translate()->one() : self::find()
+			->where(['id' => $condition])
+			->translate()
+			->one();
 	}
 }

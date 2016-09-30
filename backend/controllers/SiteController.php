@@ -62,10 +62,9 @@ class SiteController extends Controller {
 		return $this->render('maintain');
 	}
 
-	public function actionSetting() {
-		return $this->render('setting');
-	}
-
+	/**
+	 * @return string
+	 */
 	public function actionAbout() {
 		return $this->render('about');
 	}
