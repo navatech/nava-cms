@@ -18,37 +18,19 @@ class LoginAsset extends AssetBundle {
 	public $baseUrl  = '@web';
 	
 	public $css      = [
-	'plugins/pace/pace-theme-flash.css',
-    'plugins/boostrapv3/css/bootstrap.min.css',
-    'plugins/font-awesome/css/font-awesome.css',
-    'plugins/jquery-scrollbar/jquery.scrollbar.css',
-    'plugins/bootstrap-select2/select2.css',
-    'plugins/switchery/css/switchery.min.css',
-    'pages/css/pages-icons.css',
-    'pages/css/pages.css',
+    'pages/css/app.css',
+	'pages/css/login.css',
+	'pages/css/style.css'
 	];
 
 	public $js       = [
-	'plugins/pace/pace.min.js',
-    'plugins/jquery/jquery-1.11.1.min.js',
-    'plugins/modernizr.custom.js',
-    'plugins/jquery-ui/jquery-ui.min.js',
-    'plugins/boostrapv3/js/bootstrap.min.js',
-    'plugins/jquery/jquery-easy.js',
-    'plugins/jquery-unveil/jquery.unveil.min.js',
-    'plugins/jquery-bez/jquery.bez.min.js',
-    'plugins/jquery-ios-list/jquery.ioslist.min.js',
-    'plugins/jquery-actual/jquery.actual.min.js',
-    'plugins/jquery-scrollbar/jquery.scrollbar.min.js',
-    'plugins/bootstrap-select2/select2.min.js',
-    'plugins/classie/classie.js',
-    'plugins/switchery/js/switchery.min.js',
-    'plugins/jquery-validation/js/jquery.validate.min.js',
-    'pages/js/pages.min.js',
+    //'plugins/jquery/jquery-1.11.1.min.js',
+    //'pages/js/app.js',
 	];
 
 	public $depends  = [
 		'yii\web\YiiAsset',
 		'yii\bootstrap\BootstrapAsset',
+		'yii\bootstrap\BootstrapPluginAsset',
 	];
 }

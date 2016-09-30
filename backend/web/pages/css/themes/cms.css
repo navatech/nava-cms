@@ -581,7 +581,7 @@ body.rtl [class*="col-"] {
     position: inherit;
 }
 .secondary-sidebar .btn-compose {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 13px;
     font-weight: normal;
     letter-spacing: 0.02em;
@@ -591,7 +591,7 @@ body.rtl [class*="col-"] {
     color: rgba(81, 100, 107, 0.5);
     opacity: .5;
     font-size: 10.8px;
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-weight: normal;
     letter-spacing: 0.03em;
 }
@@ -690,7 +690,7 @@ body.rtl [class*="col-"] {
     background: #e5e8e9;
     height: 30px;
     color: rgba(81, 100, 107, 0.7);
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     text-transform: uppercase;
     font-size: 10.8px;
     padding-left: 13px;
@@ -1115,7 +1115,7 @@ body.rtl [class*="col-"] {
 ------------------------------------
 */
 .breadcrumb {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
@@ -1130,7 +1130,7 @@ body.rtl [class*="col-"] {
 .breadcrumb a {
     margin-left: 5px;
     margin-right: 5px;
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 11px !important;
     font-weight: 400;
     color: #7b7d82;
@@ -1851,7 +1851,7 @@ body.rtl [class*="col-"] {
     height: calc(100% - 50px);
 }
 .panel .panel-heading .panel-title {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     text-transform: uppercase;
     display: inline-block;
     letter-spacing: 0.02em;
@@ -1936,7 +1936,7 @@ body.rtl [class*="col-"] {
     float: right;
 }
 .panel.panel-featured .panel-title h4 {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 16px;
     text-transform: uppercase;
     color: #e5e8e9;
@@ -2738,7 +2738,7 @@ hr.dotted {
     font-family: Arial, sans-serif !important;
 }
 .font-montserrat {
-    font-family: 'Montserrat' !important;
+    font-family: "Segoe UI",sans-serif !important;
 }
 .font-georgia {
     font-family: Georgia !important;
@@ -4865,7 +4865,7 @@ body > .pgn-wrapper {
     border-radius: 0;
     padding: 15px 20px;
     margin-right: 0;
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-weight: 400;
     color: rgba(81, 100, 107, 0.7);
     font-size: 12px;
@@ -6293,7 +6293,7 @@ body.rtl .checkbox label::after {
     margin-bottom: 10px;
 }
 .form-group label:not(.error) {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 11px;
     text-transform: uppercase;
     font-weight: 600;
@@ -6736,7 +6736,7 @@ https://github.com/eternicode/bootstrap-datepicker
     content: "\f054";
 }
 .datepicker thead tr .dow {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     color: #EF6129;
     text-transform: uppercase;
     font-size: 11px;
@@ -7666,7 +7666,7 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
 .table thead tr th {
     text-transform: uppercase;
     font-weight: 600;
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 13px;
     padding-top: 14px;
     padding-bottom: 14px;
@@ -7997,7 +7997,7 @@ table.dataTable thead .sorting_desc_disabled:after {
     font-size: 12px;
 }
 .line-chart .nv-pointer-events-none .value.nv-pointer-events-none {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-weight: normal;
     font-size: 11px;
     color: #9fb0b6;
@@ -8213,7 +8213,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 #tab-rickshaw-realtime #rickshaw-realtime_y_axis .rickshaw_graph .y_ticks text,
 #tab-rickshaw-realtime #rickshaw-realtime_y_axis .rickshaw_graph .x_ticks_d3 text {
     opacity: 0.35;
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 11px;
 }
 #tab-rickshaw-bars #rickshaw-stacked-bars.rickshaw_graph .detail .dot {
@@ -8250,7 +8250,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 #tab-rickshaw-slider .rickshaw_graph .y_ticks text,
 #tab-rickshaw-slider .rickshaw_graph .x_ticks_d3 text {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 11px;
 }
 #tab-rickshaw-slider .rickshaw_range_slider_preview .frame {
@@ -8276,7 +8276,7 @@ table.dataTable thead .sorting_desc_disabled:after {
     width: auto;
 }
 #tab-rickshaw-slider .chart .x_tick.plain .title {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 11px;
 }
 #tab-rickshaw-slider .y_axis {
@@ -8336,7 +8336,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 .list-view-fake-header {
     background: #eef0f0;
     color: #232830;
-    font: normal 11px/14px 'Montserrat', Arial;
+    font: normal 11px/14px "Segoe UI",sans-serif, Arial;
     text-transform: uppercase;
     margin: 0;
     padding: 6px 0 5px 15px;
@@ -9183,7 +9183,7 @@ Events / .event-container
 .calendar .weeks-wrapper .week .day-wrapper .day.week-header {
     text-transform: uppercase;
     text-align: center;
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 10px;
 }
 .calendar .calendar-container {
@@ -10942,7 +10942,7 @@ Main components
 .widget-14-chart_y_axis .rickshaw_graph .y_ticks text,
 .widget-14-chart_y_axis .rickshaw_graph .x_ticks_d3 text {
     opacity: 0.35;
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 11px;
 }
 .widget-14-chart_y_axis .y_ticks.plain g:first-child {
@@ -12025,7 +12025,7 @@ Main components
     transition: all 0.1s ease-in-out;
 }
 .error-number {
-    font-family: 'Montserrat';
+    font-family: "Segoe UI",sans-serif;
     font-size: 90px;
     line-height: 90px;
 }
