@@ -59,7 +59,7 @@ use yii\helpers\Html;
 			<div class="btn-group">
 				<button type="button" class="btn btn-primary iconpicker-component">
 					<i class="<?= 'fa fa-' . $model->icon ?>"></i></button>
-				<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown">
+				<button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="<?= $model->icon ?>" data-toggle="dropdown">
 					<span class="caret"></span>
 					<span class="sr-only">Toggle Dropdown</span>
 				</button>
@@ -68,7 +68,6 @@ use yii\helpers\Html;
 		</div>
 	</div>
 
-	<?= $form->field($model, 'level')->textInput() ?>
 
 	<?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 

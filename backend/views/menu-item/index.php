@@ -23,13 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		'filterModel'  => $searchModel,
 		'columns'      => [
 			['class' => 'yii\grid\SerialColumn'],
-			/*[
-				'attribute' => 'menu_id',
-				'value'     => function(MenuItem $data) {
-					return $data->menu_id != null ? $data->getCityByID($data->city_id) : '';
-				},
-				'filter'    => $searchModel->getCity(),
-			],*/
 			[
 				'attribute' => 'icon',
 				'value'     => function(MenuItem $data) {
@@ -39,10 +32,16 @@ $this->params['breadcrumbs'][] = $this->title;
 				'format'    => 'html',
 			],
 			'parent_id',
-			'level',
+			'name',
 			'url:url',
 			'sort_order',
-			'status',
+			[
+				'attribute' => 'status',
+				'value'     => function(MenuItem $data) {
+					return $data->getStatus($data->status);
+				},
+				'filter'    => $searchModel->getStatus(),
+			],
 			['class' => 'yii\grid\ActionColumn'],
 		],
 	]); ?>

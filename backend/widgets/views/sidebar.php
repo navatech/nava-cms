@@ -34,7 +34,7 @@ use yii\widgets\Menu;
 	$(document).ready(function() {
 		if($('body').hasClass('config-page')){
 			$('.sidebar-menu a').each(function() {
-				if($(this).attr('href') == '/backend/site/setting'){
+				if($(this).attr('href') == '/backend/setting/general'){
 					$(this).parent().addClass('active');
 				}
 			})
@@ -55,7 +55,6 @@ use yii\widgets\Menu;
 			sub.slideUp(200, function() {
 				li.removeClass("open active");
 			});
-
 		}else{
 			parent.children('li.open').children('.sub-menu').slideUp(200);
 			parent.children('li.open').children('a').children('.arrow').removeClass('open active');
@@ -63,7 +62,6 @@ use yii\widgets\Menu;
 			el.children('.arrow').addClass("open active");
 			sub.slideDown(200, function() {
 				li.addClass("open active");
-
 			});
 		}
 		//e.preventDefault();
