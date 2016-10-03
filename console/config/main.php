@@ -47,7 +47,6 @@ return [
 				'folder' => [
 					'enable' => false,
 					'data'   => [
-						'@app/web/uploads',
 						'@backend/web/uploads',
 					],
 				],
@@ -55,7 +54,7 @@ return [
 			'transport' => [
 				'mail' => [
 					'class'  => '\common\transports\Mail',
-					'enable' => false,
+					'enable' => true,
 				],
 			],
 		],

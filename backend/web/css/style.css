@@ -167,3 +167,63 @@ li.active .icon-thumbnail {
 .navatech-multi-language {
     margin-left: 10px;
 }
+
+.table {
+    padding: 5px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border-color: #cdcdcd;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #EF6129;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
+    color: #fff;
+    background: #EF6129;
+}
+
+.select2-container--krajee .select2-results__option[aria-selected=true] {
+    color: #51646b;
+    background-color: #ffd5b7;
+}
+
+.select2-container--krajee .select2-results__option--highlighted[aria-selected] {
+    background-color: #EF6129;
+    color: #fff;
+}
+
+.btn-primary, .btn-primary:focus {
+    color: #ffffff;
+    background-color: #EF6129;
+    border-color: #EF6129;
+}
+
+.theme .page-sidebar .sidebar-header {
+    background-color: #EF6129;
+}
+
+.theme .social-wrapper .social .feed > .day > .item {
+    border: 0;
+}
+
+.page-sidebar .sidebar-header {
+    background-color: #EF6129;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #EF6129;
+    border-color: #EF6129;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #51646b;
+}
+
+.panel-primary > .panel-heading {
+    color: #51646b;
+}

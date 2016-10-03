@@ -15,7 +15,8 @@ class Mail extends \navatech\backup\transports\Mail {
 	 * @param array $config
 	 */
 	public function __construct($config = []) {
-		if (Yii::$app->setting->hasProperty('backup_from_email') && Yii::$app->setting->hasProperty('backup_to_email')) {
+		if (Yii::$app->setting->hasProperty('backup_email') && Yii::$app->setting->get('backup_email')) {
+			$this->enable    = Yii::$app->setting->get('backup_email');
 			$this->fromEmail = Yii::$app->setting->get('backup_from_email');
 			$this->toEmail   = Yii::$app->setting->get('backup_to_email');
 		}

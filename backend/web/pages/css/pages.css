@@ -7652,9 +7652,6 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
 /* Generic Tables 
 ------------------------------------
 */
-.table {
-  margin-top: 5px;
-}
 .table thead tr th {
   text-transform: uppercase;
   font-weight: 600;
@@ -7680,7 +7677,7 @@ div.cs-skin-slide .cs-options ul li.cs-selected span {
   background: #fff;
   border-bottom: 1px solid rgba(230, 230, 230, 0.7);
   border-top: 0px;
-  padding: 20px;
+  padding: 5px;
   font-size: 13.5px;
 }
 .table tbody tr td .btn-tag {
