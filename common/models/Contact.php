@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use navatech\language\Translate;
 use Yii;
 
 /**
@@ -46,14 +47,14 @@ class Contact extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'fullname' => 'Fullname',
-            'email' => 'Email',
-            'phone' => 'Phone',
-            'title' => 'Title',
-            'content' => 'Content',
-            'created_date' => 'Created Date',
-            'status' => 'Status',
+            'id' => 'NO',
+            'fullname' => Translate::fullname(),
+            'email' => Translate::email(),
+            'phone' => Translate::phone(),
+            'title' => Translate::title(),
+            'content' => Translate::content(),
+            'created_at' => Translate::created_at(),
+            'status' => Translate::status(),
         ];
     }
 }

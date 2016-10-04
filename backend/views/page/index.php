@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'image',
-                'value'     => function(Post $data) {
+                'value'     => function(Page $data) {
                     return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail','style'=>'height:50px']);
                 },
                 'filter'    => false,

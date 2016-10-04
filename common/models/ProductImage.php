@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use navatech\language\Translate;
 use Yii;
 
 /**
@@ -21,6 +22,8 @@ class ProductImage extends \yii\db\ActiveRecord {
 		return 'product_image';
 	}
 
+	public $img;
+
 	/**
 	 * @inheritdoc
 	 */
@@ -29,15 +32,20 @@ class ProductImage extends \yii\db\ActiveRecord {
 			[
 				[
 					'product_id',
-					'image',
 				],
 				'required',
 			],
 			[
 				[
+					'img',
+				],
+				'file',
+				'extensions' => 'jpg, gif, png',
+				'maxFiles'   => 0,
+			],
+			[
+				[
 					'product_id',
-					'image',
-					'feature_image',
 					'status',
 				],
 				'integer',
@@ -50,11 +58,10 @@ class ProductImage extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'            => 'ID',
-			'product_id'    => 'Product ID',
-			'image'         => 'Image',
-			'feature_image' => 'Feature Image',
-			'status'        => 'Status',
+			'id'            => 'No',
+			'product_id'    => Translate::product(),
+			'image'         => Translate::image(),
+			'status'        => Translate::status(),
 		];
 	}
 
@@ -64,4 +71,23 @@ class ProductImage extends \yii\db\ActiveRecord {
 	public function getProduct() {
 		return $this->hasOne(Product::className(), ['id' => 'post_id']);
 	}
+
+	public static function getPictureId($product_id = null) {
+		if ($product_id != null) {
+			$pictures = ProductImage::find()->where(['product_id' => $product_id])->all();
+			$array    = [];
+			$i        = 0;
+			foreach ($pictures as $picture) {
+				$array [$i] = [
+					'url' => "/product/deleteimg?id=" . $picture->id,
+					'key' => $picture->id,
+				];
+				$i ++;
+			}
+			return $array;
+		} else {
+			return [];
+		}
+	}
+
 }

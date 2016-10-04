@@ -19,7 +19,7 @@ class ContactSearch extends Contact
     {
         return [
             [['id', 'status'], 'integer'],
-            [['fullname', 'email', 'phone', 'title', 'content', 'created_date'], 'safe'],
+            [['fullname', 'email', 'phone', 'title', 'content', 'created_at'], 'safe'],
         ];
     }
 
@@ -60,7 +60,7 @@ class ContactSearch extends Contact
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_date' => $this->created_date,
+            'created_ar' => $this->created_at,
             'status' => $this->status,
         ]);
 

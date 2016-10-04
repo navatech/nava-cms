@@ -1,5 +1,6 @@
 <?php
 use common\models\Category;
+use common\models\ProductImage;
 use kartik\file\FileInput;
 use kartik\widgets\SwitchInput;
 use navatech\language\models\Language;
@@ -110,6 +111,29 @@ use yii\helpers\Url;
 							],
 						],
 					])->label(Translate::image()); ?>
+					<?php echo $form->field($product_image, 'img[]')->widget(FileInput::className(), [
+						'options'       => [
+							'accept'      => 'image/*',
+							'multiple'    => true,
+							'placeholder' => Translate::gallery(),
+						],
+						'pluginOptions' => [
+							//			'uploadUrl'                                => false,
+							'overwriteInitial'         => false,
+							'initialPreviewAsData'     => true,
+							'initialPreviewShowDelete' => true,
+							'initialPreviewConfig'     => ProductImage::getPictureId($model->id),
+							'allowedFileExtensions'    => [
+								'jpg',
+								'gif',
+								'png',
+							],
+							'showUpload'               => false,
+							'initialPreview'           => $model->id == null ? [
+							] : Gallery::getPictureUrl($model->id),
+						],
+					])->label(Translate::gallery());
+					?>
 					<div class="row">
 						<div class="col-sm-6">
 							<?= $form->field($model, 'status')->widget(SwitchInput::className(), []); ?>
