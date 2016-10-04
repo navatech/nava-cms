@@ -24,8 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             [
                 'attribute' => 'image',
                 'value'     => function(Post $data) {
@@ -34,12 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter'    => false,
                 'format'    => 'raw',
             ],
+            'name',
             [
                 'attribute' => 'category_id',
                 'value'     => function(Post $data) {
                     return Category::getCategoryById($data->category_id);
                 },
-                'filter'    => Category::getCategoryText(1),
+                'filter'    => Category::getCategoryText(2),
             ],
             [
                 'attribute' => 'status',

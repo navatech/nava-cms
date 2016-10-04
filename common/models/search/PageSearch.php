@@ -19,7 +19,6 @@ class PageSearch extends Page
     {
         return [
             [['id', 'status', 'category_id'], 'integer'],
-            [['price'], 'number'],
             [['image'], 'safe'],
         ];
     }
@@ -61,7 +60,6 @@ class PageSearch extends Page
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'price' => $this->price,
             'status' => $this->status,
             'category_id' => $this->category_id,
         ]);

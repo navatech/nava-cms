@@ -17,11 +17,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'price') ?>
 
     <?= $form->field($model, 'status') ?>
-
-    <?= $form->field($model, 'category_id') ?>
 
     <?= $form->field($model, 'image') ?>
 

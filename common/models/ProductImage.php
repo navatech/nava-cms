@@ -1,5 +1,4 @@
 <?php
-
 namespace common\models;
 
 use Yii;
@@ -13,38 +12,56 @@ use Yii;
  * @property integer $feature_image
  * @property integer $status
  */
-class ProductImage extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'product_image';
-    }
+class ProductImage extends \yii\db\ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['product_id', 'image'], 'required'],
-            [['product_id', 'image', 'feature_image', 'status'], 'integer'],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName() {
+		return 'product_image';
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'product_id' => 'Product ID',
-            'image' => 'Image',
-            'feature_image' => 'Feature Image',
-            'status' => 'Status',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules() {
+		return [
+			[
+				[
+					'product_id',
+					'image',
+				],
+				'required',
+			],
+			[
+				[
+					'product_id',
+					'image',
+					'feature_image',
+					'status',
+				],
+				'integer',
+			],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+		return [
+			'id'            => 'ID',
+			'product_id'    => 'Product ID',
+			'image'         => 'Image',
+			'feature_image' => 'Feature Image',
+			'status'        => 'Status',
+		];
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getProduct() {
+		return $this->hasOne(Product::className(), ['id' => 'post_id']);
+	}
 }

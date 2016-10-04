@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use navatech\language\Translate;
+use navatech\role\filters\RoleFilter;
 use Yii;
 use common\models\Product;
 use common\models\search\ProductSearch;
@@ -14,20 +16,30 @@ use yii\filters\VerbFilter;
  */
 class ProductController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function behaviors() {
+		return [
+			'verbs' => [
+				'class'   => VerbFilter::className(),
+				'actions' => [
+					'delete' => ['POST'],
+				],
+			],
+			'role'  => [
+				'class'   => RoleFilter::className(),
+				'name'    => Translate::product(),
+				'actions' => [
+					'index'  => 'Danh sách',
+					'view'   => 'Chi tiết',
+					'create' => 'Thêm mới',
+					'update' => 'Cập nhật',
+					'delete' => 'Xóa',
+				],
+			],
+		];
+	}
 
     /**
      * Lists all Product models.
@@ -65,8 +77,17 @@ class ProductController extends Controller
     {
         $model = new Product();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+	        $img = $model->uploadPicture('image');
+	        if($model->save()) {
+		        if($img !== false) {
+			        $path = $model->getPictureFile('image');
+			        $img->saveAs($path);
+		        }
+		        return $this->render('update', [
+			        'model' => $model,
+		        ]);
+	        }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -83,9 +104,22 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+	    $oldImage = $model->image;
+        if ($model->load(Yii::$app->request->post())) {
+	        $model->updated_at = date('Y-m-d H-i-s');
+	        $img = $model->uploadPicture('image');
+	        if($model->save()) {
+		        if($img === false) {
+			        $model->image = $oldImage;
+		        }
+		        if($img !== false) {
+			        $path = $model->getPictureFile('image');
+			        $img->saveAs($path);
+		        }
+		        return $this->render('update', [
+			        'model' => $model,
+		        ]);
+	        }
         } else {
             return $this->render('update', [
                 'model' => $model,

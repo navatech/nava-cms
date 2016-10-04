@@ -1,5 +1,4 @@
 <?php
-
 namespace common\models;
 
 use Yii;
@@ -9,43 +8,68 @@ use Yii;
  *
  * @property integer $id
  * @property integer $page_id
- * @property string $name
- * @property string $information
- * @property string $language
+ * @property string  $name
+ * @property string  $information
+ * @property string  $language
  */
-class PageLang extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'page_lang';
-    }
+class PageLang extends \yii\db\ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['page_id'], 'integer'],
-            [['name', 'information'], 'string'],
-            [['language'], 'string', 'max' => 255],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName() {
+		return 'page_lang';
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'page_id' => 'Page ID',
-            'name' => 'Name',
-            'information' => 'Information',
-            'language' => 'Language',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules() {
+		return [
+			[
+				['page_id'],
+				'integer',
+			],
+			[
+				[
+					'name',
+					'description',
+					'content'
+				],
+				'string',
+			],
+			[
+				['language'],
+				'string',
+				'max' => 255,
+			],
+			[
+				['page_id'],
+				'exist',
+				'skipOnError'     => true,
+				'targetClass'     => Page::className(),
+				'targetAttribute' => ['page_id' => 'id'],
+			],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+		return [
+			'id'          => 'ID',
+			'page_id'     => 'Page ID',
+			'name'        => 'Name',
+			'information' => 'Information',
+			'language'    => 'Language',
+		];
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getPage() {
+		return $this->hasOne(Page::className(), ['id' => 'page_id']);
+	}
 }

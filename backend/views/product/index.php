@@ -1,4 +1,5 @@
 <?php
+use common\models\Category;
 use common\models\Product;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -23,11 +24,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'price',
-            'category_id',
-            'image',
+            [
+                'attribute' => 'image',
+                'value'     => function(Product $data) {
+                    return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail','style'=>'height:50px']);
+                },
+                'filter'    => false,
+                'format'    => 'raw',
+            ],
+            'name',
+            [
+                'attribute' => 'category_id',
+                'value'     => function(Product $data) {
+                    return Category::getCategoryById($data->category_id);
+                },
+                'filter'    => Category::getCategoryText(1),
+            ],
+            [
+                'attribute' => 'price',
+                'value'     => function(Product $data) {
+                    return number_format($data->price).' ₫';
+                },
+            ],
             [
                 'attribute' => 'status',
                 'value'     => function(Product $data) {
