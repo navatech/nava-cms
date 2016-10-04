@@ -1,5 +1,4 @@
 <?php
-
 namespace common\models;
 
 use Yii;
@@ -9,46 +8,64 @@ use Yii;
  *
  * @property integer $id
  * @property integer $post_id
- * @property string $name
- * @property string $information
- * @property string $language
+ * @property string  $name
+ * @property string  $information
+ * @property string  $language
  */
-class PostLang extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'post_lang';
-    }
+class PostLang extends \yii\db\ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['post_id'], 'integer'],
-            [['name', 'description', 'content'], 'string'],
-            [['language'], 'string', 'max' => 255],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName() {
+		return 'post_lang';
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'post_id' => 'Post ID',
-            'name' => 'Name',
-	        'description'=> 'Description',
-            'content' => 'Content',
-            'language' => 'Language',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules() {
+		return [
+			[
+				['post_id'],
+				'integer',
+			],
+			[
+				[
+					'name',
+					'description',
+					'content',
+				],
+				'string',
+			],
+			[
+				['language'],
+				'string',
+				'max' => 255,
+			],
+			[
+				['post_id'],
+				'exist',
+				'skipOnError'     => true,
+				'targetClass'     => Post::className(),
+				'targetAttribute' => ['post_id' => 'id'],
+			],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+		return [
+			'id'          => 'ID',
+			'post_id'     => 'Post ID',
+			'name'        => 'Name',
+			'description' => 'Description',
+			'content'     => 'Content',
+			'language'    => 'Language',
+		];
+	}
 
 	/**
 	 * @return \yii\db\ActiveQuery

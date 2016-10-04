@@ -154,7 +154,7 @@ class Category extends Model
 	}
 
 	public function getCategoryById($id) {
-		$category = self::find()->where(['id' => $id])->one();
+		$category = Category::find()->where(['id' => $id])->one();
 		if ($category != null) {
 			return $category->name;
 		} else {

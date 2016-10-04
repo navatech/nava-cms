@@ -80,7 +80,6 @@ class CategoryController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 	        $img      = $model->uploadPicture('image');
-
 	        if ($model->save()) {
 		        if ($img !== false) {
 			        $path = $model->getPictureFile('image');

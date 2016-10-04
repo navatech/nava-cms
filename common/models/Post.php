@@ -39,6 +39,8 @@ class Post extends Model
 	        [
 		        [   'img',
 			        'image',
+			        'created_at',
+			        'updated_at'
 		        ],
 		        'string',
 		        'max' => 255,

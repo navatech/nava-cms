@@ -1,5 +1,6 @@
 <?php
-
+use common\models\Category;
+use common\models\Post;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -25,9 +26,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'status',
-            'category_id',
-            'image',
+            [
+                'attribute' => 'image',
+                'value'     => function(Post $data) {
+                    return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail','style'=>'height:50px']);
+                },
+                'filter'    => false,
+                'format'    => 'raw',
+            ],
+            [
+                'attribute' => 'category_id',
+                'value'     => function(Post $data) {
+                    return Category::getCategoryById($data->category_id);
+                },
+                'filter'    => Category::getCategoryText(1),
+            ],
+            [
+                'attribute' => 'status',
+                'value'     => function(Post $data) {
+                    return $data->getStatus($data->status);
+                },
+                'filter'    => $searchModel->getStatus(),
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
