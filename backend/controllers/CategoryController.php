@@ -89,7 +89,7 @@ class CategoryController extends Controller {
 				}
 				return $this->redirect([
 					'index',
-					['type' => $model->type],
+					'type' => $model->type,
 				]);
 			}
 		} else {
@@ -111,7 +111,7 @@ class CategoryController extends Controller {
 	public function actionUpdate($id) {
 		$model = $this->findModel($id);
 		if($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['index']);
+			return $this->redirect(['index','type' => $model->type,]);
 		} else {
 			return $this->render('update', [
 				'model' => $model,
