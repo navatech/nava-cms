@@ -97,11 +97,7 @@ class ProductController extends Controller {
 						}
 					}
 				}
-
-				return $this->redirect('update', [
-					'model' => $model,
-					'product_image' => $product_image,
-				]);
+				return $this->redirect('index');
 			}
 		} else {
 			return $this->render('create', [
@@ -149,10 +145,7 @@ class ProductController extends Controller {
 						}
 					}
 				}
-				return $this->redirect('update', [
-					'model' => $model,
-					'product_image' => $product_image,
-				]);
+				return $this->redirect('index');
 			}
 		} else {
 			return $this->render('update', [

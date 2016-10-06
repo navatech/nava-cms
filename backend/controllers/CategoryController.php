@@ -128,8 +128,9 @@ class CategoryController extends Controller {
 	 * @return mixed
 	 */
 	public function actionDelete($id) {
+		$type = $this->findModel($id)->type;
 		$this->findModel($id)->delete();
-		return $this->redirect(['index']);
+		return $this->redirect(['index','type'=>$type]);
 	}
 
 	/**
