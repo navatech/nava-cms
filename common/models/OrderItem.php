@@ -60,6 +60,7 @@ class OrderItem extends \yii\db\ActiveRecord {
 			'product_id' => Translate::product(),
 			'quantity'   => Translate::quantity(),
 			'price'      => Translate::price(),
+
 		];
 	}
 }

@@ -32,13 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter'    => $model->getParentCategory($_GET['type']),
             ],
             'name',
-            [
-                'attribute' => 'status',
-                'value'     => function(Category $data) {
-                    return $data->getType($data->status);
-                },
-                'filter'    => $searchModel->getType(),
-            ],
             'order',
             [
                 'attribute' => 'image',
