@@ -86,6 +86,16 @@ use yii\helpers\Url;
         <div class="col-sm-4">
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <?= $form->field($model, 'status')->widget(SwitchInput::className(), []); ?>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                            </div>
+                        </div>
+                    </div>
                     <?php echo $form->field($model, 'img')->widget(FileInput::className(), [
                         'options'       => [
                             'accept'      => 'image/*',
@@ -103,16 +113,6 @@ use yii\helpers\Url;
                             ],
                         ],
                     ])->label(Translate::image()); ?>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <?= $form->field($model, 'status')->widget(SwitchInput::className(), []); ?>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

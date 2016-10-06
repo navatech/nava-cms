@@ -89,6 +89,16 @@ use yii\helpers\Url;
 		<div class="col-sm-4">
 			<div class="panel panel-default">
 				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<?= $form->field($model, 'status')->widget(SwitchInput::className(), []); ?>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success btn-lg' : 'btn btn-primary btn-lg']) ?>
+							</div>
+						</div>
+					</div>
 					<?= $form->field($model, 'price')->textInput() ?>
 					<?= $form->field($model, 'category_id', ['labelOptions' => []])
 					         ->dropDownList(Category::getCategoryText(1), [
@@ -130,20 +140,10 @@ use yii\helpers\Url;
 							],
 							'showUpload'               => false,
 							'initialPreview'           => $model->id == null ? [
-							] : Gallery::getPictureUrl($model->id),
+							] : ProductImage::getPictureUrl($model->id),
 						],
 					])->label(Translate::gallery());
 					?>
-					<div class="row">
-						<div class="col-sm-6">
-							<?= $form->field($model, 'status')->widget(SwitchInput::className(), []); ?>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
