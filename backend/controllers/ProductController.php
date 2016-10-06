@@ -178,7 +178,7 @@ class ProductController extends Controller {
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id) {
-		if(($model = Product::findOne($id)) !== null) {
+		if(($model = Product::findOneTranslated($id)) !== null) {
 			return $model;
 		} else {
 			throw new NotFoundHttpException('The requested page does not exist.');
