@@ -80,7 +80,7 @@ class PostController extends Controller {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
-				return $this->render('update', [
+				return $this->redirect('update', [
 					'model' => $model,
 				]);
 			}

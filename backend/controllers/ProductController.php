@@ -98,7 +98,7 @@ class ProductController extends Controller {
 					}
 				}
 
-				return $this->render('update', [
+				return $this->redirect('update', [
 					'model' => $model,
 					'product_image' => $product_image,
 				]);
@@ -136,8 +136,8 @@ class ProductController extends Controller {
 				}
 				$product_img = $product_image->uploadPicture();
 				if ($product_img != null) {
-					foreach ($product_img as $item) {
-						$product_img             = new Gallery();
+					foreach ($product_img as $key => $item) {
+						$product_img             = new ProductImage();
 						$product_img->product_id = $model->getPrimaryKey();
 						$product_img->status     = "1";
 						$ext          = $item->getExtension();
@@ -149,13 +149,15 @@ class ProductController extends Controller {
 						}
 					}
 				}
-				return $this->render('update', [
+				return $this->redirect('update', [
 					'model' => $model,
+					'product_image' => $product_image,
 				]);
 			}
 		} else {
 			return $this->render('update', [
 				'model' => $model,
+				'product_image' => $product_image,
 			]);
 		}
 	}
