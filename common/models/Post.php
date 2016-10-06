@@ -31,6 +31,12 @@ class Post extends Model
     public function rules()
     {
         return [
+	        [
+		        [
+			        'category_id',
+		        ],
+		        'required',
+	        ],
             [
             	[
             		'status',

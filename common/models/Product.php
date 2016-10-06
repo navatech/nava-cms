@@ -29,6 +29,13 @@ class Product extends Model {
 	public function rules() {
 		return [
 			[
+				[
+					'category_id',
+					'price',
+				],
+				'required',
+			],
+			[
 				['price'],
 				'number',
 			],
