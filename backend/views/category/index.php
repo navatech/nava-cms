@@ -16,14 +16,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Category', ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'id',
+            //'id',
+            [
+                'attribute' => 'image',
+                'value'     => function(Category $data) {
+                    return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail']);
+                },
+                'filter'    => false,
+                'format'    => 'raw',
+            ],
             [
                 'attribute' => 'parent_id',
                 'value'     => function(Category $data) {
@@ -33,14 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             'order',
-            [
-                'attribute' => 'image',
-                'value'     => function(Category $data) {
-                    return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail']);
-                },
-                'filter'    => false,
-                'format'    => 'raw',
-            ],
             [
                 'attribute' => 'status',
                 'value'     => function(Category $data) {

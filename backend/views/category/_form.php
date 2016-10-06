@@ -48,10 +48,7 @@ use yii\bootstrap\ActiveForm;
                  'prompt' => Translate::category_parent(),
              ]) ?>
 
-    <?= $form->field($model, 'type', ['labelOptions' => ['class' => 'control-label col-sm-3']])
-             ->dropDownList(Category::getType(), [
-                 'prompt' => Translate::type(),
-             ]) ?>
+    <?= $form->field($model, 'type')->hiddenInput(['value'=>$type])->label(false);?>
 
     <?= $form->field($model, 'order')->textInput() ?>
 

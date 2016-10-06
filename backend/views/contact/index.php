@@ -20,7 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             //'fullname',
             'email:email',
@@ -29,8 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'content',
             //'created_at ',
             'status',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class'    => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+            ],
         ],
     ]); ?>
 </div>
