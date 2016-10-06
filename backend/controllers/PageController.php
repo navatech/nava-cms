@@ -80,9 +80,7 @@ class PageController extends Controller {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
-				return $this->redirect('update', [
-					'model' => $model,
-				]);
+				return $this->redirect('index');
 			}
 		} else {
 			return $this->render('create', [
@@ -113,9 +111,7 @@ class PageController extends Controller {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
-				return $this->render('update', [
-					'model' => $model,
-				]);
+				return $this->redirect('index');
 			}
 		} else {
 			return $this->render('update', [
