@@ -5870,7 +5870,6 @@ form legend {
     background-image: none;
     border: 1px solid rgba(0, 0, 0, 0.07);
     font-family: Arial, sans-serif;
-    -webkit-appearance: none;
     color: #242d30;
     outline: 0;
     height: 35px;

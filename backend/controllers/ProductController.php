@@ -97,7 +97,7 @@ class ProductController extends Controller {
 						}
 					}
 				}
-				return $this->redirect('index');
+				return $this->redirect(['update','id'=>$model->id]);
 			}
 		} else {
 			return $this->render('create', [
@@ -145,7 +145,7 @@ class ProductController extends Controller {
 						}
 					}
 				}
-				return $this->redirect('index');
+				return $this->redirect(['update','id'=>$model->id]);
 			}
 		} else {
 			return $this->render('update', [

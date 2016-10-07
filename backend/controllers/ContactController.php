@@ -4,6 +4,8 @@ namespace backend\controllers;
 use backend\components\Controller;
 use common\models\Contact;
 use common\models\search\ContactSearch;
+use navatech\language\Translate;
+use navatech\role\filters\RoleFilter;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;

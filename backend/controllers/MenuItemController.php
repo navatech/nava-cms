@@ -76,11 +76,16 @@ class MenuItemController extends Controller {
 	 */
 	public function actionCreate() {
 		$model = new MenuItem();
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect([
-				'view',
-				'id' => $model->id,
-			]);
+		if ($model->load(Yii::$app->request->post())) {
+			if ($_POST['MenuItem']['parent_id'] == '') {
+				$model->parent_id = 0;
+			}
+			if($model->save()){
+				return $this->render('update', [
+					'model' => $model,
+				]);
+			}
+
 		} else {
 			return $this->render('create', [
 				'model' => $model,
@@ -98,10 +103,15 @@ class MenuItemController extends Controller {
 	 */
 	public function actionUpdate($id) {
 		$model = $this->findModel($id);
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->render('update', [
-				'model' => $model,
-			]);
+		if ($model->load(Yii::$app->request->post())) {
+			if ($_POST['MenuItem']['parent_id'] == '') {
+				$model->parent_id = 0;
+			}
+			if($model->save()){
+				return $this->render('update', [
+					'model' => $model,
+				]);
+			}
 		} else {
 			return $this->render('update', [
 				'model' => $model,

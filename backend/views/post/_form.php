@@ -44,21 +44,11 @@ use yii\helpers\Url;
 						                  ->label(Translate::name());
 						        ?>
 						        <?php
-						        echo $form->field($model, 'description_' . $language->code, [
-						        ])->widget(RoxyMceWidget::className(), [
-							        'model'       => $model,
-							        'attribute'   => 'description_' . $language->code,
-							        'name'        => 'Post[description_' . $language->code . ']',
-							        'value'       => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('description', $language->code),
-							        'action'      => Url::to(['/roxymce/default']),
-							        'options'     => [
-								        'title'      => 'RoxyMCE',
-								        'min_height' => 250,
-							        ],
-							        'htmlOptions' => [
-								        'rows' => 6,
-							        ],
-						        ])->label(Translate::description());
+						        echo $form->field($model, 'description_' . $language->code, ['labelOptions' => ['class' => 'control-label']])
+						                  ->textarea([
+							                  'value' => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('description', $language->code),
+						                  ])
+						                  ->label(Translate::description());
 						        ?>
 						        <?php
 						        echo $form->field($model, 'content_' . $language->code, [

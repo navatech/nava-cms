@@ -36,28 +36,18 @@ use yii\helpers\Url;
                         <?php foreach (Language::getLanguages() as $key => $language): ?>
                             <div class="<?= ($language->code == Yii::$app->language) ? 'active in' : '' ?> tab-pane fade" id="tab_<?= $language->code ?>">
                                 <?php
-                                echo $form->field($model, 'name_' . $language->code, ['labelOptions' => ['class' => 'control-label col-sm-3']])
+                                echo $form->field($model, 'name_' . $language->code, ['labelOptions' => ['class' => 'control-label']])
                                           ->textInput([
                                               'value' => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('name', $language->code),
                                           ])
                                           ->label(Translate::name());
                                 ?>
                                 <?php
-                                echo $form->field($model, 'description_' . $language->code, [
-                                ])->widget(RoxyMceWidget::className(), [
-                                    'model'       => $model,
-                                    'attribute'   => 'description_' . $language->code,
-                                    'name'        => 'Post[description_' . $language->code . ']',
-                                    'value'       => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('description', $language->code),
-                                    'action'      => Url::to(['/roxymce/default']),
-                                    'options'     => [
-                                        'title'      => 'RoxyMCE',
-                                        'min_height' => 250,
-                                    ],
-                                    'htmlOptions' => [
-                                        'rows' => 6,
-                                    ],
-                                ])->label(Translate::description());
+                                echo $form->field($model, 'description_' . $language->code, ['labelOptions' => ['class' => 'control-label']])
+                                          ->textarea([
+                                              'value' => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('description', $language->code),
+                                          ])
+                                          ->label(Translate::description());
                                 ?>
                                 <?php
                                 echo $form->field($model, 'content_' . $language->code, [

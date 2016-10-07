@@ -53,7 +53,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter'    => $searchModel->getStatus(),
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class'    => 'yii\grid\ActionColumn',
+                'template' => '{update}{delete}',
+            ],
         ],
     ]); ?>
 </div>

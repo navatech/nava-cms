@@ -79,7 +79,7 @@ class CategoryController extends Controller {
 		$model = new Category();
 		if ($model->load(Yii::$app->request->post())) {
 			$img = $model->uploadPicture('image');
-			if ($model->parent_id == '') {
+			if ($_POST['MenuItem']['parent_id'] == '') {
 				$model->parent_id = 0;
 			}
 			if ($model->save()) {
@@ -110,11 +110,17 @@ class CategoryController extends Controller {
 	 */
 	public function actionUpdate($id) {
 		$model = $this->findModel($id);
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect([
-				'index',
-				'type' => $model->type,
-			]);
+		if ($model->load(Yii::$app->request->post())) {
+			if ($_POST['MenuItem']['parent_id'] == '') {
+				$model->parent_id = 0;
+			}
+			if($model->save()){
+				return $this->redirect([
+					'index',
+					'type' => $model->type,
+				]);
+			}
+
 		} else {
 			return $this->render('update', [
 				'model' => $model,
