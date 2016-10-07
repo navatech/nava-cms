@@ -14,6 +14,7 @@ use Yii;
  * @property string  $shipping_address
  * @property string  $created_at
  * @property integer $total_price
+ * @property integer $discount
  * @property integer $status
  */
 class Order extends Model {
@@ -44,6 +45,7 @@ class Order extends Model {
 				[
 					'user_id',
 					'total_price',
+					'discount',
 					'status',
 				],
 				'integer',
@@ -79,12 +81,13 @@ class Order extends Model {
 			'shipping_address' => Translate::shipping_address(),
 			'created_at'       => Translate::created_at(),
 			'total_price'      => Translate::total_price(),
+			'discount'         => Translate::discount(),
 			'status'           => Translate::status(),
 		];
 	}
 
-	public function getDiscount($total,$discount){
-		$discount =  $total/100 * $discount;
+	public function getDiscount($total, $discount) {
+		$discount = $total / 100 * $discount;
 		return $discount;
 	}
 

@@ -121,7 +121,7 @@ class MenuItem extends Model {
 		$menuItems = MenuItem::find()->where([
 			'parent_id' => 0,
 			'menu_id'   => $menu_id,
-		])->all();
+		])->orderBy(['sort_order'=>SORT_ASC])->all();
 		$response  = [];
 		$html      = '';
 		foreach ($menuItems as $menuItem) {
