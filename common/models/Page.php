@@ -37,10 +37,11 @@ class Page extends Model {
 				'integer',
 			],
 			[
-				[   'img',
+				[
+					'img',
 					'image',
 					'created_at',
-					'updated_at'
+					'updated_at',
 				],
 				'string',
 				'max' => 255,
@@ -83,7 +84,7 @@ class Page extends Model {
 		$attributes = [
 			'name',
 			'description',
-			'content'
+			'content',
 		];
 		$behaviors  = parent::behaviors($attributes);
 		return $behaviors;

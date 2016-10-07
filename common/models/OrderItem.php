@@ -2,7 +2,6 @@
 namespace common\models;
 
 use navatech\language\Translate;
-use Yii;
 
 /**
  * This is the model class for table "order_item".
@@ -13,7 +12,7 @@ use Yii;
  * @property integer $quantity
  * @property integer $price
  */
-class OrderItem extends \yii\db\ActiveRecord {
+class OrderItem extends Model {
 
 	/**
 	 * @inheritdoc
@@ -60,7 +59,6 @@ class OrderItem extends \yii\db\ActiveRecord {
 			'product_id' => Translate::product(),
 			'quantity'   => Translate::quantity(),
 			'price'      => Translate::price(),
-
 		];
 	}
 

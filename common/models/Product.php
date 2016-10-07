@@ -3,17 +3,25 @@ namespace common\models;
 
 use navatech\language\Translate;
 use Yii;
+use yii\db\ActiveQuery;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "product".
  *
- * @property integer $id
- * @property double  $price
- * @property integer $status
- * @property integer $category_id
- * @property string  $image
+ * @property integer        $id
+ * @property double         $price
+ * @property integer        $status
+ * @property integer        $category_id
+ * @property string         $image
+ * @property ProductImage[] $productImages
+ * @property ProductLang[]  $productLangs
+ * @property Category       $category
  */
 class Product extends Model {
+
+	/**@var UploadedFile */
+	public $img;
 
 	/**
 	 * @inheritdoc
@@ -21,7 +29,6 @@ class Product extends Model {
 	public static function tableName() {
 		return 'product';
 	}
-	public $img;
 
 	/**
 	 * @inheritdoc
@@ -47,10 +54,11 @@ class Product extends Model {
 				'integer',
 			],
 			[
-				[   'img',
+				[
+					'img',
 					'image',
 					'created_at',
-					'updated_at'
+					'updated_at',
 				],
 				'string',
 				'max' => 255,
@@ -90,25 +98,35 @@ class Product extends Model {
 		];
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function behaviors($attributes = null) {
 		$attributes = [
 			'name',
 			'description',
-			'content'
+			'content',
 		];
 		$behaviors  = parent::behaviors($attributes);
 		return $behaviors;
 	}
 
 	/**
-	 * @return \yii\db\ActiveQuery
+	 * @return ActiveQuery
+	 */
+	public function getCategory() {
+		return $this->hasOne(Category::className(), ['id' => 'category_id']);
+	}
+
+	/**
+	 * @return ActiveQuery
 	 */
 	public function getProductLangs() {
 		return $this->hasMany(ProductLang::className(), ['product_id' => 'id']);
 	}
 
 	/**
-	 * @return \yii\db\ActiveQuery
+	 * @return ActiveQuery
 	 */
 	public function getProductImages() {
 		return $this->hasMany(ProductImage::className(), ['product_id' => 'id']);

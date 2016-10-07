@@ -1,8 +1,8 @@
 <?php
 use common\models\Category;
 use common\models\Post;
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\PostSearch */
@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="post-index">
 
 	<h1><?= Html::encode($this->title) ?></h1>
-	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 	<p>
 		<?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
@@ -38,21 +37,18 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'category_id',
 				'value'     => function (Post $data) {
-					return Category::getCategoryById($data->category_id);
+					return $data->category->name;
 				},
-				'filter'    => Category::getCategoryText(2),
+				'filter'    => Category::getDependCategories(Category::TYPE_POST),
 			],
 			[
 				'attribute' => 'status',
 				'value'     => function (Post $data) {
-					return $data->getStatus($data->status);
+					return $data->statusText;
 				},
-				'filter'    => $searchModel->getStatus(),
+				'filter'    => Post::filter(),
 			],
-			[
-				'class'    => 'yii\grid\ActionColumn',
-				'template' => '{update}{delete}',
-			],
+			['class' => 'yii\grid\ActionColumn'],
 		],
 	]); ?>
 </div>

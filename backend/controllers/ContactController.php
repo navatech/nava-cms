@@ -37,6 +37,7 @@ class ContactController extends Controller {
 			],
 		];
 	}
+
 	/**
 	 * Lists all Contact models.
 	 * @return mixed

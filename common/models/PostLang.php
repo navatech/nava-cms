@@ -1,8 +1,6 @@
 <?php
 namespace common\models;
 
-use Yii;
-
 /**
  * This is the model class for table "post_lang".
  *
@@ -12,7 +10,7 @@ use Yii;
  * @property string  $information
  * @property string  $language
  */
-class PostLang extends \yii\db\ActiveRecord {
+class PostLang extends Model {
 
 	/**
 	 * @inheritdoc

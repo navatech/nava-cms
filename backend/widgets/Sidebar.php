@@ -13,6 +13,7 @@ use common\models\MenuItem;
 use common\widgets\Widget;
 use navatech\role\helpers\RoleChecker;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 class Sidebar extends Widget {
 
@@ -49,12 +50,19 @@ class Sidebar extends Widget {
 			} else {
 				$template = '<a href="javascript:void(0)"> {label} <span class=" arrow"></span></a><span class="icon-thumbnail"><i class="fa ' . $model->icon . '"></i></span>';
 			}
-			$route        = Yii::$app->createController($model->url);
+			$route     = Yii::$app->createController($model->url);
+			$parse_url = parse_url($model->url);
+			if (isset($parse_url['query'])) {
+				$query = \GuzzleHttp\Psr7\parse_query($parse_url['query']);
+				$url   = ArrayHelper::merge(['/' . $parse_url['path']], $query);
+			} else {
+				$url = ['/' . $model->url];
+			}
 			$menu_items[] = [
 				'label'    => '<span class="title">' . $model->name . '</span>',
 				'encode'   => false,
 				'template' => $template,
-				'url'      => ['/' . $model->url],
+				'url'      => $url,
 				'items'    => $items,
 				'visible'  => RoleChecker::isAuth(get_class($route[0]), str_replace('/', '', substr($model->url, strpos($model->url, '/')))),
 			];

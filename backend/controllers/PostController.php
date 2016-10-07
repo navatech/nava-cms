@@ -101,8 +101,7 @@ class PostController extends Controller {
 		$model    = $this->findModel($id);
 		$oldImage = $model->image;
 		if ($model->load(Yii::$app->request->post())) {
-			$model->updated_at = date('Y-m-d H-i-s');
-			$img               = $model->uploadPicture('image');
+			$img = $model->uploadPicture('image');
 			if ($model->save()) {
 				if ($img === false) {
 					$model->image = $oldImage;

@@ -1,8 +1,6 @@
 <?php
 namespace common\models;
 
-use Yii;
-
 /**
  * This is the model class for table "product_lang".
  *
@@ -13,7 +11,7 @@ use Yii;
  * @property string  $content
  * @property string  $language
  */
-class ProductLang extends \yii\db\ActiveRecord {
+class ProductLang extends Model {
 
 	/**
 	 * @inheritdoc

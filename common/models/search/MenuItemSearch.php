@@ -77,10 +77,10 @@ class MenuItemSearch extends MenuItem {
 			'icon',
 			$this->icon,
 		])->andFilterWhere([
-				'like',
-				'url',
-				$this->url,
-			]);
+			'like',
+			'url',
+			$this->url,
+		]);
 		return $dataProvider;
 	}
 }

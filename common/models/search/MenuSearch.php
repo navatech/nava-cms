@@ -58,7 +58,7 @@ class MenuSearch extends Menu {
 		}
 		// grid filtering conditions
 		$query->andFilterWhere([
-			'id' => $this->id,
+			'id'     => $this->id,
 			'status' => $this->status,
 		]);
 		$query->andFilterWhere([

@@ -1,26 +1,22 @@
 <?php
-
 namespace common\models;
-
-use Yii;
 
 /**
  * This is the model class for table "category_lang".
  *
  * @property integer $id
  * @property integer $category_id
- * @property string $name
- * @property string $language
+ * @property string  $name
+ * @property string  $language
  */
-class CategoryLang extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'category_lang';
-    }
+class CategoryLang extends Model {
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName() {
+		return 'category_lang';
+	}
 
 	/**
 	 * @inheritdoc
@@ -57,18 +53,17 @@ class CategoryLang extends \yii\db\ActiveRecord
 		];
 	}
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'category_id' => 'Category ID',
-            'name' => 'Name',
-            'language' => 'Language',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+		return [
+			'id'          => 'ID',
+			'category_id' => 'Category ID',
+			'name'        => 'Name',
+			'language'    => 'Language',
+		];
+	}
 
 	/**
 	 * @return \yii\db\ActiveQuery

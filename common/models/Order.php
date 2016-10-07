@@ -2,7 +2,6 @@
 namespace common\models;
 
 use navatech\language\Translate;
-use Yii;
 
 /**
  * This is the model class for table "order".

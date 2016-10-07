@@ -121,7 +121,7 @@ class MenuItem extends Model {
 		$menuItems = MenuItem::find()->where([
 			'parent_id' => 0,
 			'menu_id'   => $menu_id,
-		])->orderBy(['sort_order'=>SORT_ASC])->all();
+		])->orderBy(['sort_order' => SORT_ASC])->all();
 		$response  = [];
 		$html      = '';
 		foreach ($menuItems as $menuItem) {
@@ -186,7 +186,7 @@ class MenuItem extends Model {
 			$children = MenuItem::find()->where([
 				'parent_id' => $menuItem->id,
 				'menu_id'   => $menu_id,
-			])->orderBy(['sort_order'=>SORT_ASC])->all();
+			])->orderBy(['sort_order' => SORT_ASC])->all();
 			if ($children) {
 				$html .= self::getChildrenMenu($children, $menu_id);
 			}

@@ -14,7 +14,7 @@ use yii\web\UploadedFile;
  * @property integer $feature_image
  * @property integer $status
  */
-class ProductImage extends \yii\db\ActiveRecord {
+class ProductImage extends Model {
 
 	/**
 	 * @inheritdoc
@@ -59,10 +59,10 @@ class ProductImage extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'            => 'No',
-			'product_id'    => Translate::product(),
-			'image'         => Translate::image(),
-			'status'        => Translate::status(),
+			'id'         => 'No',
+			'product_id' => Translate::product(),
+			'image'      => Translate::image(),
+			'status'     => Translate::status(),
 		];
 	}
 
@@ -113,7 +113,7 @@ class ProductImage extends \yii\db\ActiveRecord {
 			foreach ($pictures as $picture) {
 				$array [$i] = [
 					'image' => "/product/deleteimg?id=" . $picture->id,
-					'key' => $picture->id,
+					'key'   => $picture->id,
 				];
 				$i ++;
 			}

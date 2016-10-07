@@ -1,8 +1,6 @@
 <?php
 namespace common\models;
 
-use Yii;
-
 /**
  * This is the model class for table "page_lang".
  *
@@ -12,7 +10,7 @@ use Yii;
  * @property string  $information
  * @property string  $language
  */
-class PageLang extends \yii\db\ActiveRecord {
+class PageLang extends Model {
 
 	/**
 	 * @inheritdoc
@@ -34,7 +32,7 @@ class PageLang extends \yii\db\ActiveRecord {
 				[
 					'name',
 					'description',
-					'content'
+					'content',
 				],
 				'string',
 			],

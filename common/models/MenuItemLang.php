@@ -1,6 +1,5 @@
 <?php
 namespace common\models;
-
 /**
  * This is the model class for table "menu_item_lang".
  *
@@ -53,10 +52,10 @@ class MenuItemLang extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id' => 'ID',
+			'id'           => 'ID',
 			'menu_item_id' => 'Menu Item ID',
-			'language' => 'Language',
-			'name' => 'Name',
+			'language'     => 'Language',
+			'name'         => 'Name',
 		];
 	}
 

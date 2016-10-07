@@ -1,7 +1,7 @@
 <?php
 use common\models\MenuItem;
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\MenuItemSearch */
@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			['class' => 'yii\grid\SerialColumn'],
 			[
 				'attribute' => 'icon',
-				'value'     => function(MenuItem $data) {
-					return '<i class="fa '.$data->icon.'"></i>';
+				'value'     => function (MenuItem $data) {
+					return '<i class="fa ' . $data->icon . '"></i>';
 				},
 				'filter'    => false,
 				'format'    => 'html',
@@ -37,10 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
 			'sort_order',
 			[
 				'attribute' => 'status',
-				'value'     => function(MenuItem $data) {
-					return $data->getStatus($data->status);
+				'value'     => function (MenuItem $data) {
+					return $data->statusText;
 				},
-				'filter'    => $searchModel->getStatus(),
+				'filter'    => MenuItem::filter(),
 			],
 			['class' => 'yii\grid\ActionColumn'],
 		],

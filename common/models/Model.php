@@ -16,7 +16,19 @@ use navatech\language\Translate;
 use Yii;
 use yii\web\UploadedFile;
 
+/**
+ * @property string $statusText
+ */
 class Model extends ActiveRecord {
+
+	const  STATUS_NO  = 0;
+
+	const  STATUS_YES = 1;
+
+	const  STATUS     = [
+		0,
+		1,
+	];
 
 	/**
 	 * {@inheritDoc}
@@ -41,10 +53,12 @@ class Model extends ActiveRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * @param $condition
+	 *
+	 * @return static|null|\yii\db\ActiveRecord
 	 */
 	public static function findOneTranslated($condition) {
-		return is_array($condition) ? self::find()->where($condition)->translate()->one() : self::find()
+		return is_array($condition) ? static::find()->where($condition)->translate()->one() : static::find()
 			->where(['id' => $condition])
 			->translate()
 			->one();
@@ -72,7 +86,6 @@ class Model extends ActiveRecord {
 	public function getPictureUrl($picture = '') {
 		Yii::$app->params['uploadUrl'] = Yii::$app->urlManager->baseUrl . '/uploads/' . $this->tableName() . '/';
 		$image                         = !empty($this->$picture) ? $this->$picture : Yii::$app->urlManager->baseUrl . '/uploads/no_image_thumb.gif';
-		clearstatcache();
 		if (is_file(Yii::getAlias("@app/web") . '/uploads/' . $this->tableName() . '/' . $image)) {
 			return Yii::$app->params['uploadUrl'] . $image;
 		} else {
@@ -101,14 +114,21 @@ class Model extends ActiveRecord {
 		return $img;
 	}
 
-	public function getStatus($status = null) {
-		if ($status !== null) {
-			return $status == 1 ? Translate::yes() : Translate::no();
-		} else {
-			return array(
-				0 => Translate::no(),
-				1 => Translate::yes(),
-			);
-		}
+	/**
+	 * @return string
+	 */
+	public function getStatusText() {
+		return $this->getAttribute('status') == static::STATUS_NO ? Translate::no() : Translate::yes();
+	}
+
+	/**
+	 * For filter on grid
+	 * @return array
+	 */
+	public static function filter() {
+		return [
+			Translate::no(),
+			Translate::yes(),
+		];
 	}
 }
