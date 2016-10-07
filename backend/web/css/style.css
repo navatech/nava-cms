@@ -230,3 +230,7 @@ li.active .icon-thumbnail {
 .bg-black {
     background: #2B303B;
 }
+.kv-preview-data.file-preview-image {
+    height: auto !important;
+    max-width: 100% !important;
+}

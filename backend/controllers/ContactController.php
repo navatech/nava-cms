@@ -24,9 +24,17 @@ class ContactController extends Controller {
 					'delete' => ['POST'],
 				],
 			],
+			'role'  => [
+				'class'   => RoleFilter::className(),
+				'name'    => Translate::contact(),
+				'actions' => [
+					'index'  => Translate::lists(),
+					'view'   => Translate::view(),
+					'delete' => Translate::delete(),
+				],
+			],
 		];
 	}
-
 	/**
 	 * Lists all Contact models.
 	 * @return mixed

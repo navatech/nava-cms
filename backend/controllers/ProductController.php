@@ -31,11 +31,11 @@ class ProductController extends Controller {
 				'class'   => RoleFilter::className(),
 				'name'    => Translate::product(),
 				'actions' => [
-					'index'  => 'Danh sách',
-					'view'   => 'Chi tiết',
-					'create' => 'Thêm mới',
-					'update' => 'Cập nhật',
-					'delete' => 'Xóa',
+					'index'  => Translate::lists(),
+					'view'   => Translate::view(),
+					'create' => Translate::add_new(),
+					'update' => Translate::update(),
+					'delete' => Translate::delete(),
 				],
 			],
 		];

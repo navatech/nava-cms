@@ -186,7 +186,7 @@ class MenuItem extends Model {
 			$children = MenuItem::find()->where([
 				'parent_id' => $menuItem->id,
 				'menu_id'   => $menu_id,
-			])->all();
+			])->orderBy(['sort_order'=>SORT_ASC])->all();
 			if ($children) {
 				$html .= self::getChildrenMenu($children, $menu_id);
 			}
