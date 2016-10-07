@@ -51,8 +51,10 @@ class OrderController extends Controller
      */
     public function actionView($id)
     {
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+	        'order_items' => $this->findModel($id)->orderItems
         ]);
     }
 

@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "order".
  *
  * @property integer $id
+ * @property string  $order_number
  * @property integer $user_id
  * @property string  $phone_number
  * @property string  $shipping_address
@@ -32,6 +33,7 @@ class Order extends Model {
 			[
 				[
 					'user_id',
+					'order_number',
 					'phone_number',
 					'shipping_address',
 					'total_price',
@@ -47,7 +49,10 @@ class Order extends Model {
 				'integer',
 			],
 			[
-				['shipping_address'],
+				[
+					'order_number',
+					'shipping_address',
+				],
 				'string',
 			],
 			[
@@ -68,12 +73,25 @@ class Order extends Model {
 	public function attributeLabels() {
 		return [
 			'id'               => 'No',
+			'order_number'     => Translate::order_number(),
 			'user_id'          => Translate::user(),
 			'phone_number'     => Translate::phone(),
-			'shipping_address' => Translate::address(),
+			'shipping_address' => Translate::shipping_address(),
 			'created_at'       => Translate::created_at(),
 			'total_price'      => Translate::total_price(),
 			'status'           => Translate::status(),
 		];
+	}
+
+	public function getDiscount($total,$discount){
+		$discount =  $total/100 * $discount;
+		return $discount;
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getOrderItems() {
+		return $this->hasMany(OrderItem::className(), ['order_id' => 'id']);
 	}
 }

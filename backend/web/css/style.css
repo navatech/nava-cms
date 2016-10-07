@@ -227,3 +227,6 @@ li.active .icon-thumbnail {
 .panel-primary > .panel-heading {
     color: #51646b;
 }
+.bg-black {
+    background: #2B303B;
+}
