@@ -1,7 +1,7 @@
 <?php
 namespace backend\controllers;
 
-use common\components\Controller;
+use backend\components\Controller;
 use common\models\search\UserSearch;
 use common\models\User;
 use navatech\language\Translate;

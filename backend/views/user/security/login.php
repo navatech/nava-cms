@@ -9,16 +9,15 @@
  */
 use app\assets\LoginAsset;
 use navatech\language\Translate;
-use navatech\language\widgets\LanguageWidget;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 LoginAsset::register($this);
-Yii::$app->layout = false;
+Yii::$app->layout              = false;
+$this->title                   = Translate::login() . ' | ' . Yii::$app->name;
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php $this->beginPage() ?>
-<?php
-$this->params['breadcrumbs'][] = $this->title; ?>
 	<!DOCTYPE html>
 	<html lang="<?= Yii::$app->language ?>">
 	<head>
@@ -36,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title; ?>
 	<div class="content">
 
 		<section id="content" class="m-t-lg wrapper-md">
-			<div id="login-blur"></div>
 			<div id="login-darken"></div>
 			<div id="login-form" class="container aside-xxl animated fadeInUp">
 		<span class="navbar-brand block ">
@@ -88,7 +86,8 @@ $this->params['breadcrumbs'][] = $this->title; ?>
 				<footer id="footer">
 					<div class="text-center text-success padder">
 						<p>
-							<small>&copy; 2016 Powered by <a href="http://navatech.vn/" target="_blank">NavaTech</a></small>
+							<small>&copy; 2016 Powered by <a href="http://navatech.vn/" target="_blank">NavaTech</a>
+							</small>
 						</p>
 					</div>
 				</footer>

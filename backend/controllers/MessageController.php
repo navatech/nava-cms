@@ -1,7 +1,7 @@
 <?php
 namespace backend\controllers;
 
-use common\components\Controller;
+use backend\components\Controller;
 use yarcode\email\models\Message;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;

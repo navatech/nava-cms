@@ -1,7 +1,7 @@
 <?php
 namespace backend\controllers;
 
-use common\components\Controller;
+use backend\components\Controller;
 use navatech\language\Translate;
 use navatech\role\filters\RoleFilter;
 use yii\filters\VerbFilter;

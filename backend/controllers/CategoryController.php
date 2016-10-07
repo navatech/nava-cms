@@ -1,14 +1,14 @@
 <?php
 namespace backend\controllers;
 
+use backend\components\Controller;
+use common\models\Category;
+use common\models\search\CategorySearch;
 use navatech\language\Translate;
 use navatech\role\filters\RoleFilter;
 use Yii;
-use common\models\Category;
-use common\models\search\CategorySearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -77,13 +77,13 @@ class CategoryController extends Controller {
 	 */
 	public function actionCreate($type) {
 		$model = new Category();
-		if($model->load(Yii::$app->request->post())) {
+		if ($model->load(Yii::$app->request->post())) {
 			$img = $model->uploadPicture('image');
-			if($model->parent_id == '') {
+			if ($model->parent_id == '') {
 				$model->parent_id = 0;
 			}
-			if($model->save()) {
-				if($img !== false) {
+			if ($model->save()) {
+				if ($img !== false) {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
@@ -110,8 +110,11 @@ class CategoryController extends Controller {
 	 */
 	public function actionUpdate($id) {
 		$model = $this->findModel($id);
-		if($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['index','type' => $model->type,]);
+		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			return $this->redirect([
+				'index',
+				'type' => $model->type,
+			]);
 		} else {
 			return $this->render('update', [
 				'model' => $model,
@@ -130,7 +133,10 @@ class CategoryController extends Controller {
 	public function actionDelete($id) {
 		$type = $this->findModel($id)->type;
 		$this->findModel($id)->delete();
-		return $this->redirect(['index','type'=>$type]);
+		return $this->redirect([
+			'index',
+			'type' => $type,
+		]);
 	}
 
 	/**
@@ -143,7 +149,7 @@ class CategoryController extends Controller {
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id) {
-		if(($model = Category::findOneTranslated($id)) !== null) {
+		if (($model = Category::findOneTranslated($id)) !== null) {
 			return $model;
 		} else {
 			throw new NotFoundHttpException('The requested page does not exist.');

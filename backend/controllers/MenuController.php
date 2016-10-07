@@ -1,7 +1,7 @@
 <?php
 namespace backend\controllers;
 
-use common\components\Controller;
+use backend\components\Controller;
 use common\models\Menu;
 use common\models\MenuItem;
 use common\models\search\MenuSearch;
@@ -60,7 +60,7 @@ class MenuController extends Controller {
 		if (isset($_POST["MenuItem"])) {
 			$i = 0;
 			foreach ($_POST["MenuItem"] as $menuItem) {
-				$i++;
+				$i ++;
 				$item             = MenuItem::findOne($menuItem['id']);
 				$item->icon       = $menuItem['icon'];
 				$item->parent_id  = $menuItem['parent_id'];

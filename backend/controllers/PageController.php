@@ -1,14 +1,14 @@
 <?php
 namespace backend\controllers;
 
+use backend\components\Controller;
+use common\models\Page;
+use common\models\search\PageSearch;
 use navatech\language\Translate;
 use navatech\role\filters\RoleFilter;
 use Yii;
-use common\models\Page;
-use common\models\search\PageSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * PageController implements the CRUD actions for Page model.
@@ -73,10 +73,10 @@ class PageController extends Controller {
 	 */
 	public function actionCreate() {
 		$model = new Page();
-		if($model->load(Yii::$app->request->post()) && $model->save()) {
+		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			$img = $model->uploadPicture('image');
-			if($model->save()) {
-				if($img !== false) {
+			if ($model->save()) {
+				if ($img !== false) {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
@@ -98,16 +98,16 @@ class PageController extends Controller {
 	 * @return mixed
 	 */
 	public function actionUpdate($id) {
-		$model = $this->findModel($id);
+		$model    = $this->findModel($id);
 		$oldImage = $model->image;
-		if($model->load(Yii::$app->request->post())) {
+		if ($model->load(Yii::$app->request->post())) {
 			$model->updated_at = date('Y-m-d H-i-s');
-			$img = $model->uploadPicture('image');
-			if($model->save()) {
-				if($img === false) {
+			$img               = $model->uploadPicture('image');
+			if ($model->save()) {
+				if ($img === false) {
 					$model->image = $oldImage;
 				}
-				if($img !== false) {
+				if ($img !== false) {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
@@ -143,7 +143,7 @@ class PageController extends Controller {
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id) {
-		if(($model = Page::findOneTranslated($id)) !== null) {
+		if (($model = Page::findOneTranslated($id)) !== null) {
 			return $model;
 		} else {
 			throw new NotFoundHttpException('The requested page does not exist.');

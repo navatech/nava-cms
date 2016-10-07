@@ -1,7 +1,7 @@
 <?php
 namespace backend\controllers;
 
-use common\components\Controller;
+use backend\components\Controller;
 use common\models\MenuItem;
 use common\models\search\MenuItemSearch;
 use navatech\language\Translate;
@@ -138,5 +138,4 @@ class MenuItemController extends Controller {
 			throw new NotFoundHttpException('The requested page does not exist.');
 		}
 	}
-
 }

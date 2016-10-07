@@ -1,15 +1,15 @@
 <?php
 namespace backend\controllers;
 
+use backend\components\Controller;
+use common\models\Product;
 use common\models\ProductImage;
+use common\models\search\ProductSearch;
 use navatech\language\Translate;
 use navatech\role\filters\RoleFilter;
 use Yii;
-use common\models\Product;
-use common\models\search\ProductSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -75,21 +75,21 @@ class ProductController extends Controller {
 	public function actionCreate() {
 		$model         = new Product();
 		$product_image = new ProductImage();
-		if($model->load(Yii::$app->request->post())) {
+		if ($model->load(Yii::$app->request->post())) {
 			$img = $model->uploadPicture('image');
-			if($model->save()) {
-				if($img !== false) {
+			if ($model->save()) {
+				if ($img !== false) {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
 				$gallery_img = $product_image->uploadPicture();
 				if ($gallery_img != null) {
-					foreach ($gallery_img as $key=>$item) {
+					foreach ($gallery_img as $key => $item) {
 						$gallery             = new ProductImage();
 						$gallery->product_id = $model->getPrimaryKey();
 						$gallery->status     = "1";
-						$ext          = $item->getExtension();
-						$gallery->image = $model->getPrimaryKey() . '_'.$key.'_image' . ".{$ext}";
+						$ext                 = $item->getExtension();
+						$gallery->image      = $model->getPrimaryKey() . '_' . $key . '_image' . ".{$ext}";
 						$gallery->save();
 						if ($item != false) {
 							$path = $gallery->getPictureFile('image');
@@ -116,17 +116,17 @@ class ProductController extends Controller {
 	 * @return mixed
 	 */
 	public function actionUpdate($id) {
-		$model    = $this->findModel($id);
-		$oldImage = $model->image;
+		$model         = $this->findModel($id);
+		$oldImage      = $model->image;
 		$product_image = new ProductImage();
-		if($model->load(Yii::$app->request->post())) {
+		if ($model->load(Yii::$app->request->post())) {
 			$model->updated_at = date('Y-m-d H-i-s');
 			$img               = $model->uploadPicture('image');
-			if($model->save()) {
-				if($img === false) {
+			if ($model->save()) {
+				if ($img === false) {
 					$model->image = $oldImage;
 				}
-				if($img !== false) {
+				if ($img !== false) {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
@@ -136,8 +136,8 @@ class ProductController extends Controller {
 						$product_img             = new ProductImage();
 						$product_img->product_id = $model->getPrimaryKey();
 						$product_img->status     = "1";
-						$ext          = $item->getExtension();
-						$product_img->image = $model->getPrimaryKey() . '_'.$key.'_image' . ".{$ext}";
+						$ext                     = $item->getExtension();
+						$product_img->image      = $model->getPrimaryKey() . '_' . $key . '_image' . ".{$ext}";
 						$product_img->save();
 						if ($item != false) {
 							$path = $product_img->getPictureFile('image');
@@ -149,7 +149,7 @@ class ProductController extends Controller {
 			}
 		} else {
 			return $this->render('update', [
-				'model' => $model,
+				'model'         => $model,
 				'product_image' => $product_image,
 			]);
 		}
@@ -178,7 +178,7 @@ class ProductController extends Controller {
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id) {
-		if(($model = Product::findOneTranslated($id)) !== null) {
+		if (($model = Product::findOneTranslated($id)) !== null) {
 			return $model;
 		} else {
 			throw new NotFoundHttpException('The requested page does not exist.');
