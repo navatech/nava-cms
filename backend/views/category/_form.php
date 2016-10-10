@@ -48,7 +48,7 @@ use yii\bootstrap\ActiveForm;
                  'prompt' => Translate::category_parent(),
              ]) ?>
 
-    <?= $form->field($model, 'type')->hiddenInput(['value'=>$type])->label(false);?>
+    <?= $form->field($model, 'type')->hiddenInput(['value'=>$model->isNewRecord ? $type:$model->type])->label(false);?>
 
     <?= $form->field($model, 'order')->textInput() ?>
 

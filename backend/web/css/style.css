@@ -234,3 +234,6 @@ li.active .icon-thumbnail {
     height: auto !important;
     max-width: 100% !important;
 }
+.file-preview-image {
+    max-height: 150px;
+}

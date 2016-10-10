@@ -5,6 +5,7 @@ use common\models\Product;
 use navatech\role\helpers\RoleChecker;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\ProductSearch */
@@ -58,8 +59,16 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			[
 				'class'          => 'yii\grid\ActionColumn',
+				'template' => '{preview} {update} {delete} ',
+				'buttons'  => [
+					'preview' => function($url, $model, $key) {
+						return Html::a('<i class="glyphicon glyphicon-globe"></i>', Url::to([
+							'/frontend/page/view',
+							'id'   => $model->id,
+						]));
+					},
+				],
 				'visibleButtons' => [
-					'view'   => RoleChecker::isAuth(ProductController::className(), 'view'),
 					'update' => RoleChecker::isAuth(ProductController::className(), 'update'),
 					'delete' => RoleChecker::isAuth(ProductController::className(), 'delete'),
 				],

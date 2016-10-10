@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'image',
 				'value'     => function (Category $data) {
-					return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail']);
+					return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail','style' => 'height:50px']);
 				},
 				'filter'    => false,
 				'format'    => 'raw',

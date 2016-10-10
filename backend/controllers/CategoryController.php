@@ -31,7 +31,6 @@ class CategoryController extends Controller {
 				'name'    => Translate::category(),
 				'actions' => [
 					'index'  => Translate::lists(),
-					'view'   => Translate::view(),
 					'create' => Translate::add_new(),
 					'update' => Translate::update(),
 					'delete' => Translate::delete(),
@@ -79,7 +78,7 @@ class CategoryController extends Controller {
 		$model = new Category();
 		if ($model->load(Yii::$app->request->post())) {
 			$img = $model->uploadPicture('image');
-			if ($_POST['MenuItem']['parent_id'] == '') {
+			if ($_POST['Category']['parent_id'] == '') {
 				$model->parent_id = 0;
 			}
 			if ($model->save()) {
@@ -111,7 +110,7 @@ class CategoryController extends Controller {
 	public function actionUpdate($id) {
 		$model = $this->findModel($id);
 		if ($model->load(Yii::$app->request->post())) {
-			if ($_POST['MenuItem']['parent_id'] == '') {
+			if ($_POST['Category']['parent_id'] == '') {
 				$model->parent_id = 0;
 			}
 			if($model->save()){
