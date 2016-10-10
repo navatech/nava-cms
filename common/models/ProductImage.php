@@ -85,7 +85,7 @@ class ProductImage extends Model {
 	 *
 	 * @return string
 	 */
-	public static function getPictureUrl($product_id = null) {
+	public function getPictureUrl($product_id = null) {
 		Yii::$app->params['uploadUrl'] = Yii::$app->urlManager->baseUrl . '/uploads/' . self::tableName() . '/';
 		if ($product_id != null) {
 			$gallery = ProductImage::find()->where(['product_id' => $product_id])->all();

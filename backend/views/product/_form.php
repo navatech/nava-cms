@@ -1,25 +1,30 @@
 <?php
 use common\models\Category;
+use common\models\Product;
 use common\models\ProductImage;
+use common\web\View;
 use kartik\file\FileInput;
 use kartik\widgets\SwitchInput;
 use navatech\language\models\Language;
 use navatech\language\Translate;
 use navatech\roxymce\widgets\RoxyMceWidget;
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 use yii\helpers\Url;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Product */
-/* @var $form yii\widgets\ActiveForm */
+/**
+ * @var   View       $this
+ * @var  Product     $model
+ * @var ProductImage $product_image
+ * @var ActiveForm   $form
+ */
 ?>
 
 <div class="product-form">
 
 
 	<?php $form = ActiveForm::begin([
-		'layout' => 'default',
+		'layout'  => 'default',
 		'options' => [
 			'enctype' => 'multipart/form-data',
 		],
@@ -40,34 +45,35 @@ use yii\helpers\Url;
 							<div class="<?= ($language->code == Yii::$app->language) ? 'active in' : '' ?> tab-pane fade" id="tab_<?= $language->code ?>">
 								<?php
 								echo $form->field($model, 'name_' . $language->code, ['labelOptions' => ['class' => 'control-label col-sm-3']])
-								          ->textInput([
-									          'value' => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('name', $language->code),
-								          ])
-								          ->label(Translate::name());
+									->textInput([
+										'value' => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('name', $language->code),
+									])
+									->label(Translate::name());
 								?>
 								<?php
 								echo $form->field($model, 'description_' . $language->code, ['labelOptions' => ['class' => 'control-label']])
-								          ->textarea([
-									          'value' => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('description', $language->code),
-								          ])
-								          ->label(Translate::description());
+									->textarea([
+										'value' => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('description', $language->code),
+									])
+									->label(Translate::description());
 								?>
 								<?php
-								echo $form->field($model, 'content_' . $language->code, [
-								])->widget(RoxyMceWidget::className(), [
-									'model'       => $model,
-									'attribute'   => 'content_' . $language->code,
-									'name'        => 'Post[content_' . $language->code . ']',
-									'value'       => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('content', $language->code),
-									'action'      => Url::to(['/roxymce/default']),
-									'options'     => [
-										'title'      => 'RoxyMCE',
-										'min_height' => 250,
-									],
-									'htmlOptions' => [
-										'rows' => 6,
-									],
-								])->label(Translate::content());
+								echo $form->field($model, 'content_' . $language->code, [])
+									->widget(RoxyMceWidget::className(), [
+										'model'       => $model,
+										'attribute'   => 'content_' . $language->code,
+										'name'        => 'Post[content_' . $language->code . ']',
+										'value'       => $model->getIsNewRecord() ? '' : $model->getTranslateAttribute('content', $language->code),
+										'action'      => Url::to(['/roxymce/default']),
+										'options'     => [
+											'title'      => 'RoxyMCE',
+											'min_height' => 250,
+										],
+										'htmlOptions' => [
+											'rows' => 6,
+										],
+									])
+									->label(Translate::content());
 								?>
 							</div>
 						<?php endforeach; ?>
@@ -91,9 +97,9 @@ use yii\helpers\Url;
 					</div>
 					<?= $form->field($model, 'price')->textInput() ?>
 					<?= $form->field($model, 'category_id', ['labelOptions' => []])
-					         ->dropDownList(Category::getCategoryText(1), [
-						         'prompt' => Translate::category_parent(),
-					         ]) ?>
+						->dropDownList(Category::getDependCategories(Category::TYPE_PRODUCT), [
+							'prompt' => Translate::category_parent(),
+						]) ?>
 					<?php echo $form->field($model, 'img')->widget(FileInput::className(), [
 						'options'       => [
 							'accept'      => 'image/*',
@@ -129,8 +135,7 @@ use yii\helpers\Url;
 								'png',
 							],
 							'showUpload'               => false,
-							'initialPreview'           => $model->id == null ? [
-							] : ProductImage::getPictureUrl($model->id),
+							'initialPreview'           => $model->id == null ? [] : $model->getPictureUrl($model->id),
 						],
 					])->label(Translate::gallery());
 					?>
@@ -138,8 +143,5 @@ use yii\helpers\Url;
 			</div>
 		</div>
 	</div>
-
 	<?php ActiveForm::end(); ?>
-
-
 </div>
