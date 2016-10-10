@@ -88,7 +88,7 @@ use yii\helpers\Url;
 				        </div>
 			        </div>
 			        <?= $form->field($model, 'category_id', ['labelOptions' => []])
-			                 ->dropDownList(Category::getCategoryText(2), [
+			                 ->dropDownList(Category::getDependCategories(2), [
 				                 'prompt' => Translate::category_parent(),
 			                 ]) ?>
 			        <?php echo $form->field($model, 'img')->widget(FileInput::className(), [

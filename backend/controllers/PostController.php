@@ -31,7 +31,6 @@ class PostController extends Controller {
 				'name'    => Translate::post(),
 				'actions' => [
 					'index'  => Translate::lists(),
-					'view'   => Translate::view(),
 					'create' => Translate::add_new(),
 					'update' => Translate::update(),
 					'delete' => Translate::delete(),

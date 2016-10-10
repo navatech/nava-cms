@@ -2,7 +2,10 @@
 /**
  * @var \common\web\View $this
  */
+use backend\widgets\AreaChart;
 use backend\widgets\LineChart;
+use backend\widgets\MultipleLineChart;
+use backend\widgets\StackedBar;
 use backend\widgets\Table;
 
 $this->title = \navatech\language\Translate::dashboard();
@@ -20,6 +23,15 @@ $this->title = \navatech\language\Translate::dashboard();
 		</div>
 		<div class="col-md-6 col-lg-4 hidden-xlg m-b-10">
 			<?= Table::widget() ?>
+		</div>
+		<div class="col-md-6 col-lg-4 hidden-xlg m-b-10">
+			<?= AreaChart::widget() ?>
+		</div>
+		<div class="col-md-6 col-lg-4 hidden-xlg m-b-10">
+			<?= StackedBar::widget() ?>
+		</div>
+		<div class="col-md-6 col-lg-4 hidden-xlg m-b-10">
+			<?= MultipleLineChart::widget() ?>
 		</div>
 	</div>
 

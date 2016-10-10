@@ -1,6 +1,8 @@
 <?php
+use backend\controllers\PostController;
 use common\models\Category;
 use common\models\Post;
+use navatech\role\helpers\RoleChecker;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
@@ -48,7 +50,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				},
 				'filter'    => Post::filter(),
 			],
-			['class' => 'yii\grid\ActionColumn'],
+			[
+				'class'          => 'yii\grid\ActionColumn',
+				'visibleButtons' => [
+					'view'   => RoleChecker::isAuth(PostController::className(), 'view'),
+					'update' => RoleChecker::isAuth(PostController::className(), 'update'),
+					'delete' => RoleChecker::isAuth(PostController::className(), 'delete'),
+				],
+			],
 		],
 	]); ?>
 </div>

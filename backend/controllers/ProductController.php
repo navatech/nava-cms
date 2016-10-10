@@ -32,7 +32,6 @@ class ProductController extends Controller {
 				'name'    => Translate::product(),
 				'actions' => [
 					'index'  => Translate::lists(),
-					'view'   => Translate::view(),
 					'create' => Translate::add_new(),
 					'update' => Translate::update(),
 					'delete' => Translate::delete(),

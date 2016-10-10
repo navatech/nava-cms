@@ -1,6 +1,8 @@
 <?php
+use backend\controllers\ProductController;
 use common\models\Category;
 use common\models\Product;
+use navatech\role\helpers\RoleChecker;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
@@ -54,7 +56,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				},
 				'filter'    => Product::filter(),
 			],
-			['class' => 'yii\grid\ActionColumn'],
+			[
+				'class'          => 'yii\grid\ActionColumn',
+				'visibleButtons' => [
+					'view'   => RoleChecker::isAuth(ProductController::className(), 'view'),
+					'update' => RoleChecker::isAuth(ProductController::className(), 'update'),
+					'delete' => RoleChecker::isAuth(ProductController::className(), 'delete'),
+				],
+			],
 		],
 	]); ?>
 </div>

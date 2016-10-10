@@ -1,5 +1,7 @@
 <?php
+use backend\controllers\PageController;
 use common\models\Page;
+use navatech\role\helpers\RoleChecker;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
@@ -41,7 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				},
 				'filter'    => Page::filter(),
 			],
-			['class' => 'yii\grid\ActionColumn'],
+			[
+				'class'          => 'yii\grid\ActionColumn',
+				'visibleButtons' => [
+					'view'   => RoleChecker::isAuth(PageController::className(), 'view'),
+					'update' => RoleChecker::isAuth(PageController::className(), 'update'),
+					'delete' => RoleChecker::isAuth(PageController::className(), 'delete'),
+				],
+			],
 		],
 	]); ?>
 </div>

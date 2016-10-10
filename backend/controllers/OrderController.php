@@ -4,6 +4,8 @@ namespace backend\controllers;
 use backend\components\Controller;
 use common\models\Order;
 use common\models\search\OrderSearch;
+use navatech\language\Translate;
+use navatech\role\filters\RoleFilter;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
@@ -30,7 +32,6 @@ class OrderController extends Controller {
 				'actions' => [
 					'index'  => Translate::lists(),
 					'view'   => Translate::view(),
-					'create' => Translate::add_new(),
 					'update' => Translate::update(),
 					'delete' => Translate::delete(),
 				],
@@ -61,6 +62,7 @@ class OrderController extends Controller {
 	public function actionView($id) {
 		return $this->render('view', [
 			'model' => $this->findModel($id),
+			'order_items' => $this->findModel($id)->orderItems
 		]);
 	}
 
