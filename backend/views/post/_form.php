@@ -74,45 +74,6 @@ use yii\helpers\Url;
 				</div>
 			</div>
 
-        </div>
-        <div class="col-sm-4">
-	        <div class="panel panel-default">
-	        	<div class="panel-body">
-			        <div class="row">
-				        <div class="col-sm-6">
-					        <?= $form->field($model, 'status')->widget(SwitchInput::className(), []); ?>
-				        </div>
-				        <div class="col-sm-6">
-					        <div class="form-group">
-						        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-					        </div>
-				        </div>
-			        </div>
-			        <?= $form->field($model, 'category_id', ['labelOptions' => []])
-			                 ->dropDownList(Category::getDependCategories(2), [
-				                 'prompt' => Translate::category_parent(),
-			                 ]) ?>
-			        <?php echo $form->field($model, 'img')->widget(FileInput::className(), [
-				        'options'       => [
-					        'accept'      => 'image/*',
-					        'placeholder' => Translate::image(),
-				        ],
-				        'pluginOptions' => [
-					        'allowedFileExtensions'                          => [
-						        'jpg',
-						        'gif',
-						        'png',
-					        ],
-					        'showUpload'                                     => false,
-					        $model->getIsNewRecord() ? '' : 'initialPreview' => [
-						        Html::img($model->getPictureUrl('image'), ['class' => 'file-preview-image img-responsive']),
-					        ],
-				        ],
-			        ])->label(Translate::image()); ?>
-	        	</div>
-	        </div>
-        </div>
-    </div>
 		</div>
 		<div class="col-sm-4">
 			<div class="panel panel-default">
@@ -128,7 +89,7 @@ use yii\helpers\Url;
 						</div>
 					</div>
 					<?= $form->field($model, 'category_id', ['labelOptions' => []])
-						->dropDownList(Category::getDependCategories(Category::TYPE_POST), [
+						->dropDownList(Category::getDependCategories(2), [
 							'prompt' => Translate::category_parent(),
 						]) ?>
 					<?php echo $form->field($model, 'img')->widget(FileInput::className(), [
@@ -152,7 +113,46 @@ use yii\helpers\Url;
 			</div>
 		</div>
 	</div>
+</div>
+<div class="col-sm-4">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-6">
+					<?= $form->field($model, 'status')->widget(SwitchInput::className(), []); ?>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+					</div>
+				</div>
+			</div>
+			<?= $form->field($model, 'category_id', ['labelOptions' => []])
+				->dropDownList(Category::getDependCategories(Category::TYPE_POST), [
+					'prompt' => Translate::category_parent(),
+				]) ?>
+			<?php echo $form->field($model, 'img')->widget(FileInput::className(), [
+				'options'       => [
+					'accept'      => 'image/*',
+					'placeholder' => Translate::image(),
+				],
+				'pluginOptions' => [
+					'allowedFileExtensions'                          => [
+						'jpg',
+						'gif',
+						'png',
+					],
+					'showUpload'                                     => false,
+					$model->getIsNewRecord() ? '' : 'initialPreview' => [
+						Html::img($model->getPictureUrl('image'), ['class' => 'file-preview-image img-responsive']),
+					],
+				],
+			])->label(Translate::image()); ?>
+		</div>
+	</div>
+</div>
+</div>
 
-	<?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 
 </div>

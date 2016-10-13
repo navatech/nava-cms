@@ -14,6 +14,7 @@ use navatech\language\db\ActiveRecord;
 use navatech\language\db\LanguageQuery;
 use navatech\language\Translate;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 
 /**
@@ -130,5 +131,16 @@ class Model extends ActiveRecord {
 			Translate::no(),
 			Translate::yes(),
 		];
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function attributes() {
+		$attributes = parent::attributes();
+		if (isset($this->behaviors()['ml']) && $this->behaviors()['ml']['attributes'] != null) {
+			$attributes = ArrayHelper::merge($attributes, $this->behaviors()['ml']['attributes']);
+		}
+		return $attributes;
 	}
 }

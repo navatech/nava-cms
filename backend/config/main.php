@@ -9,7 +9,41 @@ return [
 		'log',
 		'multiLanguage',
 	],
-	'modules'             => [
+	'components' => [
+		'request'      => [
+			'csrfParam' => '_csrf-backend',
+			'baseUrl'   => $baseUrl,
+		],
+		'session'      => [
+			'name' => 'advanced-backend',
+		],
+		'user'         => [
+			'identityCookie' => [
+				'name'     => '_identity-backend',
+				'httpOnly' => true,
+			],
+			'loginUrl'       => ['user/login'],
+		],
+		'errorHandler' => [
+			'errorAction' => 'site/error',
+		],
+		'view'         => [
+			'class' => '\common\web\View',
+			'theme' => [
+				'pathMap' => [
+					'@dektrium/user/views' => '@app/views/user',
+				],
+			],
+		],
+		'urlManager'   => [
+			'enablePrettyUrl' => true,
+			'showScriptName'  => false,
+		],
+		'setting'      => [
+			'class' => 'navatech\setting\Setting',
+		],
+	],
+	'modules'    => [
 		'user'     => [
 			'as backend' => 'dektrium\user\filters\BackendFilter',
 		],
@@ -64,39 +98,5 @@ return [
 			],
 		],
 	],
-	'components'          => [
-		'request'      => [
-			'csrfParam' => '_csrf-backend',
-			'baseUrl'   => $baseUrl,
-		],
-		'session'      => [
-			'name' => 'advanced-backend',
-		],
-		'user'         => [
-			'identityCookie' => [
-				'name'     => '_identity-backend',
-				'httpOnly' => true,
-			],
-			'loginUrl'       => ['user/login'],
-		],
-		'errorHandler' => [
-			'errorAction' => 'site/error',
-		],
-		'view'         => [
-			'class' => '\common\web\View',
-			'theme' => [
-				'pathMap' => [
-					'@dektrium/user/views' => '@app/views/user',
-				],
-			],
-		],
-		'urlManager'   => [
-			'enablePrettyUrl' => true,
-			'showScriptName'  => false,
-		],
-		'setting'      => [
-			'class' => 'navatech\setting\Setting',
-		],
-	],
-	'params'              => $params,
+	'params'     => $params,
 ];

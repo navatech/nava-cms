@@ -1,6 +1,6 @@
 <?php
+use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\MenuSearch */
@@ -20,6 +20,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel'  => $searchModel,
+		'export'       => false,
+		'responsive'   => true,
+		'hover'        => true,
+		'pjax'         => true,
 		'columns'      => [
 			['class' => 'yii\grid\SerialColumn'],
 			'id',

@@ -1,7 +1,7 @@
 <?php
 use common\models\Category;
+use kartik\grid\GridView;
 use navatech\language\Translate;
-use yii\grid\GridView;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -26,12 +26,19 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel'  => $searchModel,
+		'export'       => false,
+		'responsive'   => true,
+		'hover'        => true,
+		'pjax'         => true,
 		'columns'      => [
 			['class' => 'yii\grid\SerialColumn'],
 			[
 				'attribute' => 'image',
 				'value'     => function (Category $data) {
-					return Html::img($data->getPictureUrl('image'), ['class' => 'img-thumbnail','style' => 'height:50px']);
+					return Html::img($data->getPictureUrl('image'), [
+						'class' => 'img-thumbnail',
+						'style' => 'height:50px',
+					]);
 				},
 				'filter'    => false,
 				'format'    => 'raw',

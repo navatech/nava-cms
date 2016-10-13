@@ -1,7 +1,7 @@
 <?php
+use kartik\grid\GridView;
 use navatech\language\Translate;
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -14,13 +14,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
+		'export'       => false,
+		'responsive'   => true,
+		'hover'        => true,
+		'pjax'         => true,
 		'columns'      => [
 			['class' => 'yii\grid\SerialColumn'],
 			'from',
 			'to',
 			'subject',
 			'text',
-			'sentAt'
+			'sentAt',
 		],
 	]); ?>
 </div>

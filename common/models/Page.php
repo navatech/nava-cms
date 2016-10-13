@@ -8,10 +8,12 @@ use Yii;
  * This is the model class for table "page".
  *
  * @property integer $id
- * @property double  $price
  * @property integer $status
  * @property integer $category_id
  * @property string  $image
+ * @property string  $name
+ * @property string  $description
+ * @property string  $content
  */
 class Page extends Model {
 

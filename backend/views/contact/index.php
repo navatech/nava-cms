@@ -1,5 +1,5 @@
 <?php
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -16,6 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel'  => $searchModel,
+		'export'       => false,
+		'responsive'   => true,
+		'hover'        => true,
+		'pjax'         => true,
 		'columns'      => [
 			['class' => 'yii\grid\SerialColumn'],
 			'id',

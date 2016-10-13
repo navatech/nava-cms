@@ -2,8 +2,10 @@
 namespace common\models\search;
 
 use common\models\Page;
+use common\models\PageLang;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\helpers\ArrayHelper;
 
 /**
  * PageSearch represents the model behind the search form of `common\models\Page`.
@@ -24,7 +26,10 @@ class PageSearch extends Page {
 				'integer',
 			],
 			[
-				['image'],
+				[
+					'image',
+					'name',
+				],
 				'safe',
 			],
 		];
@@ -46,16 +51,25 @@ class PageSearch extends Page {
 	 * @return ActiveDataProvider
 	 */
 	public function search($params) {
-		$query = Page::find();
-		// add conditions that should always apply here
+		$query        = Page::find();
 		$dataProvider = new ActiveDataProvider([
 			'query' => $query,
 		]);
 		$this->load($params);
 		if (!$this->validate()) {
-			// uncomment the following line if you do not want to return any records when validation fails
-			// $query->where('0=1');
 			return $dataProvider;
+		}
+		if ($this->name != '') {
+			$pageLangs = PageLang::find()->where([
+				'LIKE',
+				'name',
+				$this->name,
+			])->all();
+			$query->andWhere([
+				'IN',
+				'id',
+				ArrayHelper::map($pageLangs, 'id', 'page_id'),
+			]);
 		}
 		// grid filtering conditions
 		$query->andFilterWhere([

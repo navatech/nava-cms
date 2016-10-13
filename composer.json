@@ -34,7 +34,8 @@
 		"navatech/yii2-setting": "@dev",
 		"navatech/yii2-backup": "@dev",
 		"yarcode/yii2-email-manager": "0.2.0.",
-		"warrence/yii2-kartikgii": "@dev"
+		"warrence/yii2-kartikgii": "@dev",
+		"skeeks/yii2-assets-auto-compress": "*"
 	},
 	"require-dev": {
 		"codeception/base": "^2.2.3",

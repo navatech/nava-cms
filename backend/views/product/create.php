@@ -5,8 +5,8 @@ use common\web\View;
 use yii\helpers\Html;
 
 /**
- * @var   View $this
- * @var  Product $model
+ * @var   View       $this
+ * @var  Product     $model
  * @var ProductImage $product_image
  */
 $this->title                   = 'Create Product';

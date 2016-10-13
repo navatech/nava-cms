@@ -2,8 +2,8 @@
 use backend\controllers\ProductController;
 use common\models\Category;
 use common\models\Product;
+use kartik\grid\GridView;
 use navatech\role\helpers\RoleChecker;
-use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -23,6 +23,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel'  => $searchModel,
+		'export'       => false,
+		'responsive'   => true,
+		'hover'        => true,
+		'pjax'         => true,
 		'columns'      => [
 			['class' => 'yii\grid\SerialColumn'],
 			[
@@ -59,12 +63,12 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			[
 				'class'          => 'yii\grid\ActionColumn',
-				'template' => '{preview} {update} {delete} ',
-				'buttons'  => [
-					'preview' => function($url, $model, $key) {
+				'template'       => '{preview} {update} {delete} ',
+				'buttons'        => [
+					'preview' => function ($url, $model, $key) {
 						return Html::a('<i class="glyphicon glyphicon-globe"></i>', Url::to([
 							'/frontend/page/view',
-							'id'   => $model->id,
+							'id' => $model->id,
 						]));
 					},
 				],
