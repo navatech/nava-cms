@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $searchModel common\models\search\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /**@var int $type */
-$this->title                   = 'Categories';
+$this->title                   = Translate::category();
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">

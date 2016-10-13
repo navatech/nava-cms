@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		], [
 			'class' => 'btn btn-danger',
 			'data'  => [
-				'confirm' => 'Are you sure you want to delete this item?',
+				'confirm' => Translate::are_you_sure(),
 				'method'  => 'post',
 			],
 		]) ?>

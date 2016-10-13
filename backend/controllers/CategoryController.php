@@ -41,6 +41,9 @@ class CategoryController extends Controller {
 
 	/**
 	 * Lists all Category models.
+	 *
+	 * @param int $type
+	 *
 	 * @return mixed
 	 */
 	public function actionIndex($type) {
@@ -72,6 +75,9 @@ class CategoryController extends Controller {
 	/**
 	 * Creates a new Category model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 *
+	 * @param int $type
+	 *
 	 * @return mixed
 	 */
 	public function actionCreate($type) {
@@ -113,13 +119,12 @@ class CategoryController extends Controller {
 			if ($_POST['Category']['parent_id'] == '') {
 				$model->parent_id = 0;
 			}
-			if($model->save()){
+			if ($model->save()) {
 				return $this->redirect([
 					'index',
 					'type' => $model->type,
 				]);
 			}
-
 		} else {
 			return $this->render('update', [
 				'model' => $model,

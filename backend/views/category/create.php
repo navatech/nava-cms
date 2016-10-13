@@ -1,11 +1,13 @@
 <?php
+use navatech\language\Translate;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
-$this->title = 'Create Category';
+/**@var int $type */
+$this->title                   = Translate::create_x(Translate::category());
 $this->params['breadcrumbs'][] = [
-	'label' => 'Categories',
+	'label' => Translate::category(),
 	'url'   => ['index'],
 ];
 $this->params['breadcrumbs'][] = $this->title;

@@ -2,6 +2,7 @@
 use common\models\Product;
 use common\models\ProductImage;
 use common\web\View;
+use navatech\language\Translate;
 use yii\helpers\Html;
 
 /**
@@ -9,9 +10,9 @@ use yii\helpers\Html;
  * @var  Product     $model
  * @var ProductImage $product_image
  */
-$this->title                   = 'Update Product: ' . $model->name;
+$this->title                   = Translate::update_x(Translate::product() . ': ' . $model->name);
 $this->params['breadcrumbs'][] = [
-	'label' => 'Products',
+	'label' => Translate::product(),
 	'url'   => ['index'],
 ];
 $this->params['breadcrumbs'][] = [
@@ -21,7 +22,7 @@ $this->params['breadcrumbs'][] = [
 		'id' => $model->id,
 	],
 ];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Translate::update();
 ?>
 <div class="product-update">
 
