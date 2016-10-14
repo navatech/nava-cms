@@ -9,7 +9,7 @@ namespace backend\assets;
 
 use yii\web\AssetBundle;
 
-class PagesAsset extends AssetBundle {
+class AppAsset extends AssetBundle {
 
 	public $basePath = '@webroot';
 

@@ -132,8 +132,13 @@
     max-width: 700px;
 }
 
-.icon-thumbnail {
+.sidebar-visible .icon-thumbnail {
     float: left;
+}
+
+.sidebar-visible:not(.menu-pin) .icon-thumbnail {
+    margin-left: 20px;
+    margin-right: 0;
 }
 
 .dd-item.dd3-item > button {
@@ -247,8 +252,20 @@ li.active .icon-thumbnail {
     padding: 0 0 0 5px;
 }
 
-@media (max-width: 767px) {
-    .icon-thumbnail {
-        margin-right: 10px;
+.icon-thumbnail {
+    margin-right: 10px;
+}
+
+@media (max-width: 991px) {
+    .page-content-wrapper {
+        background: #fff !important;
     }
+}
+
+body.mobile .sidebar-menu {
+    overflow: hidden;
+}
+
+.page-sidebar .sidebar-menu .menu-items > li > a {
+    padding-left: 20px;
 }

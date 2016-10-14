@@ -1,14 +1,12 @@
 <?php
 /* @var $this \yii\web\View */
 /* @var $content string */
-use backend\assets\PagesAsset;
-use backend\assets\PluginAsset;
+use backend\assets\AppAsset;
 use backend\widgets\NavBar;
 use backend\widgets\Sidebar;
 use yii\helpers\Html;
 
-PluginAsset::register($this);
-PagesAsset::register($this);
+AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
