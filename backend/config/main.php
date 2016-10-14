@@ -9,17 +9,22 @@ return [
 		'log',
 		'multiLanguage',
 	],
-	'components' => [
+	'components'          => [
 		'request'      => [
 			'csrfParam' => '_csrf-backend',
 			'baseUrl'   => $baseUrl,
 		],
 		'session'      => [
-			'name' => 'advanced-backend',
+			'name'         => 'BACKENDSESSID',
+			'cookieParams' => [
+				'httpOnly' => true,
+				'path'     => '/backend',
+			],
 		],
 		'user'         => [
 			'identityCookie' => [
-				'name'     => '_identity-backend',
+				'name'     => '_backendIdentity',
+				'path'     => '/backend',
 				'httpOnly' => true,
 			],
 			'loginUrl'       => ['user/login'],
@@ -43,9 +48,15 @@ return [
 			'class' => 'navatech\setting\Setting',
 		],
 	],
-	'modules'    => [
+	'modules'             => [
 		'user'     => [
-			'as backend' => 'dektrium\user\filters\BackendFilter',
+			'as backend'         => 'dektrium\user\filters\BackendFilter',
+			'enableRegistration' => false,
+			'enableConfirmation' => false,
+			'controllerMap'      => [
+				'admin' => 'backend\controllers\user\AdminController',
+			],
+			'adminPermission'    => '@',
 		],
 		'role'     => [
 			'class'       => 'navatech\role\Module',
@@ -98,5 +109,5 @@ return [
 			],
 		],
 	],
-	'params'     => $params,
+	'params'              => $params,
 ];

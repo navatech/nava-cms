@@ -6,8 +6,10 @@
  * @email   thuchm92[at]gmail.com
  * @date    6/21/2016
  * @time    10:39 AM
+ * @var LoginForm $model
  */
 use app\assets\LoginAsset;
+use dektrium\user\models\LoginForm;
 use navatech\language\Translate;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;

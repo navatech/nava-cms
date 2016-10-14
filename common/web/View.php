@@ -8,19 +8,20 @@
 namespace common\web;
 
 use common\models\User;
+use Yii;
 
 class View extends \yii\web\View {
 
 	/**@var User */
-	public $user;
+	public $user = null;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function init() {
 		parent::init();
-		if (!\Yii::$app->user->isGuest) {
-			$this->user = \Yii::$app->user->identity;
+		if (!Yii::$app->user->isGuest) {
+			$this->user = Yii::$app->user->identity;
 		}
 	}
 }

@@ -227,13 +227,28 @@ li.active .icon-thumbnail {
 .panel-primary > .panel-heading {
     color: #51646b;
 }
+
 .bg-black {
     background: #2B303B;
 }
+
 .kv-preview-data.file-preview-image {
     height: auto !important;
     max-width: 100% !important;
 }
+
 .file-preview-image {
     max-height: 150px;
+}
+
+.page-sidebar .sidebar-menu .menu-items > li {
+    clear: right;
+    display: block;
+    padding: 0 0 0 5px;
+}
+
+@media (max-width: 767px) {
+    .icon-thumbnail {
+        margin-right: 10px;
+    }
 }

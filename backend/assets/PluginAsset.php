@@ -7,7 +7,7 @@ use yii\web\View;
 /**
  * Main backend application asset bundle.
  */
-class AppAsset extends AssetBundle {
+class PluginAsset extends AssetBundle {
 
 	public $basePath  = '@webroot';
 
@@ -83,10 +83,6 @@ class AppAsset extends AssetBundle {
 	    //'plugins/moment/moment.min.js',
 	    //'plugins/bootstrap-daterangepicker/daterangepicker.js',
 	    //'plugins/bootstrap-timepicker/bootstrap-timepicker.min.js',
-		'pages/js/pages.js',
-	    //'js/form_elements.js',
-		'js/demo.js',
-	    'js/scripts.js',
 	];
 
 	public $jsOptions = [
