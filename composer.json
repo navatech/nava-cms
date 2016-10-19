@@ -43,7 +43,7 @@
 		"yiisoft/yii2-debug": "*",
 		"yiisoft/yii2-gii": "*",
 		"yiisoft/yii2-faker": "*",
-		"insolita/yii2-migration-generator": "~2.2"
+		"navatech/yii2-migration-generator": "@dev"
 	},
 	"config": {
 		"process-timeout": 1800

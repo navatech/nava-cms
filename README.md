@@ -1,20 +1,29 @@
-Yii 2 Advanced Project Template
+Navatech Yii 2 CMS
 ===============================
+INSTALL
+-------------------
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+### Install via Composer
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+This is the preferred way of installing Yii 2.0. If you do not have Composer yet, you may install it by following the instructions here.
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
+After installing Composer, run the following command to install the Composer Asset Plugin:
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+```
+composer global require "fxp/composer-asset-plugin:~1.1.1"
+```
+Now choose one of the application templates to start installing Yii 2.0. An application template is a package that contains a skeleton Web application written in Yii.
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
+```
+composer create-project navatech/yii2-cms . dev-master
+```
+
+Then run migration:
+```
+php yii migrate
+```
+
+**Note**: That you may be prompted to enter your GitHub username and password during the installation process. This is normal. Just enter them and continue.
 
 DIRECTORY STRUCTURE
 -------------------
