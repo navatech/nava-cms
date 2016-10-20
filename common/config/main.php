@@ -49,6 +49,11 @@ return [
 				'LoginForm' => 'navatech\role\models\LoginForm',
 			],
 		],
+		'language' => [
+			'class'  => '\navatech\language\Module',
+			'layout' => '@backend/views/layouts/setting',
+			'suffix' => 'lang',
+		],
 		'datecontrol' => [
 			'class'           => 'kartik\datecontrol\Module',
 			'displaySettings' => [

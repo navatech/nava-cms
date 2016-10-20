@@ -1,53 +1,128 @@
 <?php
-
 /* @var $this yii\web\View */
+use navatech\language\Translate;
 
-$this->title = 'My Yii Application';
+$this->title = 'SaLon';
 ?>
-<div class="site-index">
+<div class="hompage-content">
+	<form method="post" class="form-horizontal">
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-3 control-label">Họ Tên</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="inputEmail3" placeholder="Họ Tên">
+					</div>
+				</div>
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-3 control-label">Số điện thoại</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="inputEmail3" placeholder="Số điện thoại">
+					</div>
+				</div>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+					<div class="col-sm-9">
+						<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+					</div>
+				</div>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-3 control-label">Salon</label>
+					<div class="col-sm-9">
+						<select class="form-control">
+							<option>Hà Nội Việt Nam</option>
+							<option>Hà Nội Việt Nam</option>
+							<option>Hà Nội Việt Nam</option>
+						</select>
+					</div>
+				</div>
 
-    <div class="body-content">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-3 control-label">Stylist</label>
+					<div class="col-sm-9">
+						<div class="btn-group">
+							<button type="button" class="btn btn-danger">Action</button>
+							<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label for="inputEmail3" class="control-label">Giờ hẹn: Vui lòng chọn khung giờ phù hợp</label>
+						<ul class="list-time">
+							<li>
+								<a href="javascript:void(0)">8:00</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">8:30</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">9:00</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">9:30</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">10:00</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">10:30</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">13:00</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">13:30</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">14:00</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">14:30</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">15:00</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">15:30</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-3 control-label">Mã khuyến mại</label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="inputEmail3" placeholder="Mã khuyến mại">
+					</div>
+					<div class="col-sm-4">
+						<button type="submit" class="btn btn-lg btn-success pull-right">Đặt Lịch</button>
+					</div>
+				</div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+			</div>
+			<div class="col-sm-4 promotion">
+				<div class="list-promotion">
+					<h3 class="text-center">Khuyến Mãi</h3>
+					<div class="promotion-item">
+						Mừng khai trương nhập mã <b>KHAITRUONG</b> để giảm giá 50%
+					</div>
+					<div class="promotion-item">
+						từ ngày 15/9 đến ngày 20/10 nhập mã <b>PHUNUVIETNAM</b> để giảm giá 60%
+					</div>
+				</div>
+			</div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+		</div>
+	</form>
 </div>

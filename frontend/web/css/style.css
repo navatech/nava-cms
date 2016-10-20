@@ -1,0 +1,107 @@
+body {
+    background: rgba(0, 0, 0, 0) url("../images/1.jpg") repeat scroll 0 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.list-time > li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0 10px 10px 0;
+}
+.list-time a {
+    background: #d9534f none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+.list-time a:hover {
+    text-decoration: none;
+}
+.list-time {
+    border: 1px solid;
+    border-radius: 10px;
+    float: left;
+    margin: 0 0 10px;
+    padding: 20px;
+    width: 100%;
+}
+.list-promotion {
+    border: 1px dashed;
+    border-radius: 10px;
+    padding: 10px;
+}
+.list-promotion h3 {
+    color: red;
+    margin: 0 0 10px;
+}
+.promotion-item {
+    border-top: 1px dashed;
+    padding: 10px 0;
+}
+.hompage-content {
+    background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #fff;
+    padding: 30px 50px;
+}
+.hompage-content label.control-label {
+    text-align: left;
+}
+.header {
+    margin: 20px 0 40px;
+}
+.header-wrap {
+    background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+    padding: 10px;
+}
+.main-menu li {
+    display: inline-block;
+    list-style: outside none none;
+}
+.main-menu a {
+    color: #fff;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.social-header li {
+    display: inline-block;
+    list-style: outside none none;
+    margin-right: 5px;
+}
+.social-header a {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 50%;
+    display: block;
+    font-size: 26px;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+}
+.facebook a{
+    color: #3C5A99;
+}
+.google-plus a{
+    color: #EA4335;
+}
+.youtube a{
+    color: #E62117;
+}
+.social-header {
+    margin-top: 10px;
+}
+.footer {
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+}
