@@ -73,7 +73,7 @@ class Order extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'               => 'No',
+			'id'               => 'No.',
 			'order_number'     => Translate::order_number(),
 			'user_id'          => Translate::user(),
 			'phone_number'     => Translate::phone(),

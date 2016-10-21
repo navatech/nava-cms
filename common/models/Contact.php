@@ -68,7 +68,7 @@ class Contact extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'         => 'NO',
+			'id'         => 'No.',
 			'fullname'   => Translate::fullname(),
 			'email'      => Translate::email(),
 			'phone'      => Translate::phone(),

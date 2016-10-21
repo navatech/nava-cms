@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use common\models\translate\PostTranslate;
 use navatech\language\Translate;
 use Yii;
 use yii\db\ActiveQuery;
@@ -9,14 +10,16 @@ use yii\web\UploadedFile;
 /**
  * This is the model class for table "post".
  *
- * @property integer    $id
- * @property integer    $status
- * @property integer    $category_id
- * @property string     $image
- * @property string     $created_at
- * @property string     $updated_at
- * @property PostLang[] $postLangs
- * @property Category   $category
+ * @property integer         $id
+ * @property integer         $status
+ * @property integer         $category_id
+ * @property string          $name
+ * @property string          $information
+ * @property string          $image
+ * @property string          $created_at
+ * @property string          $updated_at
+ * @property PostTranslate[] $postTranslates
+ * @property Category        $category
  */
 class Post extends Model {
 
@@ -98,7 +101,7 @@ class Post extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'          => 'NO',
+			'id'          => 'No.',
 			'status'      => Translate::status(),
 			'category_id' => Translate::category(),
 			'image'       => Translate::image(),
@@ -108,8 +111,8 @@ class Post extends Model {
 	/**
 	 * @return ActiveQuery
 	 */
-	public function getPostLangs() {
-		return $this->hasMany(PostLang::className(), ['post_id' => 'id']);
+	public function getPostTranslates() {
+		return $this->hasMany(PostTranslate::className(), ['post_id' => 'id']);
 	}
 
 	/**

@@ -1,5 +1,7 @@
 <?php
-namespace common\models;
+namespace common\models\translate;
+use common\models\Model;
+use common\models\Post;
 
 /**
  * This is the model class for table "post_lang".
@@ -10,13 +12,13 @@ namespace common\models;
  * @property string  $information
  * @property string  $language
  */
-class PostLang extends Model {
+class PostTranslate extends Model {
 
 	/**
 	 * @inheritdoc
 	 */
 	public static function tableName() {
-		return 'post_lang';
+		return 'post_translate';
 	}
 
 	/**

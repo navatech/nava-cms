@@ -53,7 +53,7 @@ class Menu extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'     => 'ID',
+			'id'     => 'No.',
 			'name'   => Translate::name(),
 			'status' => Translate::status(),
 		];

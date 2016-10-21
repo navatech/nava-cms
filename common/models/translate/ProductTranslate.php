@@ -1,5 +1,9 @@
 <?php
-namespace common\models;
+namespace common\models\translate;
+
+use common\models\Model;
+use common\models\Product;
+use navatech\language\Translate;
 
 /**
  * This is the model class for table "product_lang".
@@ -11,13 +15,13 @@ namespace common\models;
  * @property string  $content
  * @property string  $language
  */
-class ProductLang extends Model {
+class ProductTranslate extends Model {
 
 	/**
 	 * @inheritdoc
 	 */
 	public static function tableName() {
-		return 'product_lang';
+		return 'product_translate';
 	}
 
 	/**
@@ -57,12 +61,12 @@ class ProductLang extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'          => 'ID',
-			'product_id'  => 'Product ID',
-			'name'        => 'Name',
-			'description' => 'description',
-			'content'     => 'content',
-			'language'    => 'Language',
+			'id'          => 'No.',
+			'product_id'  => Translate::product(),
+			'name'        => Translate::name(),
+			'description' => Translate::description(),
+			'content'     => Translate::content(),
+			'language'    => Translate::language(),
 		];
 	}
 

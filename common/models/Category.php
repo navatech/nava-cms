@@ -97,7 +97,7 @@ class Category extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'        => 'NO',
+			'id'        => 'No.',
 			'parent_id' => Translate::category_parent(),
 			'type'      => Translate::type(),
 			'order'     => Translate::sort_order(),

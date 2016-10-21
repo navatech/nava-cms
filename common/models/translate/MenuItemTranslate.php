@@ -1,5 +1,10 @@
 <?php
-namespace common\models;
+namespace common\models\translate;
+
+use common\models\MenuItem;
+use common\models\Model;
+use navatech\language\Translate;
+
 /**
  * This is the model class for table "menu_item_lang".
  *
@@ -8,13 +13,13 @@ namespace common\models;
  * @property string  $language
  * @property integer $name
  */
-class MenuItemLang extends Model {
+class MenuItemTranslate extends Model {
 
 	/**
 	 * @inheritdoc
 	 */
 	public static function tableName() {
-		return 'menu_item_lang';
+		return 'menu_item_translate';
 	}
 
 	/**
@@ -53,9 +58,9 @@ class MenuItemLang extends Model {
 	public function attributeLabels() {
 		return [
 			'id'           => 'ID',
-			'menu_item_id' => 'Menu Item ID',
-			'language'     => 'Language',
-			'name'         => 'Name',
+			'menu_item_id' => Translate::menu_item(),
+			'language'     => Translate::language(),
+			'name'         => Translate::name(),
 		];
 	}
 

@@ -16,15 +16,6 @@ class m161019_050128_product extends Migration {
 			'updated_at'  => Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT "0000-00-00 00:00:00"',
 		], $tableOptions);
 		$this->createIndex('fk_product_location_id', '{{%product}}', 'category_id', 0);
-		$this->insert('{{%product}}', [
-			'id'          => '1',
-			'price'       => '1236',
-			'status'      => '1',
-			'category_id' => '21',
-			'image'       => '1_image.png',
-			'created_at'  => '2016-10-06 17:17:28',
-			'updated_at'  => '2016-10-06 18:21:00',
-		]);
 	}
 
 	public function safeDown() {

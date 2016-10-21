@@ -59,7 +59,7 @@ class ProductImage extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'         => 'No',
+			'id'         => 'No.',
 			'product_id' => Translate::product(),
 			'image'      => Translate::image(),
 			'status'     => Translate::status(),
@@ -81,9 +81,10 @@ class ProductImage extends Model {
 	/**
 	 * fetch stored image url
 	 *
-	 * @param string $picture
+	 * @param null $product_id
 	 *
 	 * @return string
+	 *
 	 */
 	public function getPictureUrl($product_id = null) {
 		Yii::$app->params['uploadUrl'] = Yii::$app->urlManager->baseUrl . '/uploads/' . self::tableName() . '/';
@@ -125,8 +126,6 @@ class ProductImage extends Model {
 
 	/**
 	 * Process upload of image
-	 *
-	 * @param string $picture
 	 *
 	 * @return mixed the uploaded image instance
 	 */

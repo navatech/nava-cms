@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use common\models\translate\ProductTranslate;
 use navatech\language\Translate;
 use Yii;
 use yii\db\ActiveQuery;
@@ -9,14 +10,17 @@ use yii\web\UploadedFile;
 /**
  * This is the model class for table "product".
  *
- * @property integer        $id
- * @property double         $price
- * @property integer        $status
- * @property integer        $category_id
- * @property string         $image
- * @property ProductImage[] $productImages
- * @property ProductLang[]  $productLangs
- * @property Category       $category
+ * @property integer            $id
+ * @property integer            $category_id
+ * @property string             $image
+ * @property string             $name
+ * @property string             $description
+ * @property string             $content
+ * @property double             $price
+ * @property integer            $status
+ * @property ProductImage[]     $productImages
+ * @property ProductTranslate[] $productTranslates
+ * @property Category           $category
  */
 class Product extends Model {
 
@@ -90,7 +94,7 @@ class Product extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'          => 'NO',
+			'id'          => 'No.',
 			'price'       => Translate::price(),
 			'status'      => Translate::status(),
 			'category_id' => Translate::category(),
@@ -121,8 +125,8 @@ class Product extends Model {
 	/**
 	 * @return ActiveQuery
 	 */
-	public function getProductLangs() {
-		return $this->hasMany(ProductLang::className(), ['product_id' => 'id']);
+	public function getProductTranslates() {
+		return $this->hasMany(ProductTranslate::className(), ['product_id' => 'id']);
 	}
 
 	/**

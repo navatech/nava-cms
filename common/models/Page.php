@@ -1,19 +1,22 @@
 <?php
 namespace common\models;
 
+use common\models\translate\PageTranslate;
 use navatech\language\Translate;
 use Yii;
 
 /**
  * This is the model class for table "page".
  *
- * @property integer $id
- * @property integer $status
- * @property integer $category_id
- * @property string  $image
- * @property string  $name
- * @property string  $description
- * @property string  $content
+ * @property integer         $id
+ * @property integer         $status
+ * @property integer         $category_id
+ * @property string          $image
+ * @property string          $name
+ * @property string          $information
+ * @property string          $description
+ * @property string          $content
+ * @property PageTranslate[] $pageTranslates
  */
 class Page extends Model {
 
@@ -75,13 +78,16 @@ class Page extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'          => 'No',
+			'id'          => 'No.',
 			'status'      => Translate::status(),
 			'category_id' => Translate::category(),
 			'image'       => Translate::image(),
 		];
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function behaviors($attributes = null) {
 		$attributes = [
 			'name',
@@ -95,7 +101,7 @@ class Page extends Model {
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getPageLangs() {
-		return $this->hasMany(PageLang::className(), ['page_id' => 'id']);
+	public function getPageTranslates() {
+		return $this->hasMany(PageTranslate::className(), ['page_id' => 'id']);
 	}
 }

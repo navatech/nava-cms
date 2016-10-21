@@ -1,5 +1,9 @@
 <?php
-namespace common\models;
+namespace common\models\translate;
+
+use common\models\Model;
+use common\models\Page;
+use navatech\language\Translate;
 
 /**
  * This is the model class for table "page_lang".
@@ -10,13 +14,13 @@ namespace common\models;
  * @property string  $information
  * @property string  $language
  */
-class PageLang extends Model {
+class PageTranslate extends Model {
 
 	/**
 	 * @inheritdoc
 	 */
 	public static function tableName() {
-		return 'page_lang';
+		return 'page_translate';
 	}
 
 	/**
@@ -57,10 +61,10 @@ class PageLang extends Model {
 	public function attributeLabels() {
 		return [
 			'id'          => 'ID',
-			'page_id'     => 'Page ID',
-			'name'        => 'Name',
-			'information' => 'Information',
-			'language'    => 'Language',
+			'page_id'     => Translate::page(),
+			'name'        => Translate::name(),
+			'information' => Translate::information(),
+			'language'    => Translate::language(),
 		];
 	}
 

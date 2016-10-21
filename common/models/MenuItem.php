@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use common\models\translate\MenuItemTranslate;
 use kartik\widgets\SwitchInput;
 use navatech\language\Translate;
 use Yii;
@@ -8,15 +9,16 @@ use Yii;
 /**
  * This is the model class for table "menu_item".
  *
- * @property integer $id
- * @property integer $menu_id
- * @property string  $icon
- * @property string  name
- * @property string  $parent_id
- * @property integer $level
- * @property string  $url
- * @property integer $sort_order
- * @property integer $status
+ * @property integer             $id
+ * @property integer             $menu_id
+ * @property string              $icon
+ * @property string              name
+ * @property string              $parent_id
+ * @property integer             $level
+ * @property string              $url
+ * @property integer             $sort_order
+ * @property integer             $status
+ * @property MenuItemTranslate[] $menuItemTranslates
  */
 class MenuItem extends Model {
 
@@ -75,12 +77,12 @@ class MenuItem extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'         => 'ID',
-			'menu_id'    => 'Menu',
-			'icon'       => 'Icon',
+			'id'         => 'No.',
+			'menu_id'    => Translate::menu(),
+			'icon'       => Translate::icon(),
 			'parent_id'  => Translate::menu_parent(),
 			'level'      => Translate::level(),
-			'url'        => 'Url',
+			'url'        => Translate::url(),
 			'sort_order' => Translate::sort_order(),
 			'status'     => Translate::status(),
 		];
@@ -107,8 +109,8 @@ class MenuItem extends Model {
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getMenuItemLangs() {
-		return $this->hasMany(MenuItemLang::className(), ['menu_item_id' => 'id']);
+	public function getMenuItemTranslate() {
+		return $this->hasMany(MenuItemTranslate::className(), ['menu_item_id' => 'id']);
 	}
 
 	/**

@@ -54,7 +54,7 @@ class OrderItem extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'         => 'NO',
+			'id'         => 'No.',
 			'order_id'   => Translate::order(),
 			'product_id' => Translate::product(),
 			'quantity'   => Translate::quantity(),
