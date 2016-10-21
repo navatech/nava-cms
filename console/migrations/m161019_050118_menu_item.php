@@ -17,6 +17,7 @@ class m161019_050118_menu_item extends Migration {
 			'status'     => Schema::TYPE_SMALLINT . '(3) unsigned NOT NULL DEFAULT "1"',
 		], $tableOptions);
 		$this->createIndex('parent_id', '{{%menu_item}}', 'parent_id', 0);
+		$this->createIndex('menu_id', '{{%menu_item}}', 'menu_id', 0);
 		$this->insert('{{%menu_item}}', [
 			'id'         => '5',
 			'menu_id'    => '1',

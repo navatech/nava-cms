@@ -57,7 +57,7 @@ class MenuItemTranslate extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'           => 'ID',
+			'id'           => 'No.',
 			'menu_item_id' => Translate::menu_item(),
 			'language'     => Translate::language(),
 			'name'         => Translate::name(),

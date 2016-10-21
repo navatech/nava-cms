@@ -12,6 +12,7 @@ class m161019_050119_menu_item_translate extends Migration {
 			'language'     => Schema::TYPE_STRING . '(255) NOT NULL',
 			'name'         => Schema::TYPE_STRING . '(255) NOT NULL',
 		], $tableOptions);
+		$this->createIndex('menu_item_id', 'menu_item_translate', 'menu_item_id', 0);
 		$this->insert('{{%menu_item_translate}}', [
 			'id'           => '1',
 			'menu_item_id' => '5',

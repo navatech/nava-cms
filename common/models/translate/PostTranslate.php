@@ -1,7 +1,9 @@
 <?php
 namespace common\models\translate;
+
 use common\models\Model;
 use common\models\Post;
+use navatech\language\Translate;
 
 /**
  * This is the model class for table "post_lang".
@@ -58,12 +60,12 @@ class PostTranslate extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'          => 'ID',
-			'post_id'     => 'Post ID',
-			'name'        => 'Name',
-			'description' => 'Description',
-			'content'     => 'Content',
-			'language'    => 'Language',
+			'id'          => 'No.',
+			'post_id'     => Translate::post(),
+			'name'        => Translate::name(),
+			'description' => Translate::description(),
+			'content'     => Translate::content(),
+			'language'    => Translate::language(),
 		];
 	}
 

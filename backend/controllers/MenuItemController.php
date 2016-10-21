@@ -80,17 +80,15 @@ class MenuItemController extends Controller {
 			if ($_POST['MenuItem']['parent_id'] == '') {
 				$model->parent_id = 0;
 			}
-			if($model->save()){
+			if ($model->save()) {
 				return $this->render('update', [
 					'model' => $model,
 				]);
 			}
-
-		} else {
-			return $this->render('create', [
-				'model' => $model,
-			]);
 		}
+		return $this->render('create', [
+			'model' => $model,
+		]);
 	}
 
 	/**
@@ -107,16 +105,15 @@ class MenuItemController extends Controller {
 			if ($_POST['MenuItem']['parent_id'] == '') {
 				$model->parent_id = 0;
 			}
-			if($model->save()){
+			if ($model->save()) {
 				return $this->render('update', [
 					'model' => $model,
 				]);
 			}
-		} else {
-			return $this->render('update', [
-				'model' => $model,
-			]);
 		}
+		return $this->render('update', [
+			'model' => $model,
+		]);
 	}
 
 	/**

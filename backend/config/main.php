@@ -69,9 +69,8 @@ return [
 			'class' => '\kartik\grid\Module',
 		],
 		'language' => [
-			'class'  => '\navatech\language\Module',
-			'layout' => '@backend/views/layouts/setting',
-			'suffix' => 'lang',
+			'class'          => '\navatech\language\Module',
+			'layout'         => '@backend/views/layouts/setting',
 		],
 		'setting'  => [
 			'class'               => 'navatech\setting\Module',

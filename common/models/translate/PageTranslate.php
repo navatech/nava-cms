@@ -60,7 +60,7 @@ class PageTranslate extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'          => 'ID',
+			'id'          => 'No.',
 			'page_id'     => Translate::page(),
 			'name'        => Translate::name(),
 			'information' => Translate::information(),

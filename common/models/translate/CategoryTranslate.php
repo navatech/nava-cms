@@ -1,5 +1,9 @@
 <?php
-namespace common\models;
+namespace common\models\translate;
+
+use common\models\Category;
+use common\models\Model;
+use navatech\language\Translate;
 
 /**
  * This is the model class for table "category_lang".
@@ -15,7 +19,7 @@ class CategoryLang extends Model {
 	 * @inheritdoc
 	 */
 	public static function tableName() {
-		return 'category_lang';
+		return 'category_translate';
 	}
 
 	/**
@@ -58,10 +62,10 @@ class CategoryLang extends Model {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'          => 'ID',
-			'category_id' => 'Category ID',
-			'name'        => 'Name',
-			'language'    => 'Language',
+			'id'          => 'No.',
+			'category_id' => Translate::category(),
+			'name'        => Translate::name(),
+			'language'    => Translate::language(),
 		];
 	}
 
