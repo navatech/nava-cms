@@ -81,29 +81,31 @@ class ProductController extends Controller {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
-				$gallery_img = $product_image->uploadPicture();
-				if ($gallery_img != null) {
-					foreach ($gallery_img as $key => $item) {
-						$gallery             = new ProductImage();
-						$gallery->product_id = $model->getPrimaryKey();
-						$gallery->status     = "1";
-						$ext                 = $item->getExtension();
-						$gallery->image      = $model->getPrimaryKey() . '_' . $key . '_image' . ".{$ext}";
-						$gallery->save();
+				$galleryImages = $product_image->uploadPicture();
+				if ($galleryImages != null) {
+					foreach ($galleryImages as $key => $item) {
+						$product_image             = new ProductImage();
+						$product_image->product_id = $model->getPrimaryKey();
+						$product_image->status     = "1";
+						$ext                       = $item->getExtension();
+						$product_image->image      = $model->getPrimaryKey() . '_' . $key . '_image' . ".{$ext}";
+						$product_image->save();
 						if ($item != false) {
-							$path = $gallery->getPictureFile('image');
+							$path = $product_image->getPictureFile('image');
 							$item->saveAs($path);
 						}
 					}
 				}
-				return $this->redirect(['update','id'=>$model->id]);
+				return $this->redirect([
+					'update',
+					'id' => $model->id,
+				]);
 			}
-		} else {
-			return $this->render('create', [
-				'model'         => $model,
-				'product_image' => $product_image,
-			]);
 		}
+		return $this->render('create', [
+			'model'         => $model,
+			'product_image' => $product_image,
+		]);
 	}
 
 	/**
@@ -119,8 +121,7 @@ class ProductController extends Controller {
 		$oldImage      = $model->image;
 		$product_image = new ProductImage();
 		if ($model->load(Yii::$app->request->post())) {
-			$model->updated_at = date('Y-m-d H-i-s');
-			$img               = $model->uploadPicture('image');
+			$img = $model->uploadPicture('image');
 			if ($model->save()) {
 				if ($img === false) {
 					$model->image = $oldImage;
@@ -129,29 +130,31 @@ class ProductController extends Controller {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
-				$product_img = $product_image->uploadPicture();
-				if ($product_img != null) {
-					foreach ($product_img as $key => $item) {
-						$product_img             = new ProductImage();
-						$product_img->product_id = $model->getPrimaryKey();
-						$product_img->status     = "1";
-						$ext                     = $item->getExtension();
-						$product_img->image      = $model->getPrimaryKey() . '_' . $key . '_image' . ".{$ext}";
-						$product_img->save();
+				$galleryImages = $product_image->uploadPicture();
+				if ($galleryImages != null) {
+					foreach ($galleryImages as $key => $item) {
+						$product_image             = new ProductImage();
+						$product_image->product_id = $model->getPrimaryKey();
+						$product_image->status     = "1";
+						$ext                       = $item->getExtension();
+						$product_image->image      = $model->getPrimaryKey() . '_' . $key . '_image' . ".{$ext}";
+						$product_image->save();
 						if ($item != false) {
-							$path = $product_img->getPictureFile('image');
+							$path = $product_image->getPictureFile('image');
 							$item->saveAs($path);
 						}
 					}
 				}
-				return $this->redirect(['update','id'=>$model->id]);
+				return $this->redirect([
+					'update',
+					'id' => $model->id,
+				]);
 			}
-		} else {
-			return $this->render('update', [
-				'model'         => $model,
-				'product_image' => $product_image,
-			]);
 		}
+		return $this->render('update', [
+			'model'         => $model,
+			'product_image' => $product_image,
+		]);
 	}
 
 	/**

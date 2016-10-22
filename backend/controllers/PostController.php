@@ -79,13 +79,15 @@ class PostController extends Controller {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
-				return $this->redirect(['update','id'=>$model->id]);
+				return $this->redirect([
+					'update',
+					'id' => $model->id,
+				]);
 			}
-		} else {
-			return $this->render('create', [
-				'model' => $model,
-			]);
 		}
+		return $this->render('create', [
+			'model' => $model,
+		]);
 	}
 
 	/**
@@ -109,13 +111,15 @@ class PostController extends Controller {
 					$path = $model->getPictureFile('image');
 					$img->saveAs($path);
 				}
-				return $this->redirect(['update','id'=>$model->id]);
+				return $this->redirect([
+					'update',
+					'id' => $model->id,
+				]);
 			}
-		} else {
-			return $this->render('update', [
-				'model' => $model,
-			]);
 		}
+		return $this->render('update', [
+			'model' => $model,
+		]);
 	}
 
 	/**

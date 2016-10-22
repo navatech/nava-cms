@@ -59,10 +59,7 @@ class Model extends ActiveRecord {
 	 * @return static|null|\yii\db\ActiveRecord
 	 */
 	public static function findOneTranslated($condition) {
-		return is_array($condition) ? static::find()->where($condition)->translate()->one() : static::find()
-			->where(['id' => $condition])
-			->translate()
-			->one();
+		return is_array($condition) ? static::find()->where($condition)->translate()->one() : static::find()->where(['id' => $condition])->translate()->one();
 	}
 
 	/**
@@ -142,5 +139,15 @@ class Model extends ActiveRecord {
 			$attributes = ArrayHelper::merge($attributes, $this->behaviors()['ml']['attributes']);
 		}
 		return $attributes;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function beforeSave($insert) {
+		if (!$this->isNewRecord && $this->hasAttribute('updated_at')) {
+			$this->setAttribute('updated_at', date('Y-m-d H:i:s'));
+		}
+		return parent::beforeSave($insert);
 	}
 }

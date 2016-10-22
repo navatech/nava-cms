@@ -36,10 +36,9 @@ class EmailTemplateController extends Controller {
 					'model' => $models,
 				]);
 			}
-		} else {
-			return $this->render('setting', [
-				'models' => $models,
-			]);
 		}
+		return $this->render('setting', [
+			'models' => $models,
+		]);
 	}
 }

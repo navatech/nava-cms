@@ -97,12 +97,11 @@ class CategoryController extends Controller {
 					'type' => $model->type,
 				]);
 			}
-		} else {
-			return $this->render('create', [
-				'model' => $model,
-				'type'  => $type,
-			]);
 		}
+		return $this->render('create', [
+			'model' => $model,
+			'type'  => $type,
+		]);
 	}
 
 	/**
@@ -125,11 +124,10 @@ class CategoryController extends Controller {
 					'type' => $model->type,
 				]);
 			}
-		} else {
-			return $this->render('update', [
-				'model' => $model,
-			]);
 		}
+		return $this->render('update', [
+			'model' => $model,
+		]);
 	}
 
 	/**

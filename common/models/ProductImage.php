@@ -127,7 +127,7 @@ class ProductImage extends Model {
 	/**
 	 * Process upload of image
 	 *
-	 * @return mixed the uploaded image instance
+	 * @return mixed|UploadedFile[] the uploaded image instance
 	 */
 	public function uploadPicture() {
 		$img = UploadedFile::getInstances($this, 'img');

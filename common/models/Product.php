@@ -18,6 +18,8 @@ use yii\web\UploadedFile;
  * @property string             $content
  * @property double             $price
  * @property integer            $status
+ * @property string             $created_at
+ * @property string             $updated_at
  * @property ProductImage[]     $productImages
  * @property ProductTranslate[] $productTranslates
  * @property Category           $category
