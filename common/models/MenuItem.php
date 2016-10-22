@@ -109,7 +109,7 @@ class MenuItem extends Model {
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getMenuItemTranslate() {
+	public function getMenuItemTranslates() {
 		return $this->hasMany(MenuItemTranslate::className(), ['menu_item_id' => 'id']);
 	}
 

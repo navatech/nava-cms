@@ -15,13 +15,13 @@ class m161019_050132_role extends Migration {
 		$this->insert('{{%role}}', [
 			'id'               => '1',
 			'name'             => 'Administrator',
-			'permissions'      => '{\"navatech\\\\role\\\\controllers\\\\DefaultController\":{\"index\":1,\"create\":1,\"update\":1,\"delete\":1}}',
+			'permissions'      => '{\"navatech\\role\\controllers\\DefaultController\":{\"index\":1,\"create\":1,\"update\":1,\"delete\":1}}',
 			'is_backend_login' => '1',
 		]);
 		$this->insert('{{%role}}', [
 			'id'               => '2',
 			'name'             => 'Staff',
-			'permissions'      => '{\"backend\\\\controllers\\\\AccountController\":{\"index\":\"1\",\"view\":\"1\",\"create\":\"1\",\"update\":\"1\",\"delete\":\"1\"},\"navatech\\\\role\\\\controllers\\\\DefaultController\":{\"index\":\"1\",\"create\":\"1\",\"update\":\"1\",\"delete\":\"1\",\"view\":\"1\"}}',
+			'permissions'      => '{\"backend\\controllers\\AccountController\":{\"index\":\"1\",\"view\":\"1\",\"create\":\"1\",\"update\":\"1\",\"delete\":\"1\"},\"navatech\\role\\controllers\\DefaultController\":{\"index\":\"1\",\"create\":\"1\",\"update\":\"1\",\"delete\":\"1\",\"view\":\"1\"}}',
 			'is_backend_login' => '1',
 		]);
 		$this->insert('{{%role}}', [

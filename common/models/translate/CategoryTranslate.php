@@ -13,7 +13,7 @@ use navatech\language\Translate;
  * @property string  $name
  * @property string  $language
  */
-class CategoryLang extends Model {
+class CategoryTranslate extends Model {
 
 	/**
 	 * @inheritdoc

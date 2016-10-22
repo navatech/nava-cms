@@ -17,6 +17,11 @@ class m161019_050137_Relations extends Migration {
 		$this->addForeignKey('fk_token_user_id', '{{%token}}', 'user_id', 'user', 'id', 'CASCADE', 'CASCADE');
 		$this->addForeignKey('fk_menu_item_menu_id', '{{%menu_item}}', 'menu_id', 'menu', 'id', 'CASCADE', 'CASCADE');
 		$this->addForeignKey('fk_menu_item_translate_menu_item_id', '{{%menu_item_translate}}', 'menu_item_id', 'menu_item', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('fk_order_user_id', '{{%order}}', 'user_id', 'user', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('fk_order_item_order_id', '{{%order_item}}', 'order_id', 'order', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('fk_order_item_product_id', '{{%order_item}}', 'product_id', 'product', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('fk_page_category_id', '{{%page}}', 'category_id', 'category', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('fk_product_image_product_id', '{{%product_image}}', 'product_id', 'product', 'id', 'CASCADE', 'CASCADE');
 	}
 
 	public function safeDown() {

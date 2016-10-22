@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use common\models\translate\CategoryTranslate;
 use navatech\language\Translate;
 use Yii;
 use yii\db\ActiveQuery;
@@ -10,17 +11,17 @@ use yii\web\UploadedFile;
 /**
  * This is the model class for table "category".
  *
- * @property integer        $id
- * @property integer        $parent_id
- * @property integer        $type
- * @property integer        $order
- * @property string         $image
- * @property integer        $status
- * @property $this          $parent
- * @property CategoryLang[] $categoryLangs
- * @property Product[]      $products
- * @property Post[]         $posts
- * @property string         $name
+ * @property integer             $id
+ * @property integer             $parent_id
+ * @property integer             $type
+ * @property integer             $order
+ * @property string              $image
+ * @property integer             $status
+ * @property $this               $parent
+ * @property CategoryTranslate[] $categoryTranslates
+ * @property Product[]           $products
+ * @property Post[]              $posts
+ * @property string              $name
  */
 class Category extends Model {
 
@@ -116,8 +117,8 @@ class Category extends Model {
 	/**
 	 * @return ActiveQuery
 	 */
-	public function getCategoryLangs() {
-		return $this->hasMany(CategoryLang::className(), ['category_id' => 'id']);
+	public function getCategoryTranslates() {
+		return $this->hasMany(CategoryTranslate::className(), ['category_id' => 'id']);
 	}
 
 	/**
