@@ -15,7 +15,7 @@ composer global require "fxp/composer-asset-plugin:~1.1.1"
 Now choose one of the application templates to start installing Yii 2.0. An application template is a package that contains a skeleton Web application written in Yii.
 
 ```
-composer create-project navatech/yii2-cms . dev-master
+composer create-project navatech/yii2-cms your-project-path 1.0
 ```
 
 Then run migration:
